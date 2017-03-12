@@ -11,4 +11,4 @@ or genre.
 
 ## Future Implementations
 
-[eden]: eden.audio
+[eden]: http://eden.audio

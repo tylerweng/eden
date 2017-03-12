@@ -20,4 +20,4 @@ Eden allows users to:
 
 ## Future Implementations
 
-[eden]: eden.audio
+[eden]: http://eden.audio
