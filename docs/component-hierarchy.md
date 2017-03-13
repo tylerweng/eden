@@ -6,6 +6,7 @@
 
  **Footer**
  - Navbar
+ - Playbar
 
  **Header**
  - AuthFormContainer
@@ -38,7 +39,10 @@
    + BookmarksIndex
  - Footer
 
-**StationsContainer**
+**UserStationsContainer**
+- UserStations
+
+**StationContainer**
 - Header
 - LikesContainer
   + Likes
@@ -54,13 +58,9 @@
 | "/sign-up" | "AuthFormContainer" |
 | "/sign-in" | "AuthFormContainer" |
 | "/" | "HomeContainer" |
-| "/stations" | "StationsContainer" |
-| "/station/:stationId" | "UserProfileContainer" |
-| "/home/tag/:tagId/note/:notedId" | "TagContainer" |
-| "/home/search-results" | "SearchResultsContainer"
-| "/new-note" | "NewNoteContainer" |
-| "/search" | "Search" |
-| "/new-notebook" | "NewNotebook" |
-| "/new-tag" | "NewTag" |
-| "/tag-search" | "TagSearch" |
-| "/notebook-search" | "NotebookSearch" |
+| "/stations" | "UserStationsContainer" |
+| "/station/:stationId" | "StationContainer" |
+| "/artist/:artistName" | "ArtistProfileContainer" |
+| "/artist/:artistName/:albumName" | "AlbumProfileContainer" |
+| "/artist/:artistName/:albumName/:trackName" | "TrackProfileContainer" |
+| "/artist/:artistId" | "ArtistProfileContainer" |

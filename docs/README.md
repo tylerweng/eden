@@ -18,6 +18,34 @@ Eden allows users to:
 
 ## Project Design
 
+## Implementation Timeline
+
+### Phase 1: Backend setup and Front End User Authentication (1 day)
+
+**Objective:** Functioning rails project with front-end Authentication
+
+### Phase 2: Albums, Artists and Tracks: API, Components and Hosting (3 days)
+
+**Objective:** Albums, Artists and Tracks can all be accessed through API and hosted on Amazon S3.
+
+### Phase 3: Playbar  (2 days)
+
+**Objective:** Allow users to play tracks uninterrupted.
+
+### Phase 4: Likes and Bookmarks (2 days)
+
+**Objective:** Allow user to like/bookmark albums, artists and tracks
+
+### Phase 6: - Beautify (2 days)
+
+**Objective:** Polish up CSS
+
+### Bonus Features (TBD)
+- [ ] Search notes by content
+- [ ] Set reminders on notes
+- [ ] Changelogs for Notes
+- [ ] Multiple sessions
+
 ## Technology
 
 ## Future Implementations
