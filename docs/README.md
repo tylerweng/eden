@@ -27,11 +27,11 @@ Eden allows users to:
 
 **Objective:** Albums, Artists and Tracks can all be accessed through API and hosted on Amazon S3.
 
-### Phase 3: Playbar  (2 days)
+### Phase 3: Playbar (2 days)
 
 **Objective:** Allow users to play tracks uninterrupted.
 
-### Phase 4: - Search (2 days)
+### Phase 4: - Search (Stations) (2 days)
 
 **Objective:** Generate stations by artist, song or genre
 

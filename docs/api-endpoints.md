@@ -10,19 +10,19 @@
 
 ### Users
 
-- `POST /api/users/:userName`
-- `PATCH /api/users/:userName`
+- `POST /api/users/:userId`
+- `PATCH /api/users/:userId`
 
 ### Artist
 
-- `GET /api/:artistName`
+- `GET /api/artists/:artistId`
 
 ### Album
 
-- `GET /api/:artistName/:albumTitle`
+- `GET /api/artists/:artistId/albums/:albumsId`
 
 ### Track
 
-- `GET /api/:artistName/:albumTitle/:trackTitle`
+- `GET /api/artists/:artistId/albums/:albumsId/tracks/:trackId`
 
 ## Spotify API (TBD)
