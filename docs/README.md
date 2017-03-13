@@ -21,24 +21,28 @@ Eden allows users to:
 
 ### Phase 1: Backend setup and Front End User Authentication (1 day)
 
-**Objective:** Functioning rails project with front-end Authentication
+**Objective:** Functioning rails project with front-end authentication
 
-### Phase 2: Albums, Artists and Tracks: API, Components and Hosting (3 days)
+### Phase 2: Artists and Tracks: API, Components and Hosting (2 days)
 
-**Objective:** Albums, Artists and Tracks can all be accessed through API and hosted on Amazon S3.
+**Objective:** Functional artist and track components with tracks hosted
+on Amazon S3.
 
-### Phase 3: Playbar (2 days)
-
-**Objective:** Allow users to stream tracks uninterrupted.
-
-### Phase 4: - Search (Stations) (2 days)
+### Phase 3: - Search (Stations) (3 days)
 
 **Objective:** Generate stations by artist, song or genre
 
-### Phase 5: Likes and Bookmarks (2 days)
+### Phase 4: Playbar (2 days)
+
+**Objective:** Allow users to stream tracks uninterrupted.
+
+### Phase 5: Likes and Bookmarks (1 day)
 
 **Objective:** Allow users to like and bookmark albums, artists and tracks
 
+### Phase 6: Cleanup (1 day)
+
+**Objective:** Style enhancements and Production README
 
 ### Bonus Features (TBD)
 - [ ] Find similar artists

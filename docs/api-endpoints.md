@@ -20,34 +20,24 @@
 
 ### Stations
 - `GET /api/stations/:stationId`
-
-### Artists
-
-- `GET /api/artists/:artistId`
-
-### Albums
-
-- `GET /api/artists/:artistId/albums/:albumId`
+- `GET /api/users/:userId/stations`
 
 ### Tracks
 
-- `GET /api/artists/:artistId/albums/:albumId/tracks/:trackId`
+- `GET /api/users/:userId/tracks/:trackId`
+- `POST /api/users/:userId/tracks`
 
 ### Likes
 
-- `POST /api/artists/:artistId/albums/:albumId/tracks/:trackId/likes`
+- `POST /api/users/:userId/tracks/:trackId/likes`
+- `DELETE /api/users/:userId/tracks/:trackId/likes`
 
 ### Artist Bookmarks
 
-- `POST /api/artists/:artistId/bookmarks`
-- `DELETE /api/artists/:artistId/bookmarks`
-
-### Album Bookmarks
-
-- `POST /api/artists/:artistId/albums/:albumId/bookmarks`
-- `DELETE /api/artists/:artistId/albums/:albumId/bookmarks`
+- `POST /api/users/:userId/bookmarks`
+- `DELETE /api/users/:userId/bookmarks`
 
 ### Track Bookmarks
 
-- `POST /api/artists/:artistId/albums/:albumId/tracks/:trackId/bookmarks`
-- `DELETE /api/artists/:artistId/albums/:albumId/tracks/:trackId/bookmarks`
+- `POST /api/users/:userId/tracks/:trackId/bookmarks`
+- `DELETE /api/users/:userId/tracks/:trackId/bookmarks`

@@ -1,58 +1,43 @@
 ## Component Hierarchy
 
-**SearchResultsContainer**
-- Search
-- StationIndex
+**SearchContainer**
+- SearchBar
+- SearchResultsContainer
+  + StationsIndex
 
  **Footer**
  - Navbar
- - Playbar
+ - PlaybarContainer
+   + CurrentTrack
+   + ControlButtons
 
  **Header**
  - AuthFormContainer
    + AuthForm
  - HeaderBar
-   + SearchResultsContainer
+   + SearchContainer
 
 **HomeContainer**
  - Home
- - Sidebar
- - SearchResultsContainer
- - Footer
+ - HomeSidebar
 
-**ArtistProfileContainer**
- - ArtistProfile
- - Footer
-
-**AlbumProfileContainer**
- - AlbumProfile
- - TracksContainer
-   + Tracks
- - Footer
-
-**TrackProfileContainer**
- - TrackProfile
- - Footer
+**StationContainer**
+ - StationsSidebar
+ - NowPlayingStation
 
 **UserProfileContainer**
- - Heaader
+ - ProfileSidebar
+ - ProfileContainer
+   + Bio
+   + UserStationsContainer
+     - UserStations
+   + SimilarArtistsContainer
+     - SimilarArtists
  - UserLikesContainer
    + UserLikesIndex
  - BookmarksContainer
    + BookmarksIndex
- - Footer
 
-**UserStationsContainer**
-- UserStations
-
-**StationContainer**
-- Header
-- LikesContainer
-  + Likes
-- TracksContainer
-  + Tracks
- - SearchResultsContainer
- - Footer
 
 ## Routes
 
@@ -61,9 +46,8 @@
 | "/sign-up" | "AuthFormContainer" |
 | "/sign-in" | "AuthFormContainer" |
 | "/" | "HomeContainer" |
-| "/stations" | "UserStationsContainer" |
+| "/users/:userName" | "UserProfileContainer" |
 | "/station/:stationId" | "StationContainer" |
-| "/artist/:artistName" | "ArtistProfileContainer" |
-| "/artist/:artistName/:albumName" | "AlbumProfileContainer" |
-| "/artist/:artistName/:albumName/:trackName" | "TrackProfileContainer" |
-| "/artist/:artistId" | "ArtistProfileContainer" |
+| "/track/:trackId" | "TrackContainer" |
+| "/new-track" | "NewTrackContainer" |
+| "/search-results" | "SearchResultsContainer" |

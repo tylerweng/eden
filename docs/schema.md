@@ -9,68 +9,66 @@ email           | string    | not null, indexed, unique
 password_digest | string    | not null
 session_token   | string    | not null, indexed, unique
 
-## artists
+## stations
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-name        | string    | not null
-
-## albums
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-artist_id   | integer   | not null, foreign key (references users), indexed
+user_id     | integer   | not null, foreign key (references user), indexed
 title       | string    | not null
 description | text      |
-genres      | string    | array, default: []
+
+## user_stations
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+user_id     | integer   | not null, foreign key (references user), indexed
+station_id  | integer   | not null, foreign key (references station), indexed
 
 ## tracks
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-album_id    | integer   | not null, foreign key (references albums), indexed
+user_id     | integer   | not null, foreign key (references user), indexed
 title       | string    | not null
 description | text      |
-features    | string    | array, default: []
+
+## user_tracks
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+user_id     | integer   | not null, foreign key (references user), indexed
+track_id    | integer   | not null, foreign key (references track), indexed
 
 ## likes
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign key (references user), indexed
-track_id    | integer   | not null, foreign key (references tracks), indexed
+track_id    | integer   | not null, foreign key (references track), indexed
 
 ## genres
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 genre       | string    | not null
-album_id    | integer   | not null, foreign key (references album), indexed
 
-## features
+## track_genres
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-feature     | string    | not null
-track_id    | integer   | not null, foreign key (references track), indexed
+track_id    | string    | not null, foreign key (references track), indexed
+genre_id    | integer   | not null, foreign key (references genre), indexed
 
-## artist_bookmarks
+## user_bookmarks
 column name -----| data type | details
 -----------------|-----------|-----------------------
 id               | integer   | not null, primary key
 user_id          | integer   | not null, foreign key (references user), indexed
-artist_id        | integer   | not null, foreign key (references artists), indexed
-
-## album_bookmarks
-column name -----| data type | details
------------------|-----------|-----------------------
-id               | integer   | not null, primary key
-user_id          | integer   | not null, foreign key (references user), indexed
-album_id         | integer   | not null, foreign key (references albums), indexed
+artist_id        | integer   | not null, foreign key (references artist), indexed
 
 ## track_bookmarks
 column name -----| data type | details
 -----------------|-----------|-----------------------
 id               | integer   | not null, primary key
 user_id          | integer   | not null, foreign key (references user), indexed
-track_id         | integer   | not null, foreign key (references tracks), indexed
+track_id         | integer   | not null, foreign key (references track), indexed

@@ -11,21 +11,12 @@
     1: {
       id: 1,
       name: "Maroon 5",
-      albums: {
+      tracks: {
         1: {
           id: 1,
-          artist_id: 1,
-          title: "V",
-          description: "Another hit album",
-          genres: ["Pop", "R&B"],
-          tracks: {
-            1: {
-              id: 1,
-              album_id: 1,
-              title: "Maps",
-              description: "Another hit song"
-            }
-          }
+          album_id: 1,
+          title: "Maps",
+          description: "Another hit song"
         }
       }
     }
