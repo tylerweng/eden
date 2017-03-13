@@ -11,7 +11,7 @@ Eden allows users to:
 - [x] Add, remove and share stations
 - [x] Bookmark artists, albums and tracks
 - [x] Stream tracks without interruption
-- [x] Generate stations by searching by tracks, artists or genres
+- [x] Generate stations by searching by artists, tracks or genre
 - [x] Like and unlike individual tracks
 - [x] Access artist, album and track profile pages
 
@@ -29,7 +29,7 @@ Eden allows users to:
 
 ### Phase 3: Playbar (2 days)
 
-**Objective:** Allow users to play tracks uninterrupted.
+**Objective:** Allow users to stream tracks uninterrupted.
 
 ### Phase 4: - Search (Stations) (2 days)
 
@@ -37,7 +37,7 @@ Eden allows users to:
 
 ### Phase 5: Likes and Bookmarks (2 days)
 
-**Objective:** Allow user to like/bookmark albums, artists and tracks
+**Objective:** Allow users to like and bookmark albums, artists and tracks
 
 
 ### Bonus Features (TBD)
