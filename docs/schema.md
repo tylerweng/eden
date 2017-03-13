@@ -33,27 +33,26 @@ title       | string    | not null
 description | text      |
 features    | string    | array, default: []
 
-
-## artist_likes
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-user_id     | integer   | not null, foreign key (references user), indexed
-artist_id   | integer   | not null, foreign key (references artists), indexed
-
-## album_likes
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-user_id     | integer   | not null, foreign key (references user), indexed
-album_id    | integer   | not null, foreign key (references albums), indexed
-
-## track_likes
+## likes
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign key (references user), indexed
 track_id    | integer   | not null, foreign key (references tracks), indexed
+
+## genres
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+genre       | string    | not null
+album_id    | integer   | not null, foreign key (references album), indexed
+
+## features
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+feature     | string    | not null
+track_id    | integer   | not null, foreign key (references track), indexed
 
 ## artist_bookmarks
 column name -----| data type | details
