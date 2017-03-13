@@ -10,19 +10,44 @@
 
 ### Users
 
-- `POST /api/users/:userId`
+- `POST /api/users`
 - `PATCH /api/users/:userId`
 
-### Artist
+### Session
+
+- `POST /api/session`
+- `DELETE /api/session`
+
+### Stations
+- `GET /api/stations/:stationId`
+
+### Artists
 
 - `GET /api/artists/:artistId`
 
-### Album
+### Albums
 
-- `GET /api/artists/:artistId/albums/:albumsId`
+- `GET /api/artists/:artistId/albums/:albumId`
 
-### Track
+### Tracks
 
-- `GET /api/artists/:artistId/albums/:albumsId/tracks/:trackId`
+- `GET /api/artists/:artistId/albums/:albumId/tracks/:trackId`
 
-## Spotify API (TBD)
+### Likes
+
+- `POST /api/artists/:artistId/albums/:albumId/tracks/:trackId/likes`
+
+### Artist Bookmarks
+
+- `POST /api/artists/:artistId/bookmarks`
+- `DELETE /api/artists/:artistId/bookmarks`
+
+### Album Bookmarks
+
+- `POST /api/artists/:artistId/albums/:albumId/bookmarks`
+- `DELETE /api/artists/:artistId/albums/:albumId/bookmarks`
+
+### Track Bookmarks
+
+- `POST /api/artists/:artistId/albums/:albumId/tracks/:trackId/bookmarks`
+- `DELETE /api/artists/:artistId/albums/:albumId/tracks/:trackId/bookmarks`
