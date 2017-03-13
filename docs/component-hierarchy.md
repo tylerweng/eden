@@ -22,14 +22,17 @@
 
 **ArtistProfileContainer**
  - ArtistProfile
+ - Footer
 
 **AlbumProfileContainer**
  - AlbumProfile
  - TracksContainer
    + Tracks
+ - Footer
 
 **TrackProfileContainer**
  - TrackProfile
+ - Footer
 
 **UserProfileContainer**
  - Heaader

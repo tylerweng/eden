@@ -13,6 +13,7 @@ Eden allows users to:
 - [x] Stream tracks without interruption
 - [x] Generate stations by searching by tracks, artists or genres
 - [x] Like and unlike individual tracks
+- [x] Access artist, album and track profile pages
 
 ## Project Design
 
@@ -40,8 +41,7 @@ Eden allows users to:
 
 
 ### Bonus Features (TBD)
-- [ ] Artist profile page
-- [ ] Similar artists
+- [ ] Find similar artists
 - [ ] Create personalized stations by user likes and unlikes
 
 ## Technology
