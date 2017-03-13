@@ -1,7 +1,6 @@
 # Proposal
 [eden.audio][eden] is your radio personalized. Inspired by Pandora,
-Eden allows users to create their own stations based on artists, songs
-or genre.
+Eden allows users to create their own personalized stations based on artists, songs or genre.
 
 ## Minimum Viable Product
 Eden is a web application inspired by Pandora, built on Rails and React.js.
@@ -32,19 +31,18 @@ Eden allows users to:
 
 **Objective:** Allow users to play tracks uninterrupted.
 
-### Phase 4: Likes and Bookmarks (2 days)
+### Phase 4: - Search (2 days)
+
+**Objective:** Generate stations by artist, song or genre
+
+### Phase 5: Likes and Bookmarks (2 days)
 
 **Objective:** Allow user to like/bookmark albums, artists and tracks
 
-### Phase 6: - Beautify (2 days)
-
-**Objective:** Polish up CSS
 
 ### Bonus Features (TBD)
-- [ ] Search notes by content
-- [ ] Set reminders on notes
-- [ ] Changelogs for Notes
-- [ ] Multiple sessions
+- [ ] Artist profile page
+- [ ] Similar artists
 
 ## Technology
 
