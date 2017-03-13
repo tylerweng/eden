@@ -9,11 +9,13 @@ Eden is a web application inspired by Pandora, built on Rails and React.js.
 Eden allows users to:
 
 - [x] Sign up new accounts, login, logout and perform a guest login
-- [x] Add and remove stations from user profile
+- [x] Add, remove and share stations
+- [x] Bookmark artists, albums and tracks
 - [x] Stream tracks without interruption
 - [x] Generate stations by searching by tracks, artists or genres
 - [x] Like and unlike individual tracks
 - [x] Create personalized stations by user likes and unlikes
+
 ## Project Design
 
 ## Technology
