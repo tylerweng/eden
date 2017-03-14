@@ -17,12 +17,6 @@ user_id     | integer   | not null, foreign key (references user), indexed
 title       | string    | not null
 description | text      |
 
-## user_stations
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-user_id     | integer   | not null, foreign key (references user), indexed
-station_id  | integer   | not null, foreign key (references station), indexed
 
 ## tracks
 column name | data type | details
@@ -31,13 +25,6 @@ id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign key (references user), indexed
 title       | string    | not null
 description | text      |
-
-## user_tracks
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-user_id     | integer   | not null, foreign key (references user), indexed
-track_id    | integer   | not null, foreign key (references track), indexed
 
 ## likes
 column name | data type | details
@@ -59,7 +46,7 @@ id          | integer   | not null, primary key
 track_id    | string    | not null, foreign key (references track), indexed
 genre_id    | integer   | not null, foreign key (references genre), indexed
 
-## user_bookmarks
+## artist_bookmarks
 column name -----| data type | details
 -----------------|-----------|-----------------------
 id               | integer   | not null, primary key

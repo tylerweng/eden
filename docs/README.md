@@ -42,7 +42,7 @@ on Amazon S3.
 
 ### Phase 6: Cleanup (1 day)
 
-**Objective:** Style enhancements and Production README
+**Objective:** Style enhancements and Production README updates
 
 ### Bonus Features (TBD)
 - [ ] Find similar artists
