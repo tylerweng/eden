@@ -58,11 +58,14 @@ class LoginModal extends React.Component {
         <button
           onClick={ openModal }
           type='button'
-          value='Login' />
+          value='Login'
+          className='login-button'>
+          Login
+        </button>
         <Modal
           show={ this.state.open }
           onHide={ closeModal }>
-          <Modal.Header closeButton>
+          <Modal.Header closeButton>Login
             <Modal.Title>Login</Modal.Title>
           </Modal.Header>
 

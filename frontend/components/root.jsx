@@ -12,12 +12,10 @@ import SignupModalContainer from './session/signup_modal_container';
 const Root = ({ store }) => (
   <Provider store={ store }>
     <HashRouter>
-      <Route path='/'>
-        <App>
-          <Route path='/api/session' component={ LoginModalContainer } />
-          <Route path='/api/users' component={ SignupModalContainer } />
-        </App>
-      </Route>
+      <App>
+        <Route path='/' component={ LoginModalContainer } />
+        <Route path='/' component={ SignupModalContainer } />
+      </App>
     </HashRouter>
   </Provider>
 );

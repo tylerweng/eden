@@ -65,7 +65,9 @@ class SignupModal extends React.Component {
         <button
           onClick={ openModal }
           type='button'
-          value='Sign Up' />
+          className="signup-button">
+          Sign Up
+        </button>
         <Modal
           show={ this.state.open }
           onHide={ closeModal }>
