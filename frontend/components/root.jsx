@@ -5,17 +5,17 @@ import { Route, IndexRoute } from 'react-router';
 import { HashRouter } from 'react-router-dom';
 
 // Components
-import App from './app';
+import HomePage from './home_page';
 import LoginModalContainer from './session/login_modal_container';
 import SignupModalContainer from './session/signup_modal_container';
 
 const Root = ({ store }) => (
   <Provider store={ store }>
     <HashRouter>
-      <App>
-        <Route path='/' component={ LoginModalContainer } />
+      <HomePage>
         <Route path='/' component={ SignupModalContainer } />
-      </App>
+        <Route path='/' component={ LoginModalContainer } />
+      </HomePage>
     </HashRouter>
   </Provider>
 );

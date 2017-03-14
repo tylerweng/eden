@@ -32,6 +32,14 @@ class LoginModal extends React.Component {
     history.push(path);
   }
 
+  openModal() {
+    return () => this.setState({ open: true });
+  }
+
+  closeModal() {
+    return () => this.setState(this.initialState());
+  }
+
   update(field) {
     return event => this.setState({[field]: event.target.value});
   }
@@ -43,31 +51,34 @@ class LoginModal extends React.Component {
       password: this.state.password
     };
     this.props.processForm({ user })
-              .then(this.setState(this.initialState()));
-              // .then(this.redirect('/'));
+              .then(this.closeModal());
   }
 
   render() {
-    const openModal = () => this.setState({ open: true });
-    const closeModal = () => this.setState(this.initialState());
+    const errorList = (
+      <ul>
+        {this.props.errors.map((err, idx) => <li key={idx}>{err}</li>)}
+      </ul>
+    );
     return (
       <div className='login-modal'>
         <button
-          onClick={ openModal }
+          onClick={ this.openModal() }
           type='button'
-          className="login-button">
-          Login
+          className="session-button login-button">
+          login
         </button>
         <Modal
           show={ this.state.open }
-          onHide={ closeModal }
+          onHide={ this.closeModal() }
           className='login-modal'>
           <Modal.Header closeButton>
             <Modal.Title>Login</Modal.Title>
+            {errorList}
           </Modal.Header>
 
-          <form onSubmit = {this.handleSubmit} className='session-form'>
-            <Modal.Body>
+          <Modal.Body>
+            <form onSubmit = {this.handleSubmit} className='session-form'>
               <label>
                 Username
                 <input
@@ -87,8 +98,8 @@ class LoginModal extends React.Component {
                   className='login-password'/>
               </label>
               <input type='submit' value="Login"></input>
-            </Modal.Body>
-          </form>
+            </form>
+          </Modal.Body>
 
         </Modal>
       </div>

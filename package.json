@@ -17,6 +17,8 @@
     "history": "^4.6.0",
     "keymirror": "^0.1.1",
     "react": "^15.4.2",
+    "react-addons-css-transition-group": "^15.4.2",
+    "react-addons-transition-group": "^15.4.2",
     "react-bootstrap": "^0.30.8",
     "react-bootstrap-modal": "^3.0.1",
     "react-dom": "^15.4.2",
@@ -24,6 +26,7 @@
     "react-redux": "^5.0.3",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
+    "reactstrap": "^4.2.0",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0",
     "webpack": "^2.2.1"

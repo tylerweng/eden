@@ -33,6 +33,14 @@ class SignupModal extends React.Component {
     history.push(path);
   }
 
+  openModal() {
+    return () => this.setState({ open: true });
+  }
+
+  closeModal() {
+    return () => this.setState(this.initialState());
+  }
+
   update(field) {
     return event => this.setState({[field]: event.target.value});
   }
@@ -45,27 +53,30 @@ class SignupModal extends React.Component {
       email: this.state.email
     };
     this.props.processForm({ user })
-              .then(this.setState(this.initialState()));
-              // .then(this.redirect('/'));
+              .then(this.closeModal());
   }
 
   render() {
-    const openModal = () => this.setState({ open: true });
-    const closeModal = () => this.setState(this.initialState());
+    const errorList = (
+      <ul>
+        {this.props.errors.map((err, idx) => <li key={idx}>{err}</li>)}
+      </ul>
+    );
     return (
       <div className='signup-modal'>
         <button
-          onClick={ openModal }
+          onClick={ this.openModal() }
           type='button'
-          className="signup-button">
-          Sign Up
+          className="session-button signup-button">
+          sign up
         </button>
         <Modal
           show={ this.state.open }
-          onHide={ closeModal }
+          onHide={ this.closeModal() }
           className='signup-modal'>
           <Modal.Header closeButton>
             <Modal.Title>Sign Up</Modal.Title>
+            {errorList}
           </Modal.Header>
 
           <form onSubmit = {this.handleSubmit} className='session-form'>
@@ -97,8 +108,10 @@ class SignupModal extends React.Component {
                   onChange={this.update('password')}
                   className='signup-password'/>
               </label>
-              <input type='submit' value="Sign Up"></input>
             </Modal.Body>
+            <Modal.Footer>
+              <input type='submit' value="Sign Up"></input>
+            </Modal.Footer>
           </form>
 
         </Modal>
