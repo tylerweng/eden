@@ -45,12 +45,8 @@ class SignupModal extends React.Component {
       email: this.state.email
     };
     this.props.processForm({ user })
-              .then(this.setState(this.initialState()))
-              .then(this.redirect('/'));
-  }
-
-  openModal() {
-    this.redirect('/api/users')
+              .then(this.setState(this.initialState()));
+              // .then(this.redirect('/'));
   }
 
   render() {
@@ -83,7 +79,7 @@ class SignupModal extends React.Component {
                   onChange={this.update('username')}
                   className='signup-username'/>
               </label>
-              <label className='session-form-email'>
+              <label>
                 Email
                 <input
                   type='text'
@@ -101,7 +97,7 @@ class SignupModal extends React.Component {
                   onChange={this.update('password')}
                   className='signup-password'/>
               </label>
-              <input type='submit' value="Submit"></input>
+              <input type='submit' value="Sign Up"></input>
             </Modal.Body>
           </form>
 

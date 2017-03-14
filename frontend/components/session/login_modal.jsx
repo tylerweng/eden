@@ -3,7 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-bootstrap-modal';
 import createHistory from 'history/createBrowserHistory';
-import merge from 'lodash/merge';
 
 class LoginModal extends React.Component {
 
@@ -12,6 +11,7 @@ class LoginModal extends React.Component {
     this.state = {
       open: false,
       username: '',
+      email: '',
       password: ''
     };
 
@@ -23,7 +23,7 @@ class LoginModal extends React.Component {
     return {
       open: false,
       username: '',
-      password: ''
+      email: ''
     };
   }
 
@@ -43,7 +43,8 @@ class LoginModal extends React.Component {
       password: this.state.password
     };
     this.props.processForm({ user })
-              .then(this.redirect('/'));
+              .then(this.setState(this.initialState()));
+              // .then(this.redirect('/'));
   }
 
   render() {
@@ -54,15 +55,14 @@ class LoginModal extends React.Component {
         <button
           onClick={ openModal }
           type='button'
-          value='Login'
-          className='login-button'>
+          className="login-button">
           Login
         </button>
         <Modal
           show={ this.state.open }
           onHide={ closeModal }
           className='login-modal'>
-          <Modal.Header closeButton>Login
+          <Modal.Header closeButton>
             <Modal.Title>Login</Modal.Title>
           </Modal.Header>
 
@@ -86,7 +86,7 @@ class LoginModal extends React.Component {
                   onChange={this.update('password')}
                   className='login-password'/>
               </label>
-              <input type='submit' value="Submit"></input>
+              <input type='submit' value="Login"></input>
             </Modal.Body>
           </form>
 
