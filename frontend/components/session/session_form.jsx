@@ -32,7 +32,7 @@ class SessionForm extends React.Component {
     return (
       <form onSubmit = {this.handleSubmit} className='session-form'>
         <h2>{this.props.formHeader}</h2>
-        <label>
+        <label className='session-form-username'>
           Username
           <input
             type='text'
