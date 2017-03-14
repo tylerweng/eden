@@ -38,14 +38,10 @@ class LoginModal extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const user = merge(
-                   {},
-                   {
-                     username: this.state.username,
-                     password: this.state.password,
-                   }
-                 );
-    debugger;
+    const user = {
+      username: this.state.username,
+      password: this.state.password
+    };
     this.props.processForm({ user })
               .then(this.redirect('/'));
   }
@@ -64,7 +60,8 @@ class LoginModal extends React.Component {
         </button>
         <Modal
           show={ this.state.open }
-          onHide={ closeModal }>
+          onHide={ closeModal }
+          className='login-modal'>
           <Modal.Header closeButton>Login
             <Modal.Title>Login</Modal.Title>
           </Modal.Header>

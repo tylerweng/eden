@@ -3,7 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-bootstrap-modal';
 import createHistory from 'history/createBrowserHistory';
-import merge from 'lodash/merge';
 
 class SignupModal extends React.Component {
 
@@ -40,14 +39,11 @@ class SignupModal extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const user = merge(
-                   {},
-                   {
-                     username: this.state.username,
-                     password: this.state.password,
-                     email: this.state.email
-                   }
-                 );
+    const user = {
+      username: this.state.username,
+      password: this.state.password,
+      email: this.state.email
+    };
     this.props.processForm({ user })
               .then(this.setState(this.initialState()))
               .then(this.redirect('/'));
@@ -70,7 +66,8 @@ class SignupModal extends React.Component {
         </button>
         <Modal
           show={ this.state.open }
-          onHide={ closeModal }>
+          onHide={ closeModal }
+          className='signup-modal'>
           <Modal.Header closeButton>
             <Modal.Title>Sign Up</Modal.Title>
           </Modal.Header>
