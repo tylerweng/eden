@@ -3,21 +3,21 @@ import { receiveCurrentUser, receiveErrors } from '../actions/session_actions';
 const SessionAPIUtil = {
   login: user => (
     $.ajax({
-      method: 'POST',
+      type: 'POST',
       url: '/api/session',
       data: user
     })
   ),
   signup: user => (
     $.ajax({
-      method: 'POST',
+      type: 'POST',
       url: '/api/users',
       data: user
     })
   ),
   logout: user => (
     $.ajax({
-      method: 'DELETE',
+      type: 'DELETE',
       url: '/api/session'
     })
   )
