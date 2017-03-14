@@ -28,7 +28,7 @@ Eden allows users to:
 **Objective:** Functional artist and track components with tracks hosted
 on Amazon S3.
 
-### Phase 3: - Search (Stations) (3 days)
+### Phase 3: Search (Stations) (3 days)
 
 **Objective:** Generate stations by artist, song or genre
 
