@@ -9,11 +9,11 @@ Eden allows users to:
 
 - [x] Sign up new accounts, login, logout and perform a guest login
 - [x] Add, remove and share stations
-- [x] Bookmark artists, albums and tracks
+- [x] Bookmark artists and tracks
 - [x] Stream tracks without interruption
 - [x] Generate stations by searching by artists, tracks or genre
+- [x] Upload and share tracks
 - [x] Like and unlike individual tracks
-- [x] Access artist, album and track profile pages
 
 ## Project Design
 
