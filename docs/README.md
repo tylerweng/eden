@@ -38,7 +38,7 @@ on Amazon S3.
 
 ### Phase 5: Likes and Bookmarks (1 day)
 
-**Objective:** Allow users to like and bookmark albums, artists and tracks
+**Objective:** Allow users to like tracks and bookmark artists and tracks.
 
 ### Phase 6: Cleanup (1 day)
 
