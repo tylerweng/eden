@@ -103,7 +103,7 @@ class SignupModal extends React.Component {
               </label>
             </Modal.Body>
             <Modal.Footer>
-              <input type='submit' value="Sign Up"></input>
+              <input type='submit' value="Sign Up" className='signup-submit'></input>
             </Modal.Footer>
           </form>
         </Modal>

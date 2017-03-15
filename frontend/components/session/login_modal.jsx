@@ -95,7 +95,7 @@ class LoginModal extends React.Component {
               </label>
             </Modal.Body>
             <Modal.Footer>
-              <input type='submit' value="Login"></input>
+              <input type='submit' value='Login' className='login-submit'></input>
             </Modal.Footer>
           </form>
 

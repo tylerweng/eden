@@ -24,6 +24,8 @@ column name | data type | details
 id          | integer   | not null, primary key
 user_id     | integer   | not null, foreign key (references user), indexed
 title       | string    | not null
+track_url   | string    | not null
+img_url     | string    | 
 description | text      |
 
 ## likes
