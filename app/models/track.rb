@@ -14,4 +14,5 @@
 
 class Track < ApplicationRecord
   validates :user_id, :title, :track_url presence: true
+  
 end
