@@ -1,7 +1,7 @@
 // Libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Modal from 'react-bootstrap-modal';
+import { Modal } from 'react-bootstrap';
 import createHistory from 'history/createBrowserHistory';
 
 class LoginModal extends React.Component {
@@ -77,8 +77,8 @@ class LoginModal extends React.Component {
             {errorList}
           </Modal.Header>
 
-          <Modal.Body>
-            <form onSubmit = {this.handleSubmit} className='session-form'>
+          <form onSubmit = {this.handleSubmit} className='session-form'>
+            <Modal.Body>
               <label>
                 Username
                 <input
@@ -97,9 +97,11 @@ class LoginModal extends React.Component {
                   onChange={this.update('password')}
                   className='login-password'/>
               </label>
+            </Modal.Body>
+            <Modal.Footer>
               <input type='submit' value="Login"></input>
-            </form>
-          </Modal.Body>
+            </Modal.Footer>
+          </form>
 
         </Modal>
       </div>

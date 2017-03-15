@@ -1,7 +1,7 @@
 // Libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Modal from 'react-bootstrap-modal';
+import { Modal } from 'react-bootstrap';
 import createHistory from 'history/createBrowserHistory';
 
 class SignupModal extends React.Component {
@@ -38,7 +38,7 @@ class SignupModal extends React.Component {
   }
 
   closeModal() {
-    return () => this.setState(this.initialState());
+    return () => this.setState({ open: false });
   }
 
   update(field) {
@@ -113,7 +113,6 @@ class SignupModal extends React.Component {
               <input type='submit' value="Sign Up"></input>
             </Modal.Footer>
           </form>
-
         </Modal>
       </div>
     );

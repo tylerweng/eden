@@ -12,10 +12,42 @@
   width: 8rem;
 }
 
-.session-form {
-  z-index: 1
+.auth-modals {
+  align-items: center;
 }
 
+.login-username {
+  border: none;
+}
+
+.login-password {
+  border: none;
+}
+
+.signup-username {
+  border: none;
+}
+
+.signup-email {
+  border: none;
+}
+
+.signup-password {
+  border: none;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.session-form {
+  z-index: 0.1
+}
+
+.modal-body {
+  flex-direction: column;
+}
 
 .session-button {
   position: relative;
