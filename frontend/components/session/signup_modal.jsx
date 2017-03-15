@@ -50,11 +50,16 @@ class SignupModal extends React.Component {
   }
 
   render() {
-    const errorList = (
-      <ul>
-        {this.props.errors.map((err, idx) => <li key={idx}>{err}</li>)}
-      </ul>
-    );
+    let errorList;
+    if (this.props.errors) {
+      errorList = (
+        <ul>
+          {this.props.errors.map((err, idx) => <li key={idx}>{err}</li>)}
+        </ul>
+      );
+    } else {
+      errorList = <div></div>;
+    }
 
     if (localStorage.user) return <div></div>;
 
