@@ -24,4 +24,8 @@ class ApplicationController < ActionController::Base
     @current_user = nil
   end
 
+  def require_logged_in
+    render json: ['Must be logged in'] unless logged_in?
+  end
+
 end

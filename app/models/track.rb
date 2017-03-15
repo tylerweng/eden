@@ -13,6 +13,8 @@
 #
 
 class Track < ApplicationRecord
-  validates :user_id, :title, :track_url presence: true
+  validates :user_id, :title, :track_url, presence: true
+  validates :track_url, uniqueness: true
 
+  belongs_to :user
 end
