@@ -59,7 +59,7 @@ class LoginModal extends React.Component {
     if (localStorage.user) return <div></div>;
 
     return (
-      <div className='login-modal'>
+      <div className='auth-modal'>
         <button
           onClick={ this.openModal() }
           type='button'
@@ -71,31 +71,31 @@ class LoginModal extends React.Component {
           onHide={ this.closeModal() }
           className='login-modal'>
           <Modal.Header closeButton>
-            <Modal.Title>Login</Modal.Title>
+            <Modal.Title>login</Modal.Title>
             {errorList}
           </Modal.Header>
 
           <form onSubmit = {this.handleSubmit} className='session-form'>
             <Modal.Body>
               <label>
-                Username
+                username
                 <input
                   type='text'
-                  placeholder='Username'
+                  placeholder='username'
                   onChange={this.update('username')}
-                  className='login-username'/>
+                  className='auth-input'/>
               </label>
               <label>
-                Password
+                password
                 <input
                   type='password'
-                  placeholder='Password'
+                  placeholder='password'
                   onChange={this.update('password')}
-                  className='login-password'/>
+                  className='auth-input'/>
               </label>
             </Modal.Body>
             <Modal.Footer>
-              <input type='submit' value='Login' className='login-submit'></input>
+              <input type='submit' value='login' className='login-submit'></input>
             </Modal.Footer>
           </form>
 

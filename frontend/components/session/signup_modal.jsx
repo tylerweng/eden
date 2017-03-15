@@ -59,7 +59,7 @@ class SignupModal extends React.Component {
     if (localStorage.user) return <div></div>;
 
     return (
-      <div className='signup-modal'>
+      <div className='auth-modal'>
         <button
           onClick={ this.openModal() }
           type='button'
@@ -71,39 +71,39 @@ class SignupModal extends React.Component {
           onHide={ this.closeModal() }
           className='signup-modal'>
           <Modal.Header closeButton>
-            <Modal.Title>Sign Up</Modal.Title>
+            <Modal.Title>sign up</Modal.Title>
             {errorList}
           </Modal.Header>
 
           <form onSubmit = {this.handleSubmit} className='session-form'>
             <Modal.Body>
               <label>
-                Username
+                username
                 <input
                   type='text'
-                  placeholder='Username'
+                  placeholder='username'
                   onChange={this.update('username')}
-                  className='signup-username'/>
+                  className='auth-input'/>
               </label>
               <label>
-                Email
+                email
                 <input
                   type='text'
-                  placeholder='Email'
+                  placeholder='email'
                   onChange={this.update('email')}
-                  className='signup-email'/>
+                  className='auth-input'/>
               </label>
               <label>
-                Password
+                password
                 <input
                   type='password'
-                  placeholder='Password'
+                  placeholder='password'
                   onChange={this.update('password')}
-                  className='signup-password'/>
+                  className='auth-input'/>
               </label>
             </Modal.Body>
             <Modal.Footer>
-              <input type='submit' value="Sign Up" className='signup-submit'></input>
+              <input type='submit' value="sign up" className='signup-submit'></input>
             </Modal.Footer>
           </form>
         </Modal>
