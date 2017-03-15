@@ -51,7 +51,8 @@ class LoginModal extends React.Component {
       password: this.state.password
     };
     this.props.processForm({ user })
-              .then(this.closeModal());
+              .then(this.closeModal())
+              .then(localStorage.setItem('currentUser', user.username));
   }
 
   render() {
@@ -60,6 +61,9 @@ class LoginModal extends React.Component {
         {this.props.errors.map((err, idx) => <li key={idx}>{err}</li>)}
       </ul>
     );
+
+    if (localStorage.currentUser) return <div></div>;
+      
     return (
       <div className='login-modal'>
         <button
@@ -84,7 +88,6 @@ class LoginModal extends React.Component {
                 <input
                   type='text'
                   placeholder='Username'
-                  value={this.state.username}
                   onChange={this.update('username')}
                   className='login-username'/>
               </label>
@@ -93,7 +96,6 @@ class LoginModal extends React.Component {
                 <input
                   type='password'
                   placeholder='Password'
-                  value={this.state.password}
                   onChange={this.update('password')}
                   className='login-password'/>
               </label>

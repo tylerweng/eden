@@ -53,7 +53,8 @@ class SignupModal extends React.Component {
       email: this.state.email
     };
     this.props.processForm({ user })
-              .then(this.closeModal());
+              .then(this.closeModal())
+              .then(localStorage.setItem('currentUser', user.username));
   }
 
   render() {
@@ -62,6 +63,9 @@ class SignupModal extends React.Component {
         {this.props.errors.map((err, idx) => <li key={idx}>{err}</li>)}
       </ul>
     );
+
+    if (localStorage.currentUser) return <div></div>;
+  
     return (
       <div className='signup-modal'>
         <button
@@ -86,7 +90,6 @@ class SignupModal extends React.Component {
                 <input
                   type='text'
                   placeholder='Username'
-                  value={this.state.username}
                   onChange={this.update('username')}
                   className='signup-username'/>
               </label>
@@ -95,7 +98,6 @@ class SignupModal extends React.Component {
                 <input
                   type='text'
                   placeholder='Email'
-                  value={this.state.email}
                   onChange={this.update('email')}
                   className='signup-email'/>
               </label>
@@ -104,7 +106,6 @@ class SignupModal extends React.Component {
                 <input
                   type='password'
                   placeholder='Password'
-                  value={this.state.password}
                   onChange={this.update('password')}
                   className='signup-password'/>
               </label>
