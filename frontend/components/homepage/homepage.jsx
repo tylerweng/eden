@@ -1,7 +1,7 @@
 // Libraries
 import React from 'react';
 
-const HomePage = ({ children }) => (
+const Homepage = ({ children }) => (
   <div>
     <div className='col homepage-main'>
       <h1 className='homepage-header'>eden</h1>
@@ -12,4 +12,4 @@ const HomePage = ({ children }) => (
   </div>
 );
 
-export default HomePage;
+export default Homepage;
