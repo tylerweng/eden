@@ -51,7 +51,7 @@ class LoginModal extends React.Component {
 
   render() {
     let errorList;
-    if (this.props.errors) {
+    if (this.props.errors instanceof Array) {
       errorList = (
         <ul>
           {this.props.errors.map((err, idx) => <li key={idx}>{err}</li>)}
