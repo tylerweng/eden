@@ -1,5 +1,5 @@
 {
-  currentUser: {
+  user: {
     id: 1,
     username: "tyler"
   },

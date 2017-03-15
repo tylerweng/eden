@@ -16,16 +16,6 @@ class SignupModal extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.initialState = this.initialState.bind(this);
-  }
-
-  initialState() {
-    return {
-      open: false,
-      username: '',
-      email: '',
-      password: ''
-    };
   }
 
   redirect(path) {
@@ -38,7 +28,10 @@ class SignupModal extends React.Component {
   }
 
   closeModal() {
-    return () => this.setState({ open: false });
+    return () => {
+      this.props.resetErrors();
+      return this.setState({ open: false });
+    };
   }
 
   update(field) {
@@ -53,8 +46,7 @@ class SignupModal extends React.Component {
       email: this.state.email
     };
     this.props.processForm({ user })
-              .then(this.closeModal())
-              .then(localStorage.setItem('currentUser', user.username));
+              .then(this.closeModal());
   }
 
   render() {
@@ -64,8 +56,8 @@ class SignupModal extends React.Component {
       </ul>
     );
 
-    if (localStorage.currentUser) return <div></div>;
-  
+    if (localStorage.user) return <div></div>;
+
     return (
       <div className='signup-modal'>
         <button

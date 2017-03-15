@@ -16,16 +16,8 @@ class LoginModal extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.initialState = this.initialState.bind(this);
   }
 
-  initialState() {
-    return {
-      open: false,
-      username: '',
-      email: ''
-    };
-  }
 
   redirect(path) {
     const history = createHistory();
@@ -37,7 +29,10 @@ class LoginModal extends React.Component {
   }
 
   closeModal() {
-    return () => this.setState(this.initialState());
+    return () => {
+      this.props.resetErrors();
+      return this.setState({ open: false });
+    };
   }
 
   update(field) {
@@ -51,8 +46,7 @@ class LoginModal extends React.Component {
       password: this.state.password
     };
     this.props.processForm({ user })
-              .then(this.closeModal())
-              .then(localStorage.setItem('currentUser', user.username));
+              .then(this.closeModal());
   }
 
   render() {
@@ -62,8 +56,8 @@ class LoginModal extends React.Component {
       </ul>
     );
 
-    if (localStorage.currentUser) return <div></div>;
-      
+    if (localStorage.user) return <div></div>;
+
     return (
       <div className='login-modal'>
         <button

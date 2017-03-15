@@ -10,13 +10,12 @@ class UserDropdown extends React.Component {
 
   handleClick(event) {
     event.preventDefault();
-    this.props.logout()
-              .then(localStorage.setItem('currentUser', ''));
+    this.props.logout();
   }
 
   render() {
     const userId = this.props.userId;
-    if (!localStorage.currentUser) return <div></div>;
+    if (!localStorage.user) return <div></div>;
     return (
       <div>
         <div className='user-profile-icon'>
