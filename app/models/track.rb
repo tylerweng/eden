@@ -17,4 +17,5 @@ class Track < ApplicationRecord
   validates :track_url, uniqueness: true
 
   belongs_to :user
+  
 end
