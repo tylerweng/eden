@@ -15,7 +15,7 @@ class Api::TracksController < ApplicationController
     @track = current_user.tracks.new(track_params)
 
     if @track.save
-      render :create
+      render 'api/tracks/create'
     else
       render json: { errors: @track.errors.full_messages }
     end

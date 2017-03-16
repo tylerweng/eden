@@ -1,7 +1,9 @@
 import React from 'react';
+import Header from './header/header';
 
-const Homepage = ({ children }) => (
+const Homepage = () => (
   <div classname='homepage'>
+    <Header />
   </div>
 );
 

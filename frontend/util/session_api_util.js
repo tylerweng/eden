@@ -1,5 +1,3 @@
-import { receiveCurrentUser, receiveErrors } from '../actions/session_actions';
-
 const SessionAPIUtil = {
   login: user => (
     $.ajax({
