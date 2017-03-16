@@ -15,7 +15,7 @@ class LoginModal extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.demoUser = this.demoUser.bind(this);
+    this.demo = this.demo.bind(this);
   }
 
 
@@ -49,12 +49,11 @@ class LoginModal extends React.Component {
               .then(this.closeModal());
   }
 
-  demoUser(event) {
+  demo(event) {
     event.preventDefault();
-    this.setState({username: 'guest', password: 'password'});
     const user = {
-      username: this.state.username,
-      password: this.state.password
+      username: 'guest',
+      password: 'password'
     };
     this.props.processForm({ user })
               .then(this.closeModal());
@@ -108,7 +107,7 @@ class LoginModal extends React.Component {
             <Modal.Footer>
               <input type='submit' value='login' className='login-submit'></input>
               <button
-                onClick={ this.demoUser }
+                onClick={this.demo}
                 type='button'
                 className='login-submit'>
                 demo
