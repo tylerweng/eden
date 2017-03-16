@@ -51,7 +51,7 @@ class LoginModal extends React.Component {
 
   demoUser(event) {
     event.preventDefault();
-    this.setState({user: 'guest', password: 'passsword'});
+    this.setState({username: 'guest', password: 'password'});
     const user = {
       username: this.state.username,
       password: this.state.password
