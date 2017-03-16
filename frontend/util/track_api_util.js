@@ -5,6 +5,12 @@ const TrackAPIUtil = {
       url: 'api/tracks',
       data: track
     })
+  ),
+  fetchAllTracks: () => (
+    $.ajax({
+      type: 'GET',
+      url: 'api/tracks'
+    })
   )
 };
 

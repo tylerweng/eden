@@ -7,7 +7,7 @@ import trackReducer from './track_reducer';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  track: trackReducer
+  tracks: trackReducer
 });
 
 export default rootReducer;

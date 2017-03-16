@@ -1,19 +1,19 @@
 import { connect } from 'react-redux';
-import { upload } from '../../actions/track_actions';
+import { upload, resetErrors } from '../../actions/track_actions';
 import NewTrack from './new_track';
 
-const mapStateToProps = ({ session }) => ({
-  loggedIn: !!session.currentUser,
+const mapStateToProps = ({ tracks, session }) => ({
   currentUser: session.currentUser,
-  errors: session.errors
+  errors: tracks.errors
 });
 
 const mapDispatchToProps = dispatch => ({
-  upload: track => dispatch(upload(track))
+  processForm: track => dispatch(upload(track)),
+  resetErrors: () => dispatch(resetErrors())
 });
 
 
-const TrackContainer = connect(
+const NewTrackContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(NewTrack);

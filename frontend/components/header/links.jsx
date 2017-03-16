@@ -2,8 +2,8 @@ import React from 'react';
 
 const Links = () => (
   <div className='links'>
-    <span>now playing</span>
-    <span>my stations</span>
+    <span><font color='white'>now playing</font></span>
+    <span><font color='white'>my stations</font></span>
   </div>
 );
 

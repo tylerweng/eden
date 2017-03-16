@@ -56,7 +56,7 @@ class SignupModal extends React.Component {
       </ul>
     );
 
-    if (localStorage.user) return <div></div>;
+    if (this.props.currentUser) return <div></div>;
 
     return (
       <div className='auth-modal'>
