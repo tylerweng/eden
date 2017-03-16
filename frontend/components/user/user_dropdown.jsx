@@ -36,7 +36,9 @@ class UserDropdown extends React.Component {
     return(
       <div className='dropdown-form'>
         <div className='dropdown-content'>
-          <Link to='/myprofile'>my profile</Link>
+          <Link to='/myprofile'>
+            <span onClick={() => this.setState({open: false})}>my profile</span>
+          </Link>
           <div>
             <button onClick={this.handleLogout} className='logout-button'>log out</button>
           </div>

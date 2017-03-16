@@ -28,17 +28,17 @@ Eden allows users to:
 **Objective:** Functional artist and track components with tracks hosted
 on Amazon S3.
 
-### Phase 3: Search (Stations) (3 days)
-
-**Objective:** Generate stations by artist, song or genre
-
-### Phase 4: Playbar (2 days)
+### Phase 3: Playbar (2 days)
 
 **Objective:** Allow users to stream tracks uninterrupted.
 
-### Phase 5: Likes and Bookmarks (1 day)
+### Phase 4: Likes and Bookmarks (1 day)
 
 **Objective:** Allow users to like tracks and bookmark artists and tracks.
+
+### Phase 5: Search (Stations) (3 days)
+
+**Objective:** Generate stations by artist, song or genre
 
 ### Phase 6: Cleanup (1 day)
 
