@@ -5,9 +5,11 @@ class Api::TracksController < ApplicationController
 
   def index
     if logged_in?
-      @tracks = Track.find_by_username(params[:username])
+      @tracks = Track.where(user_id: params[:user_id])
+      render :index
     else
       @tracks = Track.all
+      render :index
     end
   end
 

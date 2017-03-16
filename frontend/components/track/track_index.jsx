@@ -2,20 +2,33 @@ import React from 'react';
 import TrackIndexItem from './track_index_item';
 
 class TrackIndex extends React.Component {
-  componentDidMount() {
-    this.props.fetchAllTracks();
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      tracks: this.props.tracks
+    };
+  }
+
+  componentWillMount() {
+    this.props.fetchAllTracks(this.props.currentUser.id);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    let tracks = nextProps.tracks;
+    this.setState({ tracks })
   }
 
   render() {
+    if(!this.state.tracks) return <div></div>;
     return (
-      <div>
-        <ul>
-          {this.props.tracks.map(track => (
-            <TrackIndexItem
-              key={track.id}
-              track={track} />
-          ))}
-        </ul>
+      <div className='track-index'>
+        {this.state.tracks.map(track => (
+          <TrackIndexItem
+            key={track.id}
+            track={track} />
+        ))}
       </div>
     );
   }

@@ -6,12 +6,14 @@ const TrackAPIUtil = {
       data: track
     })
   ),
-  fetchAllTracks: () => (
+  fetchAllTracks: user_id => {
+  return (
     $.ajax({
       type: 'GET',
-      url: 'api/tracks'
+      url: 'api/tracks',
+      data: { user_id }
     })
-  )
+  )}
 };
 
 export default TrackAPIUtil;

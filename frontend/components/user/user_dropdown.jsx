@@ -10,6 +10,7 @@ class UserDropdown extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
     this.handleMyProfile = this.handleMyProfile.bind(this);
     this.displayForm = this.displayForm.bind(this);
+    this.closeForm = this.closeForm.bind(this);
     this.openProfile = this.openProfile.bind(this);
   }
 
@@ -31,13 +32,17 @@ class UserDropdown extends React.Component {
     this.setState({ open: newOpen});
   }
 
+  closeForm() {
+    return () => this.setState({open: false})
+  }
+
   displayForm(){
     if (!this.state.open) return <div></div>;
     return(
       <div className='dropdown-form'>
         <div className='dropdown-content'>
           <Link to='/myprofile'>
-            <span onClick={() => this.setState({open: false})}>my profile</span>
+            <span onClick={this.closeForm()}>my profile</span>
           </Link>
           <div>
             <button onClick={this.handleLogout} className='logout-button'>log out</button>

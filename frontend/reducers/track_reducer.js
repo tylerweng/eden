@@ -10,7 +10,7 @@ import {
 } from '../actions/track_actions';
 
 const initialState = Object.freeze({
-  tracks: [],
+  tracks: {},
   errors: []
 });
 
@@ -19,7 +19,7 @@ const trackReducer = (state = initialState, action) => {
   const newState = merge({}, state);
   switch(action.type) {
     case RECEIVE_TRACK:
-      newState.tracks = [action.track];
+      newState.tracks = action.track;
       newState.errors = [];
       return newState;
     case RECEIVE_ALL_TRACKS:

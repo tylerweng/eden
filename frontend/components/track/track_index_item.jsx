@@ -8,37 +8,31 @@ class TrackIndexItem extends React.Component {
     this.state = {
       playing: false
     };
-
-    this.playStatus = this.playStatus.bind(this);
-  }
-
-  playStatus() {
-    return this.state.playing;
   }
 
   play(event) {
-    return event => this.setState({playing: true})
+    const togglePlay = !this.state.playing;
+    return event => this.setState({playing: togglePlay})
   }
+
+
 
   render() {
     if (!this.props.track) return <div></div>;
     const track = this.props.track;
-    let playStatus = this.playStatus();
     return (
-      <li className='track-list-item'>
-        <div
-          onClick={this.play}
-          className='track-item'>
-          <img
-            src={`${track.img_url}`}
-            alt={`${track.title}`}
-            className='track-item-image' />
-          <ReactPlayer
-            url={track.track_url}
-            playing={playStatus}/>
-        </div>
-        <span className='track-title'>{track.title}</span>
-      </li>
+      <button
+        onClick={this.play()}
+        className='track-item'>
+        <img
+          src={`${track.img_url}`}
+          alt={`${track.title}`}
+          className='track-item-image' />
+        <ReactPlayer
+          url={track.track_url}
+          playing={this.state.playing}/>
+        <span className='track-item-title'>{track.title}</span>
+      </button>
     )
   }
 }

@@ -10,7 +10,7 @@ const receiveTrack = track => ({
   track
 });
 
-const receiveAllTracks = () => ({
+const receiveAllTracks = tracks => ({
   type: RECEIVE_ALL_TRACKS,
   tracks
 });
@@ -30,9 +30,9 @@ export const upload = track => dispatch => (
           errors => dispatch(receiveErrors(errors.responseJSON)))
 );
 
-export const fetchAllTracks = () => dispatch => (
+export const fetchAllTracks = user_id => dispatch => (
   TrackAPIUtil
-    .fetchAllTracks()
+    .fetchAllTracks(user_id)
     .then(tracks => dispatch(receiveAllTracks(tracks)),
           errors => dispatch(receiveErrors(errors.responseJSON)))
 );
