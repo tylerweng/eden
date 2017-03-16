@@ -11,7 +11,6 @@ class LoginModal extends React.Component {
     this.state = {
       open: false,
       username: '',
-      email: '',
       password: ''
     };
 
@@ -52,9 +51,10 @@ class LoginModal extends React.Component {
 
   demoUser(event) {
     event.preventDefault();
+    this.setState({user: 'guest', password: 'passsword'});
     const user = {
-      username: 'guest',
-      password: 'password'
+      username: this.state.username,
+      password: this.state.password
     };
     this.props.processForm({ user })
               .then(this.closeModal());
