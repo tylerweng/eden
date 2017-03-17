@@ -43,13 +43,17 @@ class TrackIndex extends React.Component {
             track={track}
             playTrack={this.playTrack}/>
         ))}
-        <ReactPlayer
-          url={this.state.trackUrl}
-          playing={this.state.playing}
-          className='react-player'/>
+        <div className='react-player-container'>
+          <ReactPlayer
+            url={this.state.trackUrl}
+            playing={this.state.playing}
+            className='react-player'
+            controls={true} />
+        </div>
       </div>
     );
   }
+
 
 }
 

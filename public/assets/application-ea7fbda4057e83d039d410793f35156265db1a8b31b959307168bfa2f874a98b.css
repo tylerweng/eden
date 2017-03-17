@@ -1,0 +1,160 @@
+/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/header.scss */
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 20vh;
+  background: #2747FF;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#008AED, #2747FF);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#008AED, #2747FF);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#008AED, #2747FF);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#008AED, #2747FF);
+  /* Standard syntax */
+}
+
+/* line 12, /Users/tyler/Git/eden/app/assets/stylesheets/components/header.scss */
+.header-name {
+  color: #fff;
+  display: block;
+  text-align: center;
+}
+
+/* line 18, /Users/tyler/Git/eden/app/assets/stylesheets/components/header.scss */
+.auth {
+  display: flex;
+  flex-direction: row;
+}
+
+/* line 23, /Users/tyler/Git/eden/app/assets/stylesheets/components/header.scss */
+.header > div {
+  margin-top: 10px;
+}
+/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.react-player-container {
+  margin: 10vh 45vh;
+  width: 65vh;
+}
+
+/* line 5, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.react-player {
+  display: inline;
+  background-color: red;
+}
+/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
+.session-button {
+  position: relative;
+  top: -.1rem;
+  margin: 0 .6rem;
+  height: 2.2rem;
+  font-size: 1.2rem;
+  line-height: 2.2rem;
+  border-radius: .2rem;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0 .8rem;
+  border: none;
+  width: 8rem;
+}
+
+/* line 16, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
+.signup-button {
+  background-color: #fff;
+  color: #224099;
+}
+
+/* line 21, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
+.login-button {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* line 26, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
+.modal-body, .modal-title, .modal-footer {
+  font-size: 18px;
+}
+
+/* line 30, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
+.auth-input {
+  margin-left: 2px;
+  border: none;
+}
+
+/* line 35, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
+.session-form {
+  z-index: 0.1;
+}
+
+/* line 39, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
+.modal-body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* line 44, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
+.dropdown-form {
+  background-color: white;
+}
+/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track.scss */
+.track-index {
+  background-color: #bedefe;
+  display: grid;
+}
+
+/* line 6, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track.scss */
+.track-item {
+  margin: 2vh;
+  background-color: #e8e8ee;
+}
+
+/* line 11, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track.scss */
+.track-item-image {
+  width: 20vh;
+  height: 20vh;
+  margin: 2vh 1vh;
+  border: 1px solid gray;
+}
+
+/* line 18, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track.scss */
+.upload-button {
+  border: 1px solid gray;
+  margin: 1vh 2vh;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+/* line 18, /Users/tyler/Git/eden/app/assets/stylesheets/application.css.scss */
+* {
+  font-family: helvetica;
+}
+
+/* line 22, /Users/tyler/Git/eden/app/assets/stylesheets/application.css.scss */
+button {
+  border: none;
+  background: none;
+}
+
+/* line 27, /Users/tyler/Git/eden/app/assets/stylesheets/application.css.scss */
+input {
+  background: none;
+  border: none;
+}
+
+/* line 32, /Users/tyler/Git/eden/app/assets/stylesheets/application.css.scss */
+.link {
+  color: black;
+}
