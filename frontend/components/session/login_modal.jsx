@@ -2,7 +2,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Modal } from 'react-bootstrap';
-import createHistory from 'history/createBrowserHistory';
 
 class LoginModal extends React.Component {
 
@@ -16,12 +15,6 @@ class LoginModal extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demo = this.demo.bind(this);
-  }
-
-
-  redirect(path) {
-    const history = createHistory();
-    history.push(path);
   }
 
   openModal() {
@@ -65,8 +58,7 @@ class LoginModal extends React.Component {
         {this.props.errors.map((err, idx) => <li key={idx}>{err}</li>)}
       </ul>
     );
-
-    if (this.props.currentUser) return <div></div>;
+    if (localStorage.user) return <div></div>;
 
     return (
       <div className='auth-modal'>

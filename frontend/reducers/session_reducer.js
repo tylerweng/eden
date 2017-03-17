@@ -3,33 +3,21 @@ import merge from 'lodash/merge';
 
 // Components
 import {
-  RECEIVE_CURRENT_USER,
-  RECEIVE_ERRORS,
-  RESET_ERRORS
+  RECEIVE_CURRENT_USER
 } from '../actions/session_actions';
 
-const initialState = Object.freeze({
-  currentUser: null,
-  errors: []
+const _nullUser = Object.freeze({
+  currentUser: null
 });
 
-const sessionReducer = (state = initialState, action) => {
+const sessionReducer = (state = _nullUser, action) => {
   Object.freeze(state);
-  const newState = merge({}, state);
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
-      newState.currentUser = action.user;
-      newState.errors = [];
-      action.user
-        ? localStorage.setItem('user', action.user.username)
+      action.currentUser
+        ? localStorage.setItem('user', action.currentUser.username)
         : localStorage.setItem('user', '');
-      return newState;
-    case RECEIVE_ERRORS:
-      newState.errors = action.errors;
-      return newState;
-    case RESET_ERRORS:
-      newState.errors = [];
-      return newState;
+      return merge({}, state, { currentUser: action.currentUser });
     default:
       return state;
   }

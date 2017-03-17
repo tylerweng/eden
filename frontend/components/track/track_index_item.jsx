@@ -22,8 +22,8 @@ class TrackIndexItem extends React.Component {
         onClick={this.handleClick}
         className='track-item'>
         <img
-          src={`${track.img_url}`}
-          alt={`${track.title}`}
+          src={track.img_url}
+          alt={track.title}
           className='track-item-image' />
         <div className='track-item-title'>{track.title}</div>
         <div className='track-item-artist'>{track.artist}</div>

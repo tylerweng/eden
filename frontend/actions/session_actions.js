@@ -1,34 +1,25 @@
 import SessionAPIUtil from '../util/session_api_util';
+import { receiveErrors, resetErrors } from './error_actions';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
-export const RESET_ERRORS = 'RESET_ERRORS';
 
-const receiveCurrentUser = user => ({
+const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,
-  user
+  currentUser
 });
 
-const receiveErrors = errors => ({
-  type: RECEIVE_ERRORS,
-  errors
-});
-
-export const resetErrors = () => ({
-  type: RESET_ERRORS
-});
 
 export const login = user => dispatch => (
   SessionAPIUtil
     .login(user)
-    .then(loggedInUser => dispatch(receiveCurrentUser(loggedInUser)),
+    .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
           errors => dispatch(receiveErrors(errors.responseJSON)))
 );
 
 export const signup = user => dispatch => (
   SessionAPIUtil
     .signup(user)
-    .then(newUser => dispatch(receiveCurrentUser(newUser)),
+    .then(currentUser => dispatch(receiveCurrentUser(currentUser)),
           errors => dispatch(receiveErrors(errors.responseJSON)))
 );
 

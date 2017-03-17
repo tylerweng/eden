@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import { login, resetErrors } from '../../actions/session_actions';
+import { login } from '../../actions/session_actions';
+import { resetErrors } from '../../actions/error_actions';
 import LoginModal from './login_modal';
 
-const mapStateToProps = ({ session }) => ({
-  loggedIn: !!session.currentUser,
+const mapStateToProps = ({ session, errors }) => ({
   currentUser: session.currentUser,
-  errors: session.errors
+  errors
 });
 
 const mapDispatchToProps = dispatch => ({

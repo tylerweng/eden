@@ -65,8 +65,7 @@ class UserDropdown extends React.Component {
 
 
   render() {
-    // const userId = this.props.userId;
-    if (!this.props.userId) return <div></div>;
+    if (!localStorage.user) return <div></div>;
     return (
       <div className='session-button dropdown-button'>
         <button onClick={this.openProfile}>

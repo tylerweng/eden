@@ -3,11 +3,13 @@ import { combineReducers } from 'redux';
 
 // Components
 import sessionReducer from './session_reducer';
-import trackReducer from './track_reducer';
+import errorsReducer from './errors_reducer';
+import tracksReducer from './tracks_reducer';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  tracks: trackReducer
+  errors: errorsReducer,
+  tracks: tracksReducer
 });
 
 export default rootReducer;

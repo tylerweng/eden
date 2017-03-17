@@ -2,7 +2,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Modal } from 'react-bootstrap';
-import createHistory from 'history/createBrowserHistory';
 
 class NewTrack extends React.Component {
 
@@ -19,11 +18,6 @@ class NewTrack extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  redirect(path) {
-    const history = createHistory();
-    history.push(path);
   }
 
   openModal() {
@@ -62,7 +56,7 @@ class NewTrack extends React.Component {
       </ul>
     );
 
-    if (!localStorage.user) return <div></div>;
+    if (!this.props.currentUser) return <div></div>;
 
     return (
       <div className='auth-modal'>

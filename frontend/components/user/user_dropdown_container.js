@@ -3,7 +3,7 @@ import { logout } from '../../actions/session_actions';
 import UserDropdown from './user_dropdown';
 
 const mapStateToProps = ({ session }) => ({
-  userId: (session.currentUser ? session.currentUser.id : null)
+  currentUser: session.currentUser
 });
 
 const mapDispatchToProps = dispatch => ({
