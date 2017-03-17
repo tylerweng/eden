@@ -15,8 +15,6 @@ class TrackIndexItem extends React.Component {
     return event => this.setState({playing: togglePlay})
   }
 
-
-
   render() {
     if (!this.props.track) return <div></div>;
     const track = this.props.track;
