@@ -3,8 +3,9 @@ class CreateTracks < ActiveRecord::Migration[5.0]
     create_table :tracks do |t|
       t.integer :user_id, null: false
       t.string :title, null: false
-      t.string :track_url, null: false
-      t.string :img_url
+      t.string :artist, null: false
+      t.text :track_url, null: false
+      t.text :img_url
       t.text :description
       t.timestamps
     end

@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(version: 20170315181506) do
   create_table "tracks", force: :cascade do |t|
     t.integer  "user_id",     null: false
     t.string   "title",       null: false
-    t.string   "track_url",   null: false
-    t.string   "img_url"
+    t.string   "artist",      null: false
+    t.text     "track_url",   null: false
+    t.text     "img_url"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

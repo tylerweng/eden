@@ -12,6 +12,7 @@ class NewTrack extends React.Component {
       open: false,
       user_id: this.props.currentUser.id,
       title: '',
+      artist: '',
       track_url: '',
       img_url: '',
       description: ''
@@ -45,6 +46,7 @@ class NewTrack extends React.Component {
     const track = {
       user_id: this.state.user_id,
       title: this.state.title,
+      artist: this.state.artist,
       track_url: this.state.track_url,
       img_url: this.state.img_url,
       description: this.state.description
@@ -86,6 +88,14 @@ class NewTrack extends React.Component {
                   type='text'
                   placeholder='title'
                   onChange={this.update('title')}
+                  className='auth-input'/>
+              </label>
+              <label>
+                artist
+                <input
+                  type='text'
+                  placeholder='artist'
+                  onChange={this.update('artist')}
                   className='auth-input'/>
               </label>
               <label>

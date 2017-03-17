@@ -30,8 +30,10 @@ class TrackIndexItem extends React.Component {
           className='track-item-image' />
         <ReactPlayer
           url={track.track_url}
-          playing={this.state.playing}/>
-        <span className='track-item-title'>{track.title}</span>
+          playing={this.state.playing}
+          className='react-player'/>
+        <div className='track-item-title'>{track.title}</div>
+        <div className='track-item-artist'>{track.artist}</div>
       </button>
     )
   }
