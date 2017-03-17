@@ -14,11 +14,12 @@ class UserDropdown extends React.Component {
     this.openProfile = this.openProfile.bind(this);
   }
 
-  handleLogout(event) {
-    event.preventDefault();
-    this.props.logout()
-              .then(this.setState({ open: false}))
-              .then(localStorage.clear());
+  handleLogout() {
+    return () => (
+      this.props.logout()
+                .then(this.setState({ open: false}))
+                .then(localStorage.clear())
+    )
   }
 
 
@@ -49,12 +50,19 @@ class UserDropdown extends React.Component {
             </span>
           </Link>
           <div>
-            <button onClick={this.handleLogout} className='logout-button'>log out</button>
+            <Link to='/'>
+              <span
+                onClick={this.handleLogout()}
+                className='link'>
+                log out
+              </span>
+            </Link>
           </div>
         </div>
       </div>
     );
   }
+
 
   render() {
     // const userId = this.props.userId;
