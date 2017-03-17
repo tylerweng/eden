@@ -4,16 +4,18 @@
 }
 
 .track-item {
+  display: grid;
   margin: 2vh;
   background-color: #e8e8ee;
 }
 
 .track-item-image {
-  width: 20vh;
-  height: 20vh;
+  width: 30vh;
+  height: 30vh;
   margin: 2vh 1vh;
   border: 1px solid gray;
 }
+
 
 .upload-button {
   border: 1px solid gray;

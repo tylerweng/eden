@@ -24,9 +24,9 @@ class TrackIndexItem extends React.Component {
         <img
           src={track.img_url}
           alt={track.title}
-          className='track-item-image' />
-        <div className='track-item-title'>{track.title}</div>
-        <div className='track-item-artist'>{track.artist}</div>
+          className='track-item-content track-item-image' />
+        <div className='track-item-content track-item-text'>{track.title}</div>
+        <div className='track-item-content track-item-text'>{track.artist}</div>
       </button>
     )
   }
