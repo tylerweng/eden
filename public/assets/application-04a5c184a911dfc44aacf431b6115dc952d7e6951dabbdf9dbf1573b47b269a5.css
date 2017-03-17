@@ -32,6 +32,16 @@
 .header > div {
   margin-top: 10px;
 }
+/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.react-player-container {
+  margin: 7.5vh 50vh;
+  width: 70vh;
+}
+
+/* line 5, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.react-player {
+  display: inline;
+}
 /* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
 .session-button {
   position: relative;
@@ -87,15 +97,30 @@
   background-color: white;
 }
 /* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track.scss */
-.track-item-image {
-  width: 20vh;
-  height: 20vh;
-  margin: 2vh 1vh;
+.track-index {
+  background-color: #bedefe;
+  display: grid;
 }
 
-/* line 7, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track.scss */
-.react-player {
-  display: none;
+/* line 6, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track.scss */
+.track-item {
+  display: grid;
+  margin: 2vh;
+  background-color: #e8e8ee;
+}
+
+/* line 12, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track.scss */
+.track-item-image {
+  width: 30vh;
+  height: 30vh;
+  margin: 2vh 1vh;
+  border: 1px solid gray;
+}
+
+/* line 20, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track.scss */
+.upload-button {
+  border: 1px solid gray;
+  margin: 1vh 2vh;
 }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
@@ -115,4 +140,21 @@
 /* line 18, /Users/tyler/Git/eden/app/assets/stylesheets/application.css.scss */
 * {
   font-family: helvetica;
+}
+
+/* line 22, /Users/tyler/Git/eden/app/assets/stylesheets/application.css.scss */
+button {
+  border: none;
+  background: none;
+}
+
+/* line 27, /Users/tyler/Git/eden/app/assets/stylesheets/application.css.scss */
+input {
+  background: none;
+  border: none;
+}
+
+/* line 32, /Users/tyler/Git/eden/app/assets/stylesheets/application.css.scss */
+.link {
+  color: black;
 }
