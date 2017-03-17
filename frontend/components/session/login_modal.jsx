@@ -58,7 +58,7 @@ class LoginModal extends React.Component {
         {this.props.errors.map((err, idx) => <li key={idx}>{err}</li>)}
       </ul>
     );
-    if (localStorage.user) return <div></div>;
+    if (this.props.currentUser) return <div></div>;
 
     return (
       <div className='auth-modal'>

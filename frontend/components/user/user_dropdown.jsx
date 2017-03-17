@@ -18,7 +18,6 @@ class UserDropdown extends React.Component {
     return () => (
       this.props.logout()
                 .then(this.setState({ open: false}))
-                .then(localStorage.clear())
     )
   }
 
@@ -65,7 +64,7 @@ class UserDropdown extends React.Component {
 
 
   render() {
-    if (!localStorage.user) return <div></div>;
+    if (!this.props.currentUser) return <div></div>;
     return (
       <div className='session-button dropdown-button'>
         <button onClick={this.openProfile}>

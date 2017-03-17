@@ -14,9 +14,12 @@ const sessionReducer = (state = _nullUser, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
-      action.currentUser
-        ? localStorage.setItem('user', action.currentUser.username)
-        : localStorage.setItem('user', '');
+    if (action.currentUser) {
+      localStorage.setItem('user', action.currentUser.username);
+      localStorage.setItem('id', action.currentUser.id);
+    } else {
+      localStorage.clear();
+    }
       return merge({}, state, { currentUser: action.currentUser });
     default:
       return state;
