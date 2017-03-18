@@ -22,11 +22,13 @@ class TrackIndex extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let tracks = nextProps.tracks;
-    this.setState({ tracks })
+    const tracks = nextProps.tracks;
+    const selectedTrack = nextProps.selectedTrack;
+    this.setState({ tracks, selectedTrack })
   }
 
-  playTrack(trackUrl) {
+  playTrack(track) {
+    const trackUrl = track.track_url
     const playing = (trackUrl === this.state.trackUrl
                                        ? !this.state.playing
                                        : true);
@@ -41,7 +43,8 @@ class TrackIndex extends React.Component {
           <TrackIndexItem
             key={track.id}
             track={track}
-            playTrack={this.playTrack}/>
+            playTrack={this.playTrack}
+            selectTrack={this.props.selectTrack} />
         ))}
         <div className='react-player-container'>
           <ReactPlayer
@@ -53,7 +56,6 @@ class TrackIndex extends React.Component {
       </div>
     );
   }
-
 
 }
 

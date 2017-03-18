@@ -2,7 +2,9 @@ import TrackAPIUtil from '../util/track_api_util';
 import { receiveErrors, resetErrors } from './error_actions';
 
 export const RECEIVE_TRACK = 'RECEIVE_TRACK';
-export const RECEIVE_ALL_TRACKS = "RECEIVE_ALL_TRACKS";
+export const RECEIVE_ALL_TRACKS = 'RECEIVE_ALL_TRACKS';
+export const SELECT_TRACK = 'SELECT_TRACK';
+export const PLAY_PAUSE_TRACK = 'PLAY_PAUSE_TRACK';
 
 const receiveTrack = track => ({
   type: RECEIVE_TRACK,
@@ -13,6 +15,16 @@ const receiveAllTracks = tracks => ({
   type: RECEIVE_ALL_TRACKS,
   tracks
 });
+
+export const selectTrack = selectedTrack => ({
+  type: SELECT_TRACK,
+  selectedTrack
+})
+
+export const playPauseTrack = isPaused => ({
+  type: PLAY_PAUSE_TRACK,
+  isPaused
+})
 
 export const upload = track => dispatch => (
   TrackAPIUtil

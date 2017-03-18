@@ -10,7 +10,9 @@ class TrackIndexItem extends React.Component {
 
   handleClick(event) {
     event.preventDefault();
-    this.props.playTrack(this.props.track.track_url);
+    const track = this.props.track;
+    this.props.selectTrack(track);
+    this.props.playTrack(track);
   }
 
 

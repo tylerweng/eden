@@ -68,7 +68,7 @@ class UserDropdown extends React.Component {
     return (
       <div className='session-button dropdown-button'>
         <button onClick={this.openProfile}>
-          <i className="fa fa-user user-profile-icon" aria-hidden="true"></i>
+          <div className="fa-container"><i className="fa fa-user" aria-hidden="true"></i></div>
         </button>
         {this.displayForm()}
       </div>

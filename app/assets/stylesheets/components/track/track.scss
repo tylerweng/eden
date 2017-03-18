@@ -1,19 +1,17 @@
 .track-index {
-  background-color: #bedefe;
   display: grid;
 }
 
 .track-item {
-  display: grid;
   margin: 2vh;
   background-color: #e8e8ee;
+  border: 1px solid gray;
 }
 
 .track-item-image {
   width: 30vh;
   height: 30vh;
   margin: 2vh 1vh;
-  border: 1px solid gray;
 }
 
 
