@@ -29,7 +29,7 @@ class TrackIndex extends React.Component {
           <TrackIndexItem
             key={track.id}
             track={track}
-            playPauseTrack={this.props.playPauseTrack}
+            selectPlayPauseTrack={this.props.selectPlayPauseTrack}
             selectTrack={this.props.selectTrack} />
         ))}
       </div>
