@@ -1,7 +1,8 @@
-.react-player-container {
-  margin: 7.5vh 50vh;
-  height: 0;
-}
 .react-player {
+  margin: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100% !important;
+  height: 0 !important;
   display: inline;
 }
