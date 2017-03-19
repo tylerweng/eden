@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
-import Slider from 'material-ui/Slider';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Slider from 'material-ui/Slider';
 
 import Duration from './duration';
 
@@ -15,6 +15,7 @@ class Playbar extends React.Component {
       seeking: false,
       loop: false,
       volume: 0.5,
+      priorVolume: 0.5,
       played: 0,
       loaded: 0,
       duration: 0,
@@ -24,6 +25,7 @@ class Playbar extends React.Component {
     this.playPause = this.playPause.bind(this);
     this.repeat = this.repeat.bind(this);
     this.setVolume = this.setVolume.bind(this);
+    this.muteUnmute = this.muteUnmute.bind(this);
     this.onSeekMouseDown = this.onSeekMouseDown.bind(this);
     this.onSeekChange = this.onSeekChange.bind(this);
     this.onSeekMouseUp = this.onSeekMouseUp.bind(this);
@@ -56,7 +58,6 @@ class Playbar extends React.Component {
   }
 
   repeat(e) {
-    debugger;
     this.setState({ loop: !this.state.loop })
   }
 
@@ -65,7 +66,12 @@ class Playbar extends React.Component {
   }
 
   setVolume(e, volume) {
-    this.setState({ volume });
+    this.setState({ priorVolume: this.state.volume, volume});
+  }
+
+  muteUnmute() {
+    const volume = (this.state.volume ? 0 : this.state.priorVolume );
+    this.setState({ priorVolume: this.state.volume, volume });
   }
 
   onSeekMouseDown(e) {
@@ -105,6 +111,10 @@ class Playbar extends React.Component {
     const faRepeat = this.state.loop
                      ? 'fa fa-repeat repeat-on'
                      : 'fa fa-repeat repeat-off'
+
+    const faVolume = (this.state.volume
+                       ? (this.state.volume > 0.5 ? 'fa fa-volume-up' : 'fa fa-volume-down')
+                       : 'fa fa-volume-off') + ' volume-button';
     return (
       <div className='playbar container'>
         <div className='react-player-container'>
@@ -172,6 +182,9 @@ class Playbar extends React.Component {
                 />
               </MuiThemeProvider>
             </div>
+            <button onClick={this.muteUnmute}>
+              <i className={faVolume} aria-hidden='true'></i>
+            </button>
           </div>
           <div className='time-elapsed'>
             <Duration seconds={duration * played} /> | <Duration seconds={duration} />

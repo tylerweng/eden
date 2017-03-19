@@ -1,0 +1,47 @@
+.footer {
+  margin-top: 10vh;
+  height: 10vh;
+  position: fixed;
+  bottom: 100px;
+  display: flex;
+
+}
+
+.playbar {
+  width: 100%;
+  height: 10vh;
+}
+
+.progressbar {
+  height: 2vh;
+  background-color: pink;
+}
+.volume-container {
+  height: 4vh;
+  // background-color: green;
+}
+
+.react-player {
+  display: none;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.time-elapsed {
+  display: inline-flex;
+}
+
+.repeat-on {
+  color: #09DA73;
+}
+
+.volume-button {
+  display: block;
+  background-color: red;
+  height: 200px;
+  width: 200px;
+}
