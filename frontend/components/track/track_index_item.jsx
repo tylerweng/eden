@@ -11,8 +11,7 @@ class TrackIndexItem extends React.Component {
   handleClick(event) {
     event.preventDefault();
     const track = this.props.track;
-    this.props.selectTrack(track);
-    this.props.playTrack(track);
+    this.props.playPauseTrack(track);
   }
 
 

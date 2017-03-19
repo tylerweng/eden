@@ -6,12 +6,13 @@ import {
   RECEIVE_TRACK,
   RECEIVE_ALL_TRACKS,
   UPLOAD_TRACK,
-  SELECT_TRACK
+  PLAY_PAUSE_TRACK
 } from '../actions/track_actions';
 
 const _nullTracks = Object.freeze({
   tracks: {},
-  selectedTrack: null
+  selectedTrack: null,
+  playing: false
 })
 const tracksReducer = (state = _nullTracks, action) => {
   Object.freeze(state);
@@ -26,7 +27,15 @@ const tracksReducer = (state = _nullTracks, action) => {
     case RECEIVE_ALL_TRACKS:
       newState.tracks = action.tracks;
       return newState;
-    case SELECT_TRACK:
+    case PLAY_PAUSE_TRACK:
+      const priorTrack = state.selectedTrack;
+      if (priorTrack) {
+        newState.playing = priorTrack.track_url === action.selectedTrack.track_url
+                                                    ? !state.playing
+                                                    : true;
+      } else {
+        newState.playing = true;
+      }
       newState.selectedTrack = action.selectedTrack;
       return newState;
     default:

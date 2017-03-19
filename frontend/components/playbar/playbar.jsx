@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
+import { Progress } from 'react-bootstrap';
 
 import Duration from './duration';
 
@@ -9,7 +10,7 @@ class Playbar extends React.Component {
     super(props);
     this.state = {
       url: '',
-      playing: false,
+      playing: this.props.playing,
       seeking: false,
       volume: 0.8,
       played: 0,
@@ -27,9 +28,10 @@ class Playbar extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (!nextProps.selectedTrack) return;
     const selectedTrack = nextProps.selectedTrack;
     const url = selectedTrack.track_url;
-    const playing = !this.state.playing;
+    const playing = nextProps.playing;
     this.setState({ url, playing })
   }
 
@@ -80,9 +82,9 @@ class Playbar extends React.Component {
        volume, played, loaded, duration
      } = this.state;
 
-    const faPlayPause = this.state.playing
+    const faPlayPause = !!this.state.playing
                         ? 'fa fa-pause'
-                        : 'fa fa-playing';
+                        : 'fa fa-play';
     return (
       <div className='playbar container'>
         <div className='react-player-container'>

@@ -3,7 +3,8 @@ import Playbar from './playbar';
 import _ from 'lodash';
 
 const mapStateToProps = ({ tracks }) => ({
-  selectedTrack: tracks.selectedTrack
+  selectedTrack: tracks.selectedTrack,
+  playing: tracks.playing
 });
 
 const mapDispatchToProps = dispatch => ({

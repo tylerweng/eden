@@ -7,12 +7,8 @@ class TrackIndex extends React.Component {
     super(props);
 
     this.state = {
-      tracks: this.props.tracks,
-      playing: false,
-      trackUrl: ''
+      tracks: this.props.tracks
     };
-
-    this.playTrack = this.playTrack.bind(this);
 
   }
 
@@ -22,16 +18,7 @@ class TrackIndex extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const tracks = nextProps.tracks;
-    const selectedTrack = nextProps.selectedTrack;
-    this.setState({ tracks, selectedTrack })
-  }
-
-  playTrack(track) {
-    const trackUrl = track.track_url
-    const playing = (trackUrl === this.state.trackUrl
-                                       ? !this.state.playing
-                                       : true);
-    this.setState({ playing, trackUrl });
+    this.setState({ tracks })
   }
 
   render() {
@@ -42,7 +29,7 @@ class TrackIndex extends React.Component {
           <TrackIndexItem
             key={track.id}
             track={track}
-            playTrack={this.playTrack}
+            playPauseTrack={this.props.playPauseTrack}
             selectTrack={this.props.selectTrack} />
         ))}
       </div>

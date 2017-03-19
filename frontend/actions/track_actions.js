@@ -27,9 +27,9 @@ export const selectTrack = selectedTrack => ({
   selectedTrack
 })
 
-export const playPauseTrack = playing => ({
+export const playPauseTrack = selectedTrack => ({
   type: PLAY_PAUSE_TRACK,
-  playing
+  selectedTrack
 })
 
 export const upload = track => dispatch => (
