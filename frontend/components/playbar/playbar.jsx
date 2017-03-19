@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
-import Slider from 'rc-slider/lib/Slider';
+import Slider from 'material-ui/Slider';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Duration from './duration';
 
@@ -12,7 +13,7 @@ class Playbar extends React.Component {
       url: '',
       playing: this.props.playing,
       seeking: false,
-      volume: 0.8,
+      volume: 0,
       played: 0,
       loaded: 0,
       duration: 0,
@@ -55,8 +56,12 @@ class Playbar extends React.Component {
     this.props.playPauseTrack(this.props.selectedTrack);
   }
 
-  setVolume(e) {
-    this.setState({ volume: parseFloat(e.target.value) });
+  // setVolume(e) {
+  //   this.setState({ volume: parseFloat(e.target.value) });
+  // }
+
+  setVolume(e, volume) {
+    this.setState({ volume });
   }
 
   onSeekMouseDown(e) {
@@ -132,12 +137,18 @@ class Playbar extends React.Component {
               onMouseUp={this.onSeekMouseUp}
             />
           </div>
-          <div className='slider volume'>
-            <input
-              type='range' min={0} max={1} step='any'
-              value={volume}
-              onChange={this.setVolume}
-            />
+          <div className='volume-container'>
+            <div className='slider volume'>
+              <MuiThemeProvider>
+                <Slider
+                  defaultValue={0.5}
+                  min={0}
+                  max={1}
+                  value={volume}
+                  onChange={this.setVolume}
+                />
+              </MuiThemeProvider>
+            </div>
           </div>
           <div className='time-elapsed'>
             <Duration seconds={duration * played} /> | <Duration seconds={duration} />
