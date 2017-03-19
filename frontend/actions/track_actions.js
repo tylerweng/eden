@@ -5,7 +5,8 @@ export const RECEIVE_TRACK = 'RECEIVE_TRACK';
 export const RECEIVE_ALL_TRACKS = 'RECEIVE_ALL_TRACKS';
 export const UPLOAD_TRACK = 'UPLOAD_TRACK';
 export const SELECT_TRACK = 'SELECT_TRACK';
-export const SELECT_PLAY_PAUSE_TRACK = 'PLAY_PAUSE_TRACK';
+export const PLAY_PAUSE_TRACK = 'PLAY_PAUSE_TRACK';
+export const SELECT_PLAY_PAUSE_TRACK = 'SELECT_PLAY_PAUSE_TRACK';
 
 const receiveTrack = track => ({
   type: RECEIVE_TRACK,
@@ -24,6 +25,11 @@ const uploadTrack = track => ({
 
 export const selectTrack = selectedTrack => ({
   type: SELECT_TRACK,
+  selectedTrack
+})
+
+export const playPauseTrack = selectedTrack => ({
+  type: PLAY_PAUSE_TRACK,
   selectedTrack
 })
 

@@ -6,6 +6,8 @@ import {
   RECEIVE_TRACK,
   RECEIVE_ALL_TRACKS,
   UPLOAD_TRACK,
+  SELECT_TRACK,
+  PLAY_PAUSE_TRACK,
   SELECT_PLAY_PAUSE_TRACK
 } from '../actions/track_actions';
 
@@ -26,6 +28,12 @@ const tracksReducer = (state = _nullTracks, action) => {
       return newState;
     case RECEIVE_ALL_TRACKS:
       newState.tracks = action.tracks;
+      return newState;
+    case SELECT_TRACK:
+      newState.selectedTrack = action.selectedTrack;
+      return newState;
+    case PLAY_PAUSE_TRACK:
+      newState.playing = !state.playing;
       return newState;
     case SELECT_PLAY_PAUSE_TRACK:
       const priorTrack = state.selectedTrack;

@@ -52,7 +52,7 @@ class Playbar extends React.Component {
   }
 
   playPause() {
-    this.setState({ playing: !this.state.playing });
+    this.props.playPauseTrack(this.props.selectedTrack);
   }
 
   setVolume(e) {
