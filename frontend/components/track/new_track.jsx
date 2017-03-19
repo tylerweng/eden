@@ -2,6 +2,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Modal, Button } from 'react-bootstrap';
+import Dropzone from 'react-dropzone';
+import upload from 'superagent';
+
+class FileUpload extends React.Component{
+
+  constructor(props) {
+    super(props);
+    this.onDrop = this.onDrop.bind(this);
+  }
+   onDrop(files) {
+     superagent.post('/upload')
+     .attach('theseNamesMustMatch', files[0])
+     .end((err, res) => {
+       if (err) console.log(err);
+       alert('File uploaded!');
+     })
+   }
+
+   render(){
+     return (
+         <div>
+           <Dropzone onDrop={this.onDrop} multiple={false}>
+             <div>Try dropping a file here, or click to select a file to upload.</div>
+           </Dropzone>
+         </div>
+     );
+   }
+};
 
 class NewTrack extends React.Component {
 
@@ -76,6 +104,7 @@ class NewTrack extends React.Component {
           </Modal.Header>
           <form onSubmit = {this.handleSubmit} className='session-form'>
             <Modal.Body>
+              <FileUpload />
               <label>
                 title
                 <input
