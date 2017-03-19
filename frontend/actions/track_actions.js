@@ -3,6 +3,7 @@ import { receiveErrors, resetErrors } from './error_actions';
 
 export const RECEIVE_TRACK = 'RECEIVE_TRACK';
 export const RECEIVE_ALL_TRACKS = 'RECEIVE_ALL_TRACKS';
+export const UPLOAD_TRACK = 'UPLOAD_TRACK';
 export const SELECT_TRACK = 'SELECT_TRACK';
 export const PLAY_PAUSE_TRACK = 'PLAY_PAUSE_TRACK';
 
@@ -14,6 +15,11 @@ const receiveTrack = track => ({
 const receiveAllTracks = tracks => ({
   type: RECEIVE_ALL_TRACKS,
   tracks
+});
+
+const uploadTrack = track => ({
+  type: UPLOAD_TRACK,
+  track
 });
 
 export const selectTrack = selectedTrack => ({
@@ -29,7 +35,7 @@ export const playPauseTrack = isPaused => ({
 export const upload = track => dispatch => (
   TrackAPIUtil
     .upload(track)
-    .then(track => dispatch(receiveTrack(track)),
+    .then(track => dispatch(uploadTrack(track)),
           errors => dispatch(receiveErrors(errors.responseJSON)))
 );
 

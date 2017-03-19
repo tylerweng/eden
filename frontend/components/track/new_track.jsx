@@ -1,7 +1,7 @@
 // Libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Modal } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 
 class NewTrack extends React.Component {
 
@@ -60,12 +60,12 @@ class NewTrack extends React.Component {
 
     return (
       <div className='auth-modal'>
-        <button
+        <Button
           onClick={ this.openModal() }
           type='button'
-          className="session-button upload-button">
+          className="upload-button">
           upload
-        </button>
+        </Button>
         <Modal
           show={ this.state.open }
           onHide={ this.closeModal() }
@@ -119,7 +119,11 @@ class NewTrack extends React.Component {
               </label>
             </Modal.Body>
             <Modal.Footer>
-              <input type='submit' value="upload" className='upload-submit'></input>
+              <Button
+                type='submit'
+                className='upload-submit'>
+                upload
+              </Button>
             </Modal.Footer>
           </form>
         </Modal>

@@ -1,7 +1,7 @@
 // Libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Modal } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 
 class SignupModal extends React.Component {
 
@@ -97,7 +97,11 @@ class SignupModal extends React.Component {
               </label>
             </Modal.Body>
             <Modal.Footer>
-              <input type='submit' value="sign up" className='signup-submit'></input>
+              <Button
+                type='submit'
+                className='signup-submit'>
+                sign up
+              </Button>
             </Modal.Footer>
           </form>
         </Modal>

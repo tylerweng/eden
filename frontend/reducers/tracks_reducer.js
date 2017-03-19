@@ -5,6 +5,7 @@ import merge from 'lodash/merge';
 import {
   RECEIVE_TRACK,
   RECEIVE_ALL_TRACKS,
+  UPLOAD_TRACK,
   SELECT_TRACK,
   PLAY_PAUSE_TRACK
 } from '../actions/track_actions';
@@ -19,6 +20,9 @@ const tracksReducer = (state = _nullTracks, action) => {
   switch(action.type) {
     case RECEIVE_TRACK:
       newState.tracks = action.track;
+      return newState;
+    case UPLOAD_TRACK:
+      newState.tracks = merge(newState.tracks, action.track);
       return newState;
     case RECEIVE_ALL_TRACKS:
       newState.tracks = action.tracks;

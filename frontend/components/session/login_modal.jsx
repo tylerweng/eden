@@ -1,7 +1,7 @@
 // Libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Modal } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 
 class LoginModal extends React.Component {
 
@@ -97,13 +97,17 @@ class LoginModal extends React.Component {
               </label>
             </Modal.Body>
             <Modal.Footer>
-              <input type='submit' value='login' className='login-submit'></input>
-              <button
+              <Button
+                type='submit'
+                className='login-submit'>
+                login
+              </Button>
+              <Button
                 onClick={this.demo}
                 type='button'
                 className='login-submit'>
                 demo
-              </button>
+              </Button>
             </Modal.Footer>
           </form>
 
