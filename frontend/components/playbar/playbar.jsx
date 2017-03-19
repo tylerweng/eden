@@ -13,7 +13,7 @@ class Playbar extends React.Component {
       url: '',
       playing: this.props.playing,
       seeking: false,
-      volume: 0,
+      volume: 0.5,
       played: 0,
       loaded: 0,
       duration: 0,
@@ -68,13 +68,13 @@ class Playbar extends React.Component {
     this.setState({ seeking: true });
   }
 
-  onSeekChange(e) {
-    this.setState({ played: parseFloat(e.target.value) });
+  onSeekChange(e, percent) {
+    this.setState({ played: percent });
   }
 
   onSeekMouseUp(e) {
     this.setState({ seeking: false });
-    this.player.seekTo(parseFloat(e.target.value));
+    this.player.seekTo(this.state.played);
   }
 
   onProgress(state) {
@@ -86,6 +86,7 @@ class Playbar extends React.Component {
        url, playing, seeking,
        volume, played, loaded, duration
      } = this.state;
+     debugger;
 
     const faPlayPause = !!this.state.playing
                         ? 'fa fa-pause'
@@ -129,13 +130,17 @@ class Playbar extends React.Component {
             </button>
           </div>
           <div className='slider progressbar'>
-            <input
-              type='range' min={0} max={1} step='any'
-              value={played}
-              onMouseDown={this.onSeekMouseDown}
-              onChange={this.onSeekChange}
-              onMouseUp={this.onSeekMouseUp}
-            />
+            <MuiThemeProvider>
+              <Slider
+                defaultValue={0}
+                min={0}
+                max={1}
+                value={played}
+                onMouseDown={this.onSeekMouseDown}
+                onChange={this.onSeekChange}
+                onMouseUp={this.onSeekMouseUp}
+              />
+            </MuiThemeProvider>
           </div>
           <div className='volume-container'>
             <div className='slider volume'>
