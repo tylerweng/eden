@@ -11,10 +11,12 @@ const mapStateToProps = ({session, tracks}) => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchAllTracks: user_id => dispatch(fetchAllTracks(user_id)),
-  selectTrack: id => dispatch(selectTrack(id))
+  selectTrack: track => dispatch(selectTrack(track))
 });
 
-export default connect(
+const TrackIndexContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(TrackIndex);
+
+export default TrackIndexContainer;

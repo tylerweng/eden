@@ -6,8 +6,7 @@ import {
   RECEIVE_TRACK,
   RECEIVE_ALL_TRACKS,
   UPLOAD_TRACK,
-  SELECT_TRACK,
-  PLAY_PAUSE_TRACK
+  SELECT_TRACK
 } from '../actions/track_actions';
 
 const _nullTracks = Object.freeze({

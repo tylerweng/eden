@@ -6,7 +6,8 @@ class Searchbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: ''
+      query: '',
+      queryResults = []
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);

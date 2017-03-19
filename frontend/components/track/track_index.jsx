@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactPlayer from 'react-player';
 import TrackIndexItem from './track_index_item';
 
 class TrackIndex extends React.Component {
@@ -46,13 +45,6 @@ class TrackIndex extends React.Component {
             playTrack={this.playTrack}
             selectTrack={this.props.selectTrack} />
         ))}
-        <div className='react-player-container'>
-          <ReactPlayer
-            url={this.state.trackUrl}
-            playing={this.state.playing}
-            className='react-player'
-            controls={true} />
-        </div>
       </div>
     );
   }

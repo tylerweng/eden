@@ -6,15 +6,19 @@ import { HashRouter } from 'react-router-dom';
 
 // Components
 import App from './app';
+import Header from './header/header';
 import Homepage from './homepage/homepage';
 import UserProfile from './user/user_profile';
+import Footer from './footer/footer';
 
 const Root = ({ store }) => (
   <Provider store={ store }>
     <HashRouter>
       <App>
-        <Route path='/' component={ Homepage } />
+        <Route path='/' component={ Header } />
+        <Route path='/homepage' component={ Homepage } />
         <Route path='/myprofile' component={ UserProfile } />
+        <Route path='/' component={ Footer } />
       </App>
     </HashRouter>
   </Provider>
