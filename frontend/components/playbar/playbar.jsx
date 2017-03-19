@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactPlayer from 'react-player';
-import { Progress } from 'react-bootstrap';
+import Slider from 'rc-slider/lib/Slider';
 
 import Duration from './duration';
 
@@ -111,41 +111,37 @@ class Playbar extends React.Component {
             onDuration={duration => this.setState({ duration })}
           />
         </div>
-        <div className='controls'>
-          <div className='controls-button controls-back'>
+        <div className='playbar'>
+          <div className='controls'>
             <button onClick={this.back}>
               <i className='fa fa-backward' aria-hidden='true'></i>
             </button>
-          </div>
-          <div className='controls-button controls-play-pause'>
             <button onClick={this.playPause}>
               <i className={faPlayPause} aria-hidden='true'></i>
             </button>
-          </div>
-          <div className='controls-button controls-forward'>
             <button onClick={this.forward}>
               <i className='fa fa-forward' aria-hidden='true'></i>
             </button>
           </div>
-        </div>
-        <div className='progressbar'>
-          <input
-            type='range' min={0} max={1} step='any'
-            value={played}
-            onMouseDown={this.onSeekMouseDown}
-            onChange={this.onSeekChange}
-            onMouseUp={this.onSeekMouseUp}
-          />
-        </div>
-        <div className='volume'>
-          <input
-            type='range' min={0} max={1} step='any'
-            value={volume}
-            onChange={this.setVolume}
-          />
-        </div>
-        <div className='time-elapsed'>
-          <span> <Duration seconds={duration * played} /> : <Duration seconds={duration} /> </span>
+          <div className='slider progressbar'>
+            <input
+              type='range' min={0} max={1} step='any'
+              value={played}
+              onMouseDown={this.onSeekMouseDown}
+              onChange={this.onSeekChange}
+              onMouseUp={this.onSeekMouseUp}
+            />
+          </div>
+          <div className='slider volume'>
+            <input
+              type='range' min={0} max={1} step='any'
+              value={volume}
+              onChange={this.setVolume}
+            />
+          </div>
+          <div className='time-elapsed'>
+            <Duration seconds={duration * played} /> | <Duration seconds={duration} />
+          </div>
         </div>
       </div>
     );

@@ -3,10 +3,7 @@ import PlaybarContainer from '../playbar/playbar_container';
 
 const Footer = () => (
   <div className='footer'>
-    <span>footer</span>
-    <div>
-      <PlaybarContainer />
-    </div>
+    <PlaybarContainer />
   </div>
 );
 

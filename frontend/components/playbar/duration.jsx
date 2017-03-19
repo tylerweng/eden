@@ -1,24 +1,25 @@
 import React from 'react'
 
-export default function Duration ({ className, seconds }) {
+export default function Duration ({ seconds }) {
   return (
-    <time dateTime={`P${Math.round(seconds)}S`} className={className}>
+    <div >
       {format(seconds)}
-    </time>
+    </div>
   );
 }
 
 function format (seconds) {
   const date = new Date(seconds * 1000);
   const hh = date.getUTCHours();
-  const mm = date.getUTCMinutes();
-  const ss = date.getUTCSeconds();
+  const mm = pad(date.getUTCMinutes());
+  const ss = pad(date.getUTCSeconds());
   if (hh) {
-    return `${hh}:${pad(mm)}:${pad(ss)}`;
+    return `${hh}:${mm}:${ss}`;
   }
   return `${mm}:${ss}`;
 }
 
-function pad (string) {
-  return ('0' + string).slice(-2);
+
+function pad(val) {
+  return ('0' + val).slice(-2);
 }

@@ -1,8 +1,20 @@
-.react-player {
-  margin: 10px 0;
+.playbar-container {
+  width: 100%;
   position: fixed;
   bottom: 0;
-  width: 100% !important;
-  height: 0 !important;
-  display: inline;
+  height: 10vh;
+}
+
+.react-player {
+  display: none;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.time-elapsed {
+  display: inline-flex;
 }
