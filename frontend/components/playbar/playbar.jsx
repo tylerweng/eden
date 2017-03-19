@@ -13,6 +13,7 @@ class Playbar extends React.Component {
       url: '',
       playing: this.props.playing,
       seeking: false,
+      loop: false,
       volume: 0.5,
       played: 0,
       loaded: 0,
@@ -21,11 +22,13 @@ class Playbar extends React.Component {
     this.back = this.back.bind(this);
     this.forward = this.forward.bind(this);
     this.playPause = this.playPause.bind(this);
+    this.repeat = this.repeat.bind(this);
     this.setVolume = this.setVolume.bind(this);
     this.onSeekMouseDown = this.onSeekMouseDown.bind(this);
     this.onSeekChange = this.onSeekChange.bind(this);
     this.onSeekMouseUp = this.onSeekMouseUp.bind(this);
     this.onProgress = this.onProgress.bind(this);
+    this.onEnded = this.onEnded.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -36,7 +39,7 @@ class Playbar extends React.Component {
     this.setState({ url, playing })
   }
 
-  load() {
+  load(e) {
     this.setState({
       url: (this.props.selectedTrack ? this.props.selectedTrack.track_url : ''),
       played: 0,
@@ -44,21 +47,22 @@ class Playbar extends React.Component {
     });
   }
 
-  back() {
+  back(e) {
+    this.player.seekTo(0);
+  }
+
+  forward(e) {
 
   }
 
-  forward() {
-
+  repeat(e) {
+    debugger;
+    this.setState({ loop: !this.state.loop })
   }
 
   playPause() {
     this.props.playPauseTrack(this.props.selectedTrack);
   }
-
-  // setVolume(e) {
-  //   this.setState({ volume: parseFloat(e.target.value) });
-  // }
 
   setVolume(e, volume) {
     this.setState({ volume });
@@ -81,16 +85,26 @@ class Playbar extends React.Component {
     if (!this.state.seeking) this.setState(state);
   }
 
+  onEnded() {
+    if (this.state.loop) {
+      this.player.seekTo(0);
+    } else {
+      this.setState({playing: false})
+    }
+  }
+
   render() {
     const {
-       url, playing, seeking,
+       url, playing, seeking, loop,
        volume, played, loaded, duration
      } = this.state;
-     debugger;
 
-    const faPlayPause = !!this.state.playing
+    const faPlayPause = this.state.playing
                         ? 'fa fa-pause'
                         : 'fa fa-play';
+    const faRepeat = this.state.loop
+                     ? 'fa fa-repeat repeat-on'
+                     : 'fa fa-repeat repeat-off'
     return (
       <div className='playbar container'>
         <div className='react-player-container'>
@@ -102,6 +116,7 @@ class Playbar extends React.Component {
             url={url}
             playing={playing}
             seeking={seeking}
+            loop={loop}
             volume={volume}
             played={played}
             loaded={loaded}
@@ -111,7 +126,7 @@ class Playbar extends React.Component {
             onPlay={() => this.setState({ playing: true })}
             onPause={() => this.setState({ playing: false })}
             onBuffer={() => console.log('onBuffer')}
-            onEnded={() => this.setState({ playing: false })}
+            onEnded={() => this.onEnded()}
             onError={e => console.log('onError', e)}
             onProgress={this.onProgress}
             onDuration={duration => this.setState({ duration })}
@@ -127,6 +142,9 @@ class Playbar extends React.Component {
             </button>
             <button onClick={this.forward}>
               <i className='fa fa-forward' aria-hidden='true'></i>
+            </button>
+            <button onClick={this.repeat}>
+              <i className={faRepeat} aria-hidden='true'></i>
             </button>
           </div>
           <div className='slider progressbar'>
