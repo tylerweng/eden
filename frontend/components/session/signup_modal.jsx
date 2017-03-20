@@ -54,12 +54,12 @@ class SignupModal extends React.Component {
 
     return (
       <div className='auth-modal'>
-        <button
+        <Button
           onClick={ this.openModal() }
           type='button'
           className="session-button signup-button">
           sign up
-        </button>
+        </Button>
         <Modal
           show={ this.state.open }
           onHide={ this.closeModal() }

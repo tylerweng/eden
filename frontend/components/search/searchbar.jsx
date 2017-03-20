@@ -34,11 +34,15 @@ class Searchbar extends React.Component {
     const klass = (isSelected
                   ? 'query-result-item selected'
                   : 'query-result-item');
+    const img = (item.title
+                  ? <img src={item.img_url} className="search-img"></img>
+                  : <div></div>);
     return (
       <div
         key={item.id}
         id={item.id}
         className={klass}>
+        {img}
         {displayValue}
       </div>
     );
@@ -68,7 +72,7 @@ class Searchbar extends React.Component {
           value={this.state.queryValue}
           onChange={this.update('queryValue')}
           items={queryResultsArray}
-          getItemValue={this.handleItemValue}
+          getItemValue={this.handleItemValue()}
           onSelect={this.handleSelect}
           renderItem={this.handleRenderItem} />
       </div>

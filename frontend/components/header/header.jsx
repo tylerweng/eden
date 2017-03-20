@@ -8,9 +8,9 @@ const Header = () => (
   <div className='header'>
     <Links />
     <div>eden</div>
+    <SearchbarContainer />
     <div>
       <Auth />
-      <SearchbarContainer />
       <UserDropdownContainer />
     </div>
   </div>
