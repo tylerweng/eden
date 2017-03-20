@@ -1,13 +1,12 @@
 // Components
 import {
   RECEIVE_QUERY_RESULTS
-} from '../actions/session_actions';
+} from '../actions/search_actions';
 
-const searchReducer = (state = [], action) => {
+const searchReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_QUERY_RESULTS:
-      debugger;
       return action.queryResults;
     default:
       return state;

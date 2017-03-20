@@ -7,7 +7,7 @@ import SearchbarContainer from '../search/searchbar_container';
 const Header = () => (
   <div className='header'>
     <Links />
-    <div><font color='white'>eden</font></div>
+    <div>eden</div>
     <div>
       <Auth />
       <SearchbarContainer />

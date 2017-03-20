@@ -4,13 +4,12 @@ import { query } from '../../actions/search_actions';
 import { resetErrors } from '../../actions/error_actions';
 import Searchbar from './searchbar';
 
-const mapStateToProps = ({ search, errors }) => ({
-  errors
+const mapStateToProps = ({ search }) => ({
+  search
 });
 
 const mapDispatchToProps = dispatch => ({
-  query: queryValue => dispatch(query(queryValue)),
-  resetErrors: () => dispatch(resetErrors())
+  query: queryValue => dispatch(query(queryValue))
 });
 
 
