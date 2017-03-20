@@ -1,0 +1,308 @@
+/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 20vh;
+  background: #AAF0D1;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#008AED, #2747FF);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#008AED, #2747FF);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#008AED, #2747FF);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#008AED, #2747FF);
+  /* Standard syntax */
+}
+
+/* line 12, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
+.header-name {
+  color: #fff;
+  display: block;
+  text-align: center;
+}
+
+/* line 18, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
+.auth {
+  display: flex;
+  flex-direction: row;
+}
+
+/* line 23, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
+.header > div {
+  margin-top: 10px;
+}
+/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/audio.scss */
+.body {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  flex-direction: row;
+  background-color: #f2f2f2;
+  height: 90vh;
+  overflow-y: auto;
+}
+
+/* line 12, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/audio.scss */
+.body-audio {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.playbar {
+  width: 100%;
+  background-color: #1C2989;
+  color: #FFF;
+  border-top: 1.5px solid #fff;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 12vh;
+}
+
+/* line 14, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.react-player {
+  display: none;
+}
+
+/* line 18, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.playbar-track_detail, .controls-progress-container, .volume-container {
+  height: 10vh;
+}
+
+/* line 22, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.playbar-track-detail {
+  display: flex;
+  flex-direction: row;
+  margin-left: 5vh;
+  width: 25%;
+}
+
+/* line 29, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.playbar-track-text {
+  margin-left: 1.5vh;
+}
+
+/* line 33, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.playbar-track-image {
+  width: 8vh;
+  height: 8vh;
+}
+
+/* line 38, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.playbar-track-title {
+  font-size: 2vh;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* line 44, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.playbar-track-artist {
+  font-size: 1.75vh;
+}
+
+/* line 48, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.controls-progress-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+/* line 54, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.controls {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}
+
+/* line 60, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.volume-button, .controls > button {
+  margin: 0 4vh;
+}
+
+/* line 64, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.repeat-on {
+  color: #41AECB;
+}
+
+/* line 68, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.progress-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+
+/* line 75, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.time {
+  margin-bottom: 3vh;
+}
+
+/* line 78, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.progressbar {
+  margin: -5vh 2.5vh;
+  width: 100%;
+}
+
+/* line 83, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.volume-container {
+  display: flex;
+  flex-direction: row;
+  width: 25%;
+  align-items: center;
+}
+
+/* line 90, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.volume-slider {
+  margin-top: 1vh;
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  height: 100%;
+}
+
+/* line 98, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.volume-button {
+  margin-left: 7.5vh;
+  margin-bottom: 1vh;
+  display: flex;
+  flex-direction: row;
+}
+/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/searchbar/searchbar.scss */
+.searchbar {
+  border: 2px solid gray;
+  display: grid;
+  height: 25px;
+  width: 150px;
+}
+
+/* line 11, /Users/tyler/Git/eden/app/assets/stylesheets/components/searchbar/searchbar.scss */
+.search-img {
+  height: 25vh;
+  width: 25vh;
+}
+
+/* line 16, /Users/tyler/Git/eden/app/assets/stylesheets/components/searchbar/searchbar.scss */
+.search-text {
+  text-align: center;
+}
+/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
+.session-button {
+  position: relative;
+  top: -.1rem;
+  margin: 0 .6rem;
+  height: 2.2rem;
+  font-size: 1.2rem;
+  line-height: 2.2rem;
+  border-radius: .2rem;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0 .8rem;
+  border: none;
+  width: 8rem;
+}
+
+/* line 16, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
+.signup-button {
+  background-color: #fff;
+  color: #224099;
+}
+
+/* line 21, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
+.login-button {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* line 27, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
+.modal-body, .modal-title, .modal-footer {
+  font-size: 18px;
+}
+
+/* line 31, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
+.auth-input {
+  margin-left: 2px;
+  border: none;
+}
+
+/* line 36, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
+.session-form {
+  z-index: 0.1;
+}
+
+/* line 40, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
+.modal-body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* line 45, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
+.dropdown-form {
+  background-color: white;
+}
+
+/* line 49, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
+.user-profile-icon {
+  font-size: 10px;
+}
+/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track.scss */
+.track-item {
+  margin: 2vh;
+}
+
+/* line 5, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track.scss */
+.track-item-image {
+  width: 30vh;
+  height: 30vh;
+  margin: 2vh 1vh;
+}
+
+/* line 12, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track.scss */
+.upload-button {
+  border: 1px solid gray;
+  margin: 2vh 2vh;
+}
+/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/user/user_profile.scss */
+.user-profile {
+  margin-bottom: 200px;
+  background-color: #fff;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+/* line 18, /Users/tyler/Git/eden/app/assets/stylesheets/application.css.scss */
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+/* line 22, /Users/tyler/Git/eden/app/assets/stylesheets/application.css.scss */
+button {
+  border: none;
+  background: none;
+}
+
+/* line 27, /Users/tyler/Git/eden/app/assets/stylesheets/application.css.scss */
+input {
+  background: none;
+  border: none;
+}
+
+/* line 33, /Users/tyler/Git/eden/app/assets/stylesheets/application.css.scss */
+.link {
+  color: black;
+}
