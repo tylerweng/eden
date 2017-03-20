@@ -9,7 +9,7 @@ import App from './app';
 import Header from './header/header';
 import Homepage from './homepage/homepage';
 import UserProfile from './user/user_profile';
-import Footer from './footer/footer';
+import PlaybarContainer from './playbar/playbar_container';
 
 const Root = ({ store }) => (
   <Provider store={ store }>
@@ -18,7 +18,7 @@ const Root = ({ store }) => (
         <Route path='/' component={ Header } />
         <Route path='/homepage' component={ Homepage } />
         <Route path='/myprofile' component={ UserProfile } />
-        <Route path='/' component={ Footer } />
+        <Route path='/' component={ PlaybarContainer } />
       </App>
     </HashRouter>
   </Provider>

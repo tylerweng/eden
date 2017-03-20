@@ -1,0 +1,26 @@
+.playbar {
+  margin-top: 10vh;
+  height: 40vh;
+  position: fixed;
+  bottom: 20vh;
+  display: block;
+  justify-content: space-between;
+  width: 100%;
+  background-color: #353535;
+  color: #B0B0B0;
+}
+
+
+.react-player-container {
+  display: none;
+}
+
+
+.repeat-on {
+  color: #09DA73;
+}
+
+
+.volume-container > div {
+  width: 25%;
+}

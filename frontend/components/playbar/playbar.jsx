@@ -116,7 +116,7 @@ class Playbar extends React.Component {
                        ? (this.state.volume > 0.5 ? 'fa fa-volume-up' : 'fa fa-volume-down')
                        : 'fa fa-volume-off') + ' volume-button';
     return (
-      <div className='playbar container'>
+      <div className='playbar'>
         <div className='react-player-container'>
           <ReactPlayer
             ref={player => { this.player = player }}
@@ -142,53 +142,47 @@ class Playbar extends React.Component {
             onDuration={duration => this.setState({ duration })}
           />
         </div>
-        <div className='playbar'>
-          <div className='controls'>
-            <button onClick={this.back}>
-              <i className='fa fa-backward' aria-hidden='true'></i>
-            </button>
-            <button onClick={this.playPause}>
-              <i className={faPlayPause} aria-hidden='true'></i>
-            </button>
-            <button onClick={this.forward}>
-              <i className='fa fa-forward' aria-hidden='true'></i>
-            </button>
-            <button onClick={this.repeat}>
-              <i className={faRepeat} aria-hidden='true'></i>
-            </button>
-          </div>
-          <div className='slider progressbar'>
-            <MuiThemeProvider>
-              <Slider
-                defaultValue={0}
-                min={0}
-                max={1}
-                value={played}
-                onMouseDown={this.onSeekMouseDown}
-                onChange={this.onSeekChange}
-                onMouseUp={this.onSeekMouseUp}
-              />
-            </MuiThemeProvider>
-          </div>
-          <div className='volume-container'>
-            <div className='slider volume'>
-              <MuiThemeProvider>
-                <Slider
-                  defaultValue={0.5}
-                  min={0}
-                  max={1}
-                  value={volume}
-                  onChange={this.setVolume}
-                />
-              </MuiThemeProvider>
-            </div>
-            <button onClick={this.muteUnmute}>
-              <i className={faVolume} aria-hidden='true'></i>
-            </button>
-          </div>
-          <div className='time-elapsed'>
-            <Duration seconds={duration * played} /> | <Duration seconds={duration} />
-          </div>
+        <div className='controls'>
+          <button onClick={this.back}>
+            <i className='fa fa-backward' aria-hidden='true'></i>
+          </button>
+          <button onClick={this.playPause}>
+            <i className={faPlayPause} aria-hidden='true'></i>
+          </button>
+          <button onClick={this.forward}>
+            <i className='fa fa-forward' aria-hidden='true'></i>
+          </button>
+          <button onClick={this.repeat}>
+            <i className={faRepeat} aria-hidden='true'></i>
+          </button>
+        </div>
+        <div className='slider progressbar'>
+          <MuiThemeProvider>
+            <Slider
+              defaultValue={0}
+              min={0}
+              max={1}
+              value={played}
+              onMouseDown={this.onSeekMouseDown}
+              onChange={this.onSeekChange}
+              onMouseUp={this.onSeekMouseUp}
+            />
+          </MuiThemeProvider>
+        </div>
+        <div className='volume-container'>
+          <MuiThemeProvider className='slider volume-slider'>
+            <Slider
+              defaultValue={0.5}
+              min={0}
+              max={1}
+              value={volume}
+              onChange={this.setVolume}
+            />
+          </MuiThemeProvider>
+          <i onClick={this.muteUnmute} className={faVolume} aria-hidden='true'></i>
+        </div>
+        <div className='time-elapsed'>
+          <Duration seconds={duration * played} /> | <Duration seconds={duration} />
         </div>
       </div>
     );
