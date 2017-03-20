@@ -1,5 +1,11 @@
 .body {
-
+  display: flex;
+  flex-wrap: wrap;
+  width:100%;
+  flex-direction: row;
+  background-color: rgb(242, 242, 242);
+  height: 90vh;
+  overflow-y: auto;
 }
 
 

@@ -2,7 +2,7 @@
   width: 100%;
   background-color: #1C2989;
   color: #FFF;
-  border-top: 1px solid rgba(0, 0, 0, .15);
+  border-top: 1.5px solid #fff;
   position: fixed;
   bottom: 0;
   display: flex;
@@ -24,6 +24,10 @@
   flex-direction: row;
   margin-left: 5vh;
   width: 25%;
+}
+
+.playbar-track-text {
+  margin-left: 1.5vh;
 }
 
 .playbar-track-image {
