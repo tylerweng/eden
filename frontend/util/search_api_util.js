@@ -2,8 +2,7 @@ const SearchAPIUtil = {
   query: queryValue => (
     $.ajax({
       type: 'GET',
-      url: 'api/tracks',
-      data: { title: queryValue }
+      url: `/api/search?q=${queryValue}`
     })
   )
 };

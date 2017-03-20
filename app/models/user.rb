@@ -23,6 +23,10 @@ class User < ApplicationRecord
 
   has_many :tracks
 
+  def self.search(queryValue)
+    self.where("username ILIKE ?", "%#{queryValue}%")
+  end
+
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)
     @password = password

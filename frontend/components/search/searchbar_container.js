@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { selectPlayPauseTrack } from '../../actions/track_actions';
 import { query } from '../../actions/search_actions';
 import { resetErrors } from '../../actions/error_actions';
 import Searchbar from './searchbar';
@@ -8,7 +9,7 @@ const mapStateToProps = ({ search, errors }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  processForm: user => dispatch(signup(user)),
+  query: queryValue => dispatch(query(queryValue)),
   resetErrors: () => dispatch(resetErrors())
 });
 

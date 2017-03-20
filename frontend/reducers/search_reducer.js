@@ -7,6 +7,7 @@ const searchReducer = (state = [], action) => {
   Object.freeze(state);
   switch(action.type) {
     case RECEIVE_QUERY_RESULTS:
+      debugger;
       return action.queryResults;
     default:
       return state;

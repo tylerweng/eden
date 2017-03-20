@@ -2,6 +2,7 @@ import React from 'react';
 import Auth from './auth';
 import Links from './links';
 import UserDropdownContainer from '../user/user_dropdown_container';
+import SearchbarContainer from '../search/searchbar_container';
 
 const Header = () => (
   <div className='header'>
@@ -9,6 +10,7 @@ const Header = () => (
     <div><font color='white'>eden</font></div>
     <div>
       <Auth />
+      <SearchbarContainer />
       <UserDropdownContainer />
     </div>
   </div>

@@ -6,17 +6,12 @@ class Searchbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: '',
-      queryResults = []
+      queryValue: '',
+      queryResults: []
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleRenderItem = this.handleRenderItem.bind(this);
-  }
-
-  handleSubmit() {
-
   }
 
   handleSelect() {
@@ -24,9 +19,9 @@ class Searchbar extends React.Component {
   }
 
   handleRenderItem(item, isSelected) {
-    const klass = isSelected
+    const klass = (isSelected
                   ? 'query-result-item selected'
-                  : 'query-result-item';
+                  : 'query-result-item');
     return (
       <div
         key={item.id}
@@ -38,35 +33,25 @@ class Searchbar extends React.Component {
   }
 
   update(field) {
-    return event => this.setState({[field]: event.target.value});
+    return event => {
+      this.setState({[field]: event.target.value});
+      // debugger;
+      return this.props.query(event.target.value);
+    };
   }
-
-  // render() {
-  //   return (
-  //     <form
-  //       onSubmit={this.handleSubmit}
-  //       className='searchbar'>
-  //       <input
-  //         type='text'
-  //         value={this.state.query}
-  //         onChange={this.update('query')}
-  //         className='searchbar searchbar-query' />
-  //       <input type='submit' />
-  //     </form>
-  //   );
-  // }
 
   render() {
     return (
       <div className='searchbar'>
         <Autocomplete
           ref='autocomplete'
+          defaultValue='Create Station'
           inputProps={ { title: 'title' } }
-          value={this.state.query}
-          onChange={this.update('query')}
-          items={this.props.queryResults}
+          value={this.state.queryValue}
+          onChange={this.update('queryValue')}
+          items={this.state.queryResults}
           getItemValue={(item) => item.title}
-          onSelect={this.props.handleSelect}
+          onSelect={this.handleSelect}
           renderItem={this.handleRenderItem} />
       </div>
     );
