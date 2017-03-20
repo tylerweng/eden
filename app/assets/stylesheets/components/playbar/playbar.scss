@@ -1,26 +1,40 @@
 .playbar {
-  margin-top: 10vh;
-  height: 40vh;
-  position: fixed;
-  bottom: 20vh;
-  display: block;
-  justify-content: space-between;
   width: 100%;
-  background-color: #353535;
-  color: #B0B0B0;
+  background-color: #1C2989;
+  color: #FFF;
+  border-top: 1px solid rgba(0, 0, 0, .15);
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  height: 6vh;
+  z-index: 99;
 }
 
-
-.react-player-container {
+.react-player {
   display: none;
 }
 
-
 .repeat-on {
-  color: #09DA73;
+  color: #41AECB;
 }
-
 
 .volume-container > div {
   width: 25%;
+}
+
+.playbar-track-detail {
+  display: flex;
+  flex-direction: row;
+}
+
+.playbar-track-image {
+  width: 40px;
+  height: 40px;
+}
+
+.playbar-track-text {
+  margin-left: 5px;
 }

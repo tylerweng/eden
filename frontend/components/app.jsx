@@ -1,8 +1,14 @@
 import React from 'react';
+import Header from './header/header';
+import PlaybarContainer from './playbar/playbar_container';
 
 const App = ({ children }) => (
   <div>
-    { children }
+    <Header />
+    <div className='body-audio'>
+      { children }
+      <PlaybarContainer />
+    </div>
   </div>
 );
 

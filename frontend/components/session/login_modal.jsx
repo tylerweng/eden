@@ -62,12 +62,12 @@ class LoginModal extends React.Component {
 
     return (
       <div className='auth-modal'>
-        <Button
+        <button
           onClick={ this.openModal() }
           type='button'
           className="session-button login-button">
           login
-        </Button>
+        </button>
         <Modal
           show={ this.state.open }
           onHide={ this.closeModal() }

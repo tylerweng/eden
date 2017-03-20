@@ -1,27 +1,28 @@
-// .session-button {
-//   position: relative;
-//   top: -.1rem;
-//   margin: 0 .6rem;
-//   height: 2.2rem;
-//   font-size: 1.2rem;
-//   line-height: 2.2rem;
-//   border-radius: .2rem;
-//   text-align: center;
-//   white-space: nowrap;
-//   padding: 0 .8rem;
-//   border: none;
-//   width: 8rem;
-// }
+.session-button {
+  position: relative;
+  top: -.1rem;
+  margin: 0 .6rem;
+  height: 2.2rem;
+  font-size: 1.2rem;
+  line-height: 2.2rem;
+  border-radius: .2rem;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0 .8rem;
+  border: none;
+  width: 8rem;
+}
 
-// .signup-button {
-//   background-color: #fff;
-//   color: #224099;
-// }
+.signup-button {
+  background-color: #fff;
+  color: #224099;
+}
 
-// .login-button {
-//   background-color: hsla(0,0%,100%,.2);
-//   color: #fff;
-// }
+.login-button {
+  background-color: hsla(0,0%,100%,.2);
+  color: #fff;
+
+}
 
 .modal-body, .modal-title, .modal-footer {
   font-size: 18px;

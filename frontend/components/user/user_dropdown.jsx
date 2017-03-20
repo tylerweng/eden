@@ -41,7 +41,7 @@ class UserDropdown extends React.Component {
     return(
       <div className='dropdown-form'>
         <div className='dropdown-content'>
-          <Link to='/myprofile'>
+          <Link to='myprofile'>
             <span
               onClick={this.closeForm()}
               className='link'>

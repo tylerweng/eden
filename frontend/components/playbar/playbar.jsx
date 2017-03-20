@@ -105,43 +105,64 @@ class Playbar extends React.Component {
        volume, played, loaded, duration
      } = this.state;
 
+    const selectedTrack = this.props.selectedTrack;
+
     const faPlayPause = this.state.playing
                         ? 'fa fa-pause'
                         : 'fa fa-play';
     const faRepeat = this.state.loop
                      ? 'fa fa-repeat repeat-on'
-                     : 'fa fa-repeat repeat-off'
-
+                     : 'fa fa-repeat repeat-off';
     const faVolume = (this.state.volume
                        ? (this.state.volume > 0.5 ? 'fa fa-volume-up' : 'fa fa-volume-down')
                        : 'fa fa-volume-off') + ' volume-button';
-    return (
-      <div className='playbar'>
-        <div className='react-player-container'>
-          <ReactPlayer
-            ref={player => { this.player = player }}
-            className='react-player'
-            width='100%'
-            height='100%'
-            url={url}
-            playing={playing}
-            seeking={seeking}
-            loop={loop}
-            volume={volume}
-            played={played}
-            loaded={loaded}
-            duration={duration}
-            onReady={() => console.log('onReady')}
-            onStart={() => console.log('onStart')}
-            onPlay={() => this.setState({ playing: true })}
-            onPause={() => this.setState({ playing: false })}
-            onBuffer={() => console.log('onBuffer')}
-            onEnded={() => this.onEnded()}
-            onError={e => console.log('onError', e)}
-            onProgress={this.onProgress}
-            onDuration={duration => this.setState({ duration })}
+    const playbarKlass = (selectedTrack ? 'playbar' : 'playbar hidden');
+
+    let trackDetail;
+    if (selectedTrack) {
+      trackDetail = (
+        <div className='playbar-track-detail'>
+          <img
+            src={selectedTrack.img_url}
+            alt={selectedTrack.title}
+            className='playbar-track-image'
           />
+          <div className='playbar-track-text'>
+            <div className='playbar-track-title'>{selectedTrack.title}</div>
+            <div className='playbar-track-artist'>{selectedTrack.artist}</div>
+          </div>
         </div>
+      );
+    } else {
+      trackDetail = <div></div>;
+    }
+
+    return (
+      <div className={playbarKlass}>
+        <ReactPlayer
+          ref={player => { this.player = player }}
+          className='react-player'
+          width='100%'
+          height='100%'
+          url={url}
+          playing={playing}
+          seeking={seeking}
+          loop={loop}
+          volume={volume}
+          played={played}
+          loaded={loaded}
+          duration={duration}
+          onReady={() => console.log('onReady')}
+          onStart={() => console.log('onStart')}
+          onPlay={() => this.setState({ playing: true })}
+          onPause={() => this.setState({ playing: false })}
+          onBuffer={() => console.log('onBuffer')}
+          onEnded={() => this.onEnded()}
+          onError={e => console.log('onError', e)}
+          onProgress={this.onProgress}
+          onDuration={duration => this.setState({ duration })}
+        />
+        { trackDetail }
         <div className='controls'>
           <button onClick={this.back}>
             <i className='fa fa-backward' aria-hidden='true'></i>
@@ -170,13 +191,14 @@ class Playbar extends React.Component {
           </MuiThemeProvider>
         </div>
         <div className='volume-container'>
-          <MuiThemeProvider className='slider volume-slider'>
+          <MuiThemeProvider className='mui-theme'>
             <Slider
               defaultValue={0.5}
               min={0}
               max={1}
               value={volume}
               onChange={this.setVolume}
+              className='slider volume-slider'
             />
           </MuiThemeProvider>
           <i onClick={this.muteUnmute} className={faVolume} aria-hidden='true'></i>
