@@ -1,18 +1,62 @@
+/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/footer/playbar.scss */
+.footer {
+  margin-top: 10vh;
+  height: 10vh;
+  position: fixed;
+  bottom: 100px;
+  display: flex;
+}
+
+/* line 10, /Users/tyler/Git/eden/app/assets/stylesheets/components/footer/playbar.scss */
+.playbar {
+  width: 100%;
+  height: 10vh;
+}
+
+/* line 15, /Users/tyler/Git/eden/app/assets/stylesheets/components/footer/playbar.scss */
+.progressbar {
+  height: 2vh;
+  background-color: pink;
+}
+
+/* line 19, /Users/tyler/Git/eden/app/assets/stylesheets/components/footer/playbar.scss */
+.volume-container {
+  height: 4vh;
+}
+
+/* line 24, /Users/tyler/Git/eden/app/assets/stylesheets/components/footer/playbar.scss */
+.react-player {
+  display: none;
+}
+
+/* line 28, /Users/tyler/Git/eden/app/assets/stylesheets/components/footer/playbar.scss */
+.controls {
+  display: flex;
+  flex-direction: row;
+}
+
+/* line 34, /Users/tyler/Git/eden/app/assets/stylesheets/components/footer/playbar.scss */
+.time-elapsed {
+  display: inline-flex;
+}
+
+/* line 38, /Users/tyler/Git/eden/app/assets/stylesheets/components/footer/playbar.scss */
+.repeat-on {
+  color: #09DA73;
+}
+
+/* line 42, /Users/tyler/Git/eden/app/assets/stylesheets/components/footer/playbar.scss */
+.volume-button {
+  display: block;
+  background-color: red;
+  height: 200px;
+  width: 200px;
+}
 /* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
 .header {
   display: flex;
   justify-content: space-between;
   height: 20vh;
-  background: #AAF0D1;
-  /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#008AED, #2747FF);
-  /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#008AED, #2747FF);
-  /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#008AED, #2747FF);
-  /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#008AED, #2747FF);
-  /* Standard syntax */
 }
 
 /* line 12, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
@@ -32,58 +76,18 @@
 .header > div {
   margin-top: 10px;
 }
-/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/homepage/homepage.scss */
-.homepage-main {
-  height: 100%;
-  width: 100%;
+/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/searchbar/searchbar.scss */
+.searchbar {
+  border: 2px solid gray;
+  display: grid;
+  height: 25px;
 }
 
-/* line 6, /Users/tyler/Git/eden/app/assets/stylesheets/components/homepage/homepage.scss */
-.homepage-main img {
-  opacity: 0.6;
+/* line 7, /Users/tyler/Git/eden/app/assets/stylesheets/components/searchbar/searchbar.scss */
+.search-img {
+  height: 20vh;
+  width: 20vh;
 }
-
-/* line 10, /Users/tyler/Git/eden/app/assets/stylesheets/components/homepage/homepage.scss */
-.homepage-img-credit {
-  color: #fff;
-}
-/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
-.react-player {
-  margin: 10px 0;
-  position: fixed;
-  bottom: 0;
-  width: 100% !important;
-  height: 0 !important;
-  display: inline;
-}
-/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
-.session-button {
-  position: relative;
-  top: -.1rem;
-  margin: 0 .6rem;
-  height: 2.2rem;
-  font-size: 1.2rem;
-  line-height: 2.2rem;
-  border-radius: .2rem;
-  text-align: center;
-  white-space: nowrap;
-  padding: 0 .8rem;
-  border: none;
-  width: 8rem;
-}
-
-/* line 16, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
-.signup-button {
-  background-color: #fff;
-  color: #224099;
-}
-
-/* line 21, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
-.login-button {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #fff;
-}
-
 /* line 26, /Users/tyler/Git/eden/app/assets/stylesheets/components/session/modal.scss */
 .modal-body, .modal-title, .modal-footer {
   font-size: 18px;
@@ -156,7 +160,7 @@
  */
 /* line 18, /Users/tyler/Git/eden/app/assets/stylesheets/application.css.scss */
 * {
-  font-family: helvetica;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* line 22, /Users/tyler/Git/eden/app/assets/stylesheets/application.css.scss */
