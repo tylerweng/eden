@@ -30,12 +30,17 @@ class Searchbar extends React.Component {
   }
 
   handleRenderItem(item, isSelected) {
-    const displayValue = (item.title ? item.title : item.username);
+    const displayValue = (item.title
+                         ? item.title
+                         : `Artist: ${item.username}`);
     const klass = (isSelected
-                  ? 'query-result-item selected'
-                  : 'query-result-item');
+                  ? 'search-item selected'
+                  : 'search-item');
     const img = (item.title
                   ? <img src={item.img_url} className="search-img"></img>
+                  : <div></div>);
+    const artist = (item.title
+                  ? <div>{item.artist}</div>
                   : <div></div>);
     return (
       <div
@@ -43,7 +48,10 @@ class Searchbar extends React.Component {
         id={item.id}
         className={klass}>
         {img}
-        {displayValue}
+        <div className='search-text'>
+          {displayValue}
+          {artist}
+        </div>
       </div>
     );
   }

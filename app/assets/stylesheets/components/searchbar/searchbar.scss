@@ -2,9 +2,17 @@
   border: 2px solid gray;
   display: grid;
   height: 25px;
+  width: 150px;
+}
+
+.search-item {
 }
 
 .search-img {
-  height: 20vh;
-  width: 20vh;
+  height: 25vh;
+  width: 25vh;
+}
+
+.search-text {
+  text-align: center;
 }
