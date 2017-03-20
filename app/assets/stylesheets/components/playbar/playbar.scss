@@ -8,33 +8,92 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
-  height: 6vh;
-  z-index: 99;
+  height: 12vh;
 }
 
 .react-player {
   display: none;
 }
 
-.repeat-on {
-  color: #41AECB;
-}
-
-.volume-container > div {
-  width: 25%;
+.playbar-track_detail, .controls-progress-container, .volume-container {
+  height: 10vh;
 }
 
 .playbar-track-detail {
   display: flex;
   flex-direction: row;
+  margin-left: 5vh;
+  width: 25%;
 }
 
 .playbar-track-image {
-  width: 40px;
-  height: 40px;
+  width: 8vh;
+  height: 8vh;
 }
 
-.playbar-track-text {
-  margin-left: 5px;
+.playbar-track-title {
+  font-size: 2vh;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.playbar-track-artist {
+  font-size: 1.75vh;
+}
+
+.controls-progress-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+}
+
+.volume-button, .controls > button {
+  margin: 0 4vh;
+}
+
+.repeat-on {
+  color: #41AECB;
+}
+
+.progress-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+
+.time {
+  margin-bottom: 3vh;
+}
+.progressbar {
+  margin: -5vh 2.5vh;
+  width: 100%;
+}
+
+.volume-container {
+  display: flex;
+  flex-direction: row;
+  width: 25%;
+  align-items: center;
+}
+
+.volume-slider {
+  margin-top: 1vh;
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  height: 100%;
+}
+
+.volume-button {
+  margin-left: 7.5vh;
+  margin-bottom: 1vh;
+  display: flex;
+  flex-direction: row;
 }

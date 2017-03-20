@@ -163,34 +163,41 @@ class Playbar extends React.Component {
           onDuration={duration => this.setState({ duration })}
         />
         { trackDetail }
-        <div className='controls'>
-          <button onClick={this.back}>
-            <i className='fa fa-backward' aria-hidden='true'></i>
-          </button>
-          <button onClick={this.playPause}>
-            <i className={faPlayPause} aria-hidden='true'></i>
-          </button>
-          <button onClick={this.forward}>
-            <i className='fa fa-forward' aria-hidden='true'></i>
-          </button>
-          <button onClick={this.repeat}>
-            <i className={faRepeat} aria-hidden='true'></i>
-          </button>
-        </div>
-        <div className='slider progressbar'>
-          <MuiThemeProvider>
-            <Slider
-              defaultValue={0}
-              min={0}
-              max={1}
-              value={played}
-              onMouseDown={this.onSeekMouseDown}
-              onChange={this.onSeekChange}
-              onMouseUp={this.onSeekMouseUp}
-            />
-          </MuiThemeProvider>
+        <div className='controls-progress-container'>
+          <div className='controls'>
+            <button onClick={this.back}>
+              <i className='fa fa-backward' aria-hidden='true'></i>
+            </button>
+            <button onClick={this.playPause}>
+              <i className={faPlayPause} aria-hidden='true'></i>
+            </button>
+            <button onClick={this.forward}>
+              <i className='fa fa-forward' aria-hidden='true'></i>
+            </button>
+            <button onClick={this.repeat}>
+              <i className={faRepeat} aria-hidden='true'></i>
+            </button>
+          </div>
+          <div className='progress-container'>
+            <Duration seconds={duration * played} className='time' />
+            <div className='slider progressbar'>
+              <MuiThemeProvider>
+                <Slider
+                  defaultValue={0}
+                  min={0}
+                  max={1}
+                  value={played}
+                  onMouseDown={this.onSeekMouseDown}
+                  onChange={this.onSeekChange}
+                  onMouseUp={this.onSeekMouseUp}
+                />
+              </MuiThemeProvider>
+            </div>
+            <Duration seconds={duration} className='time' />
+          </div>
         </div>
         <div className='volume-container'>
+          <i onClick={this.muteUnmute} className={faVolume} aria-hidden='true'></i>
           <MuiThemeProvider className='mui-theme'>
             <Slider
               defaultValue={0.5}
@@ -201,10 +208,6 @@ class Playbar extends React.Component {
               className='slider volume-slider'
             />
           </MuiThemeProvider>
-          <i onClick={this.muteUnmute} className={faVolume} aria-hidden='true'></i>
-        </div>
-        <div className='time-elapsed'>
-          <Duration seconds={duration * played} /> | <Duration seconds={duration} />
         </div>
       </div>
     );
