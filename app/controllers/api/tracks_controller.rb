@@ -8,7 +8,8 @@ class Api::TracksController < ApplicationController
       @tracks = Track.where(user_id: params[:user_id])
       render :index
     else
-      @tracks = Track.all
+      # TO_BE_UPDATED: change this to top 20 by likes after implementing likes
+      @tracks = Track.first(20)
       render :index
     end
   end

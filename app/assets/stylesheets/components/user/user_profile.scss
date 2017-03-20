@@ -1,4 +1,15 @@
 .user-profile {
-  margin-bottom: 200px;
   background-color: #fff;
+  margin-bottom: 15vh;
+}
+
+.auth-modal {
+  margin-bottom: 2.5vh;
+}
+
+.user-detail {
+  display: flex;
+  flex-direction: column;
+  font-size: 5vh;
+  margin-left: 2vh;
 }

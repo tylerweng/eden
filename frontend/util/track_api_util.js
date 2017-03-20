@@ -12,6 +12,12 @@ const TrackAPIUtil = {
       url: 'api/tracks',
       data: { user_id }
     })
+  ),
+  fetchTop20Tracks: () => (
+    $.ajax({
+      type: 'GET',
+      url: 'api/tracks'
+    })
   )
 };
 

@@ -24,7 +24,7 @@ class User < ApplicationRecord
   has_many :tracks
 
   def self.search(queryValue)
-    self.where("username ILIKE ?", "%#{queryValue}%")
+    self.where("username ILIKE ?", "%#{queryValue}%").limit(5)
   end
 
   def password=(password)

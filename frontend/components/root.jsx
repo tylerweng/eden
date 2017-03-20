@@ -1,7 +1,7 @@
 // Libraries
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Route, IndexRoute } from 'react-router';
+import { Route, Redirect } from 'react-router';
 import { HashRouter } from 'react-router-dom';
 
 // Components
@@ -13,6 +13,7 @@ const Root = ({ store }) => (
   <Provider store={ store }>
     <HashRouter>
       <App>
+        <Redirect from="/" to="/homepage" /> 
         <Route path='/homepage' component={ Homepage } />
         <Route path='/myprofile' component={ UserProfile } />
       </App>

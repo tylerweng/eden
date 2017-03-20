@@ -19,7 +19,7 @@ class Track < ApplicationRecord
   belongs_to :user
 
   def self.search(queryValue)
-    self.where("title ILIKE ?", "%#{queryValue}%")
+    self.where("title ILIKE ?", "%#{queryValue}%").limit(10)
   end
 
 end

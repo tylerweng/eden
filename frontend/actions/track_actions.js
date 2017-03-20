@@ -3,6 +3,7 @@ import { receiveErrors, resetErrors } from './error_actions';
 
 export const RECEIVE_TRACK = 'RECEIVE_TRACK';
 export const RECEIVE_ALL_TRACKS = 'RECEIVE_ALL_TRACKS';
+export const RECEIVE_TOP_20_TRACKS = 'RECEIVE_TOP_20_TRACKS';
 export const UPLOAD_TRACK = 'UPLOAD_TRACK';
 export const SELECT_TRACK = 'SELECT_TRACK';
 export const PLAY_PAUSE_TRACK = 'PLAY_PAUSE_TRACK';
@@ -48,6 +49,13 @@ export const upload = track => dispatch => (
 export const fetchAllTracks = user_id => dispatch => (
   TrackAPIUtil
     .fetchAllTracks(user_id)
+    .then(tracks => dispatch(receiveAllTracks(tracks)),
+          errors => dispatch(receiveErrors(errors.responseJSON)))
+);
+
+export const fetchTop20Tracks = () => dispatch => (
+  TrackAPIUtil
+    .fetchTop20Tracks()
     .then(tracks => dispatch(receiveAllTracks(tracks)),
           errors => dispatch(receiveErrors(errors.responseJSON)))
 );
