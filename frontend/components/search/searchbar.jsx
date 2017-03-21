@@ -16,19 +16,15 @@ class Searchbar extends React.Component {
     this.handleItemValue = this.handleItemValue.bind(this);
   }
 
-  handleSelect() {
-
+  handleSelect(item) {
+    this.props.selectTrack(item);
   }
+
 
   handleItemValue(item) {
-    return item => {
-      if (item.title) {
-        return item.title;
-      } else {
-        return item.username;
-      }
-    };
+    return item;
   }
+
 
   handleRenderItem(item, isSelected) {
     const displayValue = (item.title
@@ -43,23 +39,19 @@ class Searchbar extends React.Component {
     const artist = (item.title
                   ? <div>{item.artist}</div>
                   : <div></div>);
-    let renderedItem;
-    if (item.title) {
-      renderedItem = <Link
-                      to={`/tracks/${item.id}`}
-                      className={klass}>
-                      { img }
-                      <div className='search-text'>
-                        {displayValue}
-                        {artist}
-                      </div>
-                    </Link>;
-    } else {
-      renderedItem = <div className={klass}>
-                       {`Artist: ${displayValue}`}
-                     </div>;
-    }
-    return renderedItem;
+    const path = (item.title ? 'tracks' : 'users');
+
+    return (
+      <Link
+        to={`/${path}/${item.id}`}
+        className={klass}>
+        { img }
+        <div className='search-text'>
+          {displayValue}
+          {artist}
+        </div>
+      </Link>
+    );
   }
 
   update(field) {
@@ -86,7 +78,7 @@ class Searchbar extends React.Component {
           value={this.state.queryValue}
           onChange={this.update('queryValue')}
           items={queryResultsArray}
-          getItemValue={this.handleItemValue()}
+          getItemValue={this.handleItemValue}
           onSelect={this.handleSelect}
           renderItem={this.handleRenderItem} />
       </div>

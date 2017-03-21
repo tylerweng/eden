@@ -8,6 +8,7 @@ import { HashRouter } from 'react-router-dom';
 import App from './app';
 import Homepage from './homepage/homepage';
 import UserProfile from './user/user_profile';
+import MyStations from './user/my_stations';
 import TrackProfile from './track/track_profile';
 
 const Root = ({ store }) => (
@@ -18,7 +19,8 @@ const Root = ({ store }) => (
         <Route path='/homepage' component={ Homepage } />
         <Route path='/myprofile' component={ UserProfile } />
         <Route path='/nowplaying' component={ TrackProfile } />
-        <Route path='/tracks/:trackId' component={ TrackProfile } />
+        <Route path='/mystations' component={ MyStations } />
+        <Route path='/tracks/:id' component={ TrackProfile } />
       </App>
     </HashRouter>
   </Provider>

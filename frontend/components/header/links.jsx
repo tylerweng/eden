@@ -14,7 +14,11 @@ class Links extends React.Component {
           className={'header-link now-playing'}>
           Now Playing
         </Link>
-        <div className='header-link my-stations'>My Stations</div>
+        <Link
+          to='mystations'
+          className={'header-link my-stations'}>
+          My Stations
+        </Link>
       </div>
     );
   }

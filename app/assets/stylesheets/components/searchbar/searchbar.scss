@@ -11,10 +11,16 @@
 }
 
 .search-img {
-  height: 25vh;
-  width: 25vh;
+  height: 20vh;
+  width: 20vh;
 }
 
-.search-text {
+
+.search-item {
+  color: black;
   text-align: center;
+}
+
+.search-item:hover {
+  color: black;
 }

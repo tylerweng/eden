@@ -166,7 +166,7 @@ class Playbar extends React.Component {
         <div className='controls-progress-container'>
           <div className='controls'>
             <button onClick={this.back}>
-              <i className='fa fa-backward' aria-hidden='true'></i>
+              <i className='fa fa-undo' aria-hidden='true'></i>
             </button>
             <button onClick={this.playPause}>
               <i className={faPlayPause} aria-hidden='true'></i>
