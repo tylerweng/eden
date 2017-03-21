@@ -1,16 +1,15 @@
 import { connect } from 'react-redux';
 import { query } from '../../actions/search_actions';
-import { selectTrack } from '../../actions/track_actions';
+import { fetchProfileTrack } from '../../actions/track_actions';
 import Searchbar from './searchbar';
 
 const mapStateToProps = ({ tracks, search }) => ({
-  selectedTrackId: tracks.selectedTrackId,
   search
 });
 
 const mapDispatchToProps = dispatch => ({
   query: queryValue => dispatch(query(queryValue)),
-  selectTrack: selectedTrack => dispatch(selectTrack(selectedTrack))
+  fetchProfileTrack: profileTrack => dispatch(fetchProfileTrack(profileTrack))
 });
 
 

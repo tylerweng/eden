@@ -8,8 +8,7 @@ class Searchbar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      queryValue: '',
-      selectedTrackId: this.props.selectedTrackId
+      queryValue: ''
     };
 
     this.handleSelect = this.handleSelect.bind(this);
@@ -17,8 +16,8 @@ class Searchbar extends React.Component {
     this.handleItemValue = this.handleItemValue.bind(this);
   }
 
-
-  handleSelect() {
+  handleSelect(value, item) {
+    if (item.title) this.props.fetchProfileTrack(item);
   }
 
   handleItemValue(item) {

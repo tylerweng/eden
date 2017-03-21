@@ -5,7 +5,7 @@ export const RECEIVE_TRACK = 'RECEIVE_TRACK';
 export const RECEIVE_ALL_TRACKS = 'RECEIVE_ALL_TRACKS';
 export const RECEIVE_TOP_20_TRACKS = 'RECEIVE_TOP_20_TRACKS';
 export const UPLOAD_TRACK = 'UPLOAD_TRACK';
-export const SELECT_TRACK = 'SELECT_TRACK';
+export const RECEIVE_PROFILE_TRACK = 'RECEIVE_PROFILE_TRACK';
 export const PLAY_PAUSE_TRACK = 'PLAY_PAUSE_TRACK';
 export const SELECT_PLAY_PAUSE_TRACK = 'SELECT_PLAY_PAUSE_TRACK';
 
@@ -24,9 +24,9 @@ const uploadTrack = track => ({
   track
 });
 
-export const selectTrack = selectedTrack => ({
-  type: SELECT_TRACK,
-  selectedTrack
+const receiveProfileTrack = profileTrack => ({
+  type: RECEIVE_PROFILE_TRACK,
+  profileTrack
 })
 
 export const playPauseTrack = selectedTrack => ({
@@ -43,6 +43,13 @@ export const upload = track => dispatch => (
   TrackAPIUtil
     .upload(track)
     .then(track => dispatch(uploadTrack(track)),
+          errors => dispatch(receiveErrors(errors.responseJSON)))
+);
+
+export const fetchProfileTrack = id => dispatch => (
+  TrackAPIUtil
+    .fetchTrack(id)
+    .then(profileTrack => dispatch(receiveProfileTrack(profileTrack)),
           errors => dispatch(receiveErrors(errors.responseJSON)))
 );
 

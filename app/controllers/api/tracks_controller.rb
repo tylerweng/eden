@@ -25,7 +25,6 @@ class Api::TracksController < ApplicationController
   end
 
   def show
-    debugger
     @track = Track.find_by(id: params[:id])
     render :show
   end

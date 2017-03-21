@@ -10,7 +10,7 @@ const mapStateToProps = ({session, tracks}) => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchAllTracks: user_id => dispatch(fetchAllTracks(user_id)),
-  selectPlayPauseTrack: track => dispatch(selectPlayPauseTrack(track))
+  selectPlayPauseTrack: selectedTrack => dispatch(selectPlayPauseTrack(selectedTrack))
 });
 
 const TrackIndexContainer = connect(

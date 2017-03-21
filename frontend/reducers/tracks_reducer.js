@@ -3,11 +3,11 @@ import merge from 'lodash/merge';
 
 // Components
 import {
-  RECEIVE_TRACK,
+  RECEIVE_PROFILE_TRACK,
   RECEIVE_ALL_TRACKS,
   RECEIVE_TOP_20_TRACKS,
   UPLOAD_TRACK,
-  SELECT_TRACK,
+  SELECT_TRACK_PROFILE_ID,
   PLAY_PAUSE_TRACK,
   SELECT_PLAY_PAUSE_TRACK
 } from '../actions/track_actions';
@@ -16,14 +16,14 @@ const _nullTracks = Object.freeze({
   tracks: {},
   selectedTrack: null,
   playing: false,
-  selectedTrackId: null
+  profileTrack: null
 })
 const tracksReducer = (state = _nullTracks, action) => {
   Object.freeze(state);
   const newState = merge({}, state);
   switch(action.type) {
-    case RECEIVE_TRACK:
-      newState.tracks = action.track;
+    case RECEIVE_PROFILE_TRACK:
+      newState.profileTrack = action.profileTrack;
       return newState;
     case UPLOAD_TRACK:
       newState.tracks = merge(newState.tracks, action.track);
@@ -34,23 +34,20 @@ const tracksReducer = (state = _nullTracks, action) => {
     case RECEIVE_TOP_20_TRACKS:
       newState.tracks = action.tracks;
       return newState;
-    case SELECT_TRACK:
-      newState.selectedTrackId = action.selectedTrack.id;
-      return newState;
     case PLAY_PAUSE_TRACK:
       newState.playing = !state.playing;
       return newState;
     case SELECT_PLAY_PAUSE_TRACK:
-      const priorTrackId = state.selectedTrackId;
-      if (priorTrackId) {
-        newState.playing = priorTrackId === action.selectedTrack.id
-                                                    ? !state.playing
-                                                    : true;
+      const priorTrack = state.selectedTrack;
+      if (priorTrack) {
+        newState.playing = (priorTrack === action.selectedTrack
+                                          ? !state.playing
+                                          : true);
       } else {
         newState.playing = true;
       }
       newState.selectedTrack = action.selectedTrack;
-      newState.selectedTrackId = action.selectedTrack.id;
+      newState.profileTrack = action.selectedTrack;
       return newState;
     default:
       return state;

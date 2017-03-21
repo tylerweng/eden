@@ -4,24 +4,31 @@ class TrackDetail extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      profileTrack: null
+    }
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentWillMount() {
+    const profileTrack = this.props.profileTrack;
+    this.setState({ profileTrack });
   }
 
   handleClick(event) {
     event.preventDefault();
-    const selectedTrack = this.props.selectedTrack;
-    this.props.playPauseTrack(selectedTrack);
+    this.props.selectPlayPauseTrack(this.props.profileTrack);
   }
 
   render() {
-    const selectedTrack = this.props.selectedTrack;
-    if (!selectedTrack) return <div></div>;
+    const profileTrack = this.props.profileTrack;
+    if (!profileTrack) return <div></div>;
 
-    const title = selectedTrack.title;
-    const artist = selectedTrack.artist;
-    const img_url = selectedTrack.img_url;
-    const track_url = selectedTrack.track_url;
-    const username = selectedTrack.user.username;
+    const title = profileTrack.title;
+    const artist = profileTrack.artist;
+    const img_url = profileTrack.img_url;
+    const track_url = profileTrack.track_url;
+    const username = profileTrack.user.username;
 
     return (
       <button
