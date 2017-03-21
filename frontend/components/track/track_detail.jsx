@@ -15,6 +15,8 @@ class TrackDetail extends React.Component {
 
   render() {
     const selectedTrack = this.props.selectedTrack;
+    if (!selectedTrack) return <div></div>;
+
     const title = selectedTrack.title;
     const artist = selectedTrack.artist;
     const img_url = selectedTrack.img_url;
