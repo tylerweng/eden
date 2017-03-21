@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import TrackDetail from './track_detail';
+import { selectPlayPauseTrack } from '../../actions/track_actions';
 
 const mapStateToProps = ({ tracks }) => ({
   selectedTrack: tracks.selectedTrack

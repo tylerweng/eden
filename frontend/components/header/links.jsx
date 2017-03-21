@@ -8,18 +8,15 @@ class Links extends React.Component {
 
   render() {
     const selectedTrack = this.props.selectedTrack;
-    const nowPlayingKlass = (selectedTrack
-                            ? 'header-link now-playing'
-                            : 'header-link now-playing disabled');
     const trackId = selectedTrack ? selectedTrack.id : 0;
     return (
       <div className='links'>
         <Link
           to='nowplaying'
-          className={nowPlayingKlass}>
+          className={'header-link now-playing'}>
           now playing
         </Link>
-        <span>my stations</span>
+        <span className='header-link my-stations'>my stations</span>
       </div>
     );
   }

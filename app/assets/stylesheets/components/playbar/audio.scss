@@ -1,13 +1,10 @@
-.body {
-  display: grid;
-  width:100%;
-  height: 85vh;
-  overflow-y: auto;
-}
-
-
 .body-audio {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.audio {
+  height: 100%;
 }
