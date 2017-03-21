@@ -9,7 +9,7 @@ const mapStateToProps = ({ tracks, search }) => ({
 
 const mapDispatchToProps = dispatch => ({
   query: queryValue => dispatch(query(queryValue)),
-  fetchProfileTrack: profileTrack => dispatch(fetchProfileTrack(profileTrack))
+  fetchProfileTrack: id => dispatch(fetchProfileTrack(id))
 });
 
 

@@ -17,7 +17,9 @@ class Searchbar extends React.Component {
   }
 
   handleSelect(value, item) {
-    if (item.title) this.props.fetchProfileTrack(item);
+    if (item.title) {
+      this.props.fetchProfileTrack(item.id)
+    };
   }
 
   handleItemValue(item) {
