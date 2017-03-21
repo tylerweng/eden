@@ -17,6 +17,10 @@ class Track < ApplicationRecord
   validates :track_url, uniqueness: true
 
   belongs_to :user
+  has_many :likes
+  has_many :user_likes,
+    through: :likes,
+    source: :user
 
   def self.search(queryValue)
     self.where("title ILIKE ?", "%#{queryValue}%").limit(10)

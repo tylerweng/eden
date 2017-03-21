@@ -28,4 +28,8 @@ class ApplicationController < ActionController::Base
     render json: ['Must be logged in'], status: 401 unless logged_in?
   end
 
+  def forbidden
+    render json: ['Can not delete item you do not own'], status: 403
+  end
+
 end

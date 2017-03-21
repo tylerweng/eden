@@ -40,4 +40,8 @@ class Api::TracksController < ApplicationController
   def track_params
     params.require(:track).permit(:title, :description, :artist, :track_url, :img_url)
   end
+
+  def require_owner
+  end
+
 end

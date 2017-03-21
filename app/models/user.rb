@@ -22,6 +22,10 @@ class User < ApplicationRecord
   before_validation :ensure_session_token_uniqueness
 
   has_many :tracks
+  has_many :likes
+  has_many :liked_tracks,
+    through: :likes,
+    source: :track
 
   def self.search(queryValue)
     self.where("username ILIKE ?", "%#{queryValue}%").limit(5)
