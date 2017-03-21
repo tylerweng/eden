@@ -1,5 +1,6 @@
 import React from 'react';
 import Autocomplete from 'react-autocomplete';
+import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
 class Searchbar extends React.Component {
@@ -42,18 +43,23 @@ class Searchbar extends React.Component {
     const artist = (item.title
                   ? <div>{item.artist}</div>
                   : <div></div>);
-    return (
-      <div
-        key={item.id}
-        id={item.id}
-        className={klass}>
-        {img}
-        <div className='search-text'>
-          {displayValue}
-          {artist}
-        </div>
-      </div>
-    );
+    let renderedItem;
+    if (item.title) {
+      renderedItem = <Link
+                      to={`/tracks/${item.id}`}
+                      className={klass}>
+                      { img }
+                      <div className='search-text'>
+                        {displayValue}
+                        {artist}
+                      </div>
+                    </Link>;
+    } else {
+      renderedItem = <div className={klass}>
+                       {`Artist: ${displayValue}`}
+                     </div>;
+    }
+    return renderedItem;
   }
 
   update(field) {

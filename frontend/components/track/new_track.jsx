@@ -64,56 +64,56 @@ class NewTrack extends React.Component {
           onClick={ this.openModal() }
           type='button'
           className="upload-button">
-          upload
+          Upload
         </Button>
         <Modal
           show={ this.state.open }
           onHide={ this.closeModal() }
           className='upload-modal'>
           <Modal.Header closeButton>
-            <Modal.Title>upload</Modal.Title>
+            <Modal.Title>Upload</Modal.Title>
             {errorList}
           </Modal.Header>
           <form onSubmit = {this.handleSubmit} className='session-form'>
             <Modal.Body>
               <label>
-                title
+                Title
                 <input
                   type='text'
-                  placeholder='title'
+                  placeholder='Title'
                   onChange={this.update('title')}
                   className='auth-input'/>
               </label>
               <label>
-                artist
+                Artist
                 <input
                   type='text'
-                  placeholder='artist'
+                  placeholder='Artist'
                   onChange={this.update('artist')}
                   className='auth-input'/>
               </label>
               <label>
-                track url
+                Track Url
                 <input
                   type='text'
-                  placeholder='track url'
+                  placeholder='Track Url'
                   onChange={this.update('track_url')}
                   className='auth-input'/>
               </label>
               <label>
-                img url
+                Img Url
                 <input
                   type='text'
-                  placeholder='optional'
+                  placeholder='Optional'
                   onChange={this.update('img_url')}
                   className='auth-input'/>
               </label>
               <label>
-                description
+                Description
                 <textarea
                   rows='4'
                   cols='50'
-                  placeholder='optional'
+                  placeholder='Optional'
                   onChange={this.update('description')}
                   className='auth-input'/>
               </label>
@@ -122,7 +122,7 @@ class NewTrack extends React.Component {
               <Button
                 type='submit'
                 className='upload-submit'>
-                upload
+                Upload
               </Button>
             </Modal.Footer>
           </form>

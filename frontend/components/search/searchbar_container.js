@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
-import { selectPlayPauseTrack } from '../../actions/track_actions';
 import { query } from '../../actions/search_actions';
 import { resetErrors } from '../../actions/error_actions';
 import Searchbar from './searchbar';
 
-const mapStateToProps = ({ search }) => ({
+const mapStateToProps = ({ tracks, search }) => ({
   search
 });
 

@@ -58,40 +58,40 @@ class SignupModal extends React.Component {
           onClick={ this.openModal() }
           type='button'
           className="session-button signup-button">
-          sign up
+          Sign Up
         </button>
         <Modal
           show={ this.state.open }
           onHide={ this.closeModal() }
           className='signup-modal'>
           <Modal.Header closeButton>
-            <Modal.Title>sign up</Modal.Title>
+            <Modal.Title>Sign Up</Modal.Title>
             {errorList}
           </Modal.Header>
 
           <form onSubmit = {this.handleSubmit} className='session-form'>
             <Modal.Body>
               <label>
-                username
+                Username
                 <input
                   type='text'
-                  placeholder='username'
+                  placeholder='Username'
                   onChange={this.update('username')}
                   className='auth-input'/>
               </label>
               <label>
-                email
+                Email
                 <input
                   type='text'
-                  placeholder='email'
+                  placeholder='Email'
                   onChange={this.update('email')}
                   className='auth-input'/>
               </label>
               <label>
-                password
+                Password
                 <input
                   type='password'
-                  placeholder='password'
+                  placeholder='Password'
                   onChange={this.update('password')}
                   className='auth-input'/>
               </label>
@@ -100,7 +100,7 @@ class SignupModal extends React.Component {
               <Button
                 type='submit'
                 className='signup-submit'>
-                sign up
+                Sign Up
               </Button>
             </Modal.Footer>
           </form>

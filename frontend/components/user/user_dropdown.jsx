@@ -45,7 +45,7 @@ class UserDropdown extends React.Component {
             <span
               onClick={this.closeForm()}
               className='link'>
-              my profile
+              My Profile
             </span>
           </Link>
           <div>
@@ -53,7 +53,7 @@ class UserDropdown extends React.Component {
               <span
                 onClick={this.handleLogout()}
                 className='link'>
-                log out
+                Log Out
               </span>
             </Link>
           </div>
@@ -68,7 +68,10 @@ class UserDropdown extends React.Component {
     return (
       <div className='session-button dropdown-button'>
         <button onClick={this.openProfile}>
-          <div className="fa-container"><i className="fa fa-user" aria-hidden="true"></i></div>
+          <img
+            src='https://s3-us-west-1.amazonaws.com/eden-audio/application_images/user_profile_icon.png'
+            className='user-profile-icon img-circle'>
+          </img>
         </button>
         {this.displayForm()}
       </div>

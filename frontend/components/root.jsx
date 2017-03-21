@@ -18,6 +18,7 @@ const Root = ({ store }) => (
         <Route path='/homepage' component={ Homepage } />
         <Route path='/myprofile' component={ UserProfile } />
         <Route path='/nowplaying' component={ TrackProfile } />
+        <Route path='/tracks/:trackId' component={ TrackProfile } />
       </App>
     </HashRouter>
   </Provider>

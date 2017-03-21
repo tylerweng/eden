@@ -66,32 +66,32 @@ class LoginModal extends React.Component {
           onClick={ this.openModal() }
           type='button'
           className="session-button login-button">
-          login
+          Login
         </button>
         <Modal
           show={ this.state.open }
           onHide={ this.closeModal() }
           className='login-modal'>
           <Modal.Header closeButton>
-            <Modal.Title>login</Modal.Title>
+            <Modal.Title>Login</Modal.Title>
             {errorList}
           </Modal.Header>
 
           <form onSubmit = {this.handleSubmit} className='session-form'>
             <Modal.Body>
               <label>
-                username
+                Username
                 <input
                   type='text'
-                  placeholder='username'
+                  placeholder='Username'
                   onChange={this.update('username')}
                   className='auth-input'/>
               </label>
               <label>
-                password
+                Password
                 <input
                   type='password'
-                  placeholder='password'
+                  placeholder='Password'
                   onChange={this.update('password')}
                   className='auth-input'/>
               </label>
@@ -100,13 +100,13 @@ class LoginModal extends React.Component {
               <Button
                 type='submit'
                 className='login-submit'>
-                login
+                Login
               </Button>
               <Button
                 onClick={this.demo}
                 type='button'
                 className='login-submit'>
-                demo
+                Demo
               </Button>
             </Modal.Footer>
           </form>

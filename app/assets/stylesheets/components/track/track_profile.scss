@@ -1,11 +1,13 @@
 .track-profile {
   height: 100%;
-  background: #AAF0D1; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#1F3596, #212FA2); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#1F3596, #212FA2); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#1F3596, #212FA2); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#1F3596, #212FA2); /* Standard syntax */
   padding-bottom: 20vh;
+  background-image:url('https://s3-us-west-1.amazonaws.com/eden-audio/application_images/track_detail_background.jpg'), linear-gradient(to right, #3B30CA, #2847BB);
+  background-blend-mode: overlay;
+  // background-image:url('https://s3-us-west-1.amazonaws.com/eden-audio/application_images/track_detail_background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
 }
 
 .track-detail {
@@ -19,4 +21,13 @@
 .track-detail-img {
   width: 40vh;
   height: 40vh;
+}
+
+.track-detail-title {
+  margin-top: 2.5vh;
+  font-size: 3vh;
+}
+
+.track-detail-artist {
+  margin: 1vh 0;
 }
