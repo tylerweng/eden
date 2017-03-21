@@ -4,7 +4,7 @@ import { selectTrack } from '../../actions/track_actions';
 import Searchbar from './searchbar';
 
 const mapStateToProps = ({ tracks, search }) => ({
-  selectedTrack: tracks.selectedTrack,
+  selectedTrackId: tracks.selectedTrackId,
   search
 });
 

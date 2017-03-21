@@ -15,7 +15,8 @@ import {
 const _nullTracks = Object.freeze({
   tracks: {},
   selectedTrack: null,
-  playing: false
+  playing: false,
+  selectedTrackId: null
 })
 const tracksReducer = (state = _nullTracks, action) => {
   Object.freeze(state);
@@ -34,21 +35,22 @@ const tracksReducer = (state = _nullTracks, action) => {
       newState.tracks = action.tracks;
       return newState;
     case SELECT_TRACK:
-      newState.selectedTrack = action.selectedTrack;
+      newState.selectedTrackId = action.selectedTrack.id;
       return newState;
     case PLAY_PAUSE_TRACK:
       newState.playing = !state.playing;
       return newState;
     case SELECT_PLAY_PAUSE_TRACK:
-      const priorTrack = state.selectedTrack;
-      if (priorTrack) {
-        newState.playing = priorTrack.track_url === action.selectedTrack.track_url
+      const priorTrackId = state.selectedTrackId;
+      if (priorTrackId) {
+        newState.playing = priorTrackId === action.selectedTrack.id
                                                     ? !state.playing
                                                     : true;
       } else {
         newState.playing = true;
       }
       newState.selectedTrack = action.selectedTrack;
+      newState.selectedTrackId = action.selectedTrack.id;
       return newState;
     default:
       return state;

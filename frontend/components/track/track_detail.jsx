@@ -10,7 +10,7 @@ class TrackDetail extends React.Component {
   handleClick(event) {
     event.preventDefault();
     const selectedTrack = this.props.selectedTrack;
-    this.props.selectPlayPauseTrack(selectedTrack);
+    this.props.playPauseTrack(selectedTrack);
   }
 
   render() {
