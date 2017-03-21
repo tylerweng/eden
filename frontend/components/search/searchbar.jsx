@@ -73,18 +73,21 @@ class Searchbar extends React.Component {
                      ? search.tracks
                      : {})
     const queryResultsArray = _.values(users).concat(_.values(tracks));
+
+    const inputProps = {
+      placeholder: "Create Station",
+      className: 'searchbar'
+    };
     return (
-      <div className='searchbar'>
-        <Autocomplete
-          ref='autocomplete'
-          defaultValue='Create Station'
-          value={this.state.queryValue}
-          onChange={this.update('queryValue')}
-          items={queryResultsArray}
-          getItemValue={this.handleItemValue}
-          onSelect={this.handleSelect}
-          renderItem={this.handleRenderItem} />
-      </div>
+      <Autocomplete
+        inputProps={inputProps}
+        ref='autocomplete'
+        value={this.state.queryValue}
+        onChange={this.update('queryValue')}
+        items={queryResultsArray}
+        getItemValue={this.handleItemValue}
+        onSelect={this.handleSelect}
+        renderItem={this.handleRenderItem} />
     );
   }
 
