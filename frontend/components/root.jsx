@@ -17,7 +17,7 @@ const Root = ({ store }) => (
         <Redirect from="/" to="/homepage" />
         <Route path='/homepage' component={ Homepage } />
         <Route path='/myprofile' component={ UserProfile } />
-        <Route path='/api/tracks/:trackId' component={ TrackProfile } />
+        <Route path='/nowplaying' component={ TrackProfile } />
       </App>
     </HashRouter>
   </Provider>

@@ -4,19 +4,6 @@ import { Link } from 'react-router-dom';
 class Links extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   selectedTrack: this.props.selectedTrack
-    // }
-  }
-
-  // componentWillMount() {
-  //   this.state.selectedTrack = this.props.selectedTrack;
-  // }
-  //
-  componentWillReceiveProps(nextProps) {
-    debugger;
-    // const selectedTrack = nextProps.selectedTrack;
-    // this.setState({ selectedTrack })
   }
 
   render() {
@@ -28,7 +15,7 @@ class Links extends React.Component {
     return (
       <div className='links'>
         <Link
-          to={`api/tracks/${trackId}`}
+          to='nowplaying'
           className={nowPlayingKlass}>
           now playing
         </Link>
