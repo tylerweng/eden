@@ -1,10 +1,7 @@
 .body {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   width:100%;
-  flex-direction: row;
-  background-color: rgb(242, 242, 242);
-  height: 90vh;
+  height: 85vh;
   overflow-y: auto;
 }
 
