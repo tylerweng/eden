@@ -10,12 +10,12 @@ class Links extends React.Component {
     return (
       <div className='links'>
         <Link
-          to='nowplaying'
+          to='/nowplaying'
           className={'header-link now-playing'}>
           Now Playing
         </Link>
         <Link
-          to='mystations'
+          to='/mystations'
           className={'header-link my-stations'}>
           My Stations
         </Link>
