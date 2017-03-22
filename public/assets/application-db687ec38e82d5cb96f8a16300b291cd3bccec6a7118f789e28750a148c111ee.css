@@ -4,22 +4,21 @@
   background-color: #18298A;
   color: #FFF;
   position: fixed;
-  border-bottom: 1px solid #fff;
   top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 9.25vh;
+  height: 10vh;
 }
 
-/* line 15, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
+/* line 14, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
 .header-name {
   color: #fff;
   display: block;
   text-align: center;
 }
 
-/* line 21, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
+/* line 20, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
 .auth {
   display: flex;
   flex-direction: row;
@@ -45,18 +44,47 @@
   margin-left: 5vh;
   margin-right: 2.5vh;
 }
-/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/homepage/splashpage.scss */
-.parallax {
-  background-image: url("https://s3-us-west-1.amazonaws.com/eden-audio/application_images/homepage2.jpg");
+/* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/homepage/homepage.scss */
+.homepage {
+  display: flex;
+  flex-direction: row;
+}
+
+/* line 6, /Users/tyler/Git/eden/app/assets/stylesheets/components/homepage/homepage.scss */
+.homepage-sidebar {
+  flex-direction: column;
+  width: 21.75%;
+  background: #20008A;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#20008A, #1E105B);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#20008A, #1E105B);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#20008A, #1E105B);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#20008A, #1E105B);
+  /* Standard syntax */
+  background-blend-mode: overlay;
+  background-size: contain;
+  background-repeat: no-repeat;
+  justify-content: center;
+  color: #fff;
+}
+
+/* line 23, /Users/tyler/Git/eden/app/assets/stylesheets/components/homepage/homepage.scss */
+.homepage-main {
   /* Full height */
   height: 100%;
   /* Create the parallax scrolling effect */
+  background-image: url("	https://s3-us-west-1.amazonaws.com/eden-audio/application_images/splashpage.gif");
   background-attachment: fixed;
-  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 200vh;
-  background-color: red;
+  background-position: left 15vh top;
+  height: 315vh;
+  width: 78.25%;
+  display: flex;
+  flex-direction: column;
   font-size: 36px;
 }
 /* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/audio.scss */
@@ -77,31 +105,31 @@
   width: 100%;
   background-color: #18298A;
   color: #FFF;
-  border-top: 1px solid #fff;
   position: fixed;
   bottom: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 9.25vh;
+  height: 10vh;
 }
 
-/* line 14, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+/* line 13, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
 .react-player {
   display: none;
 }
 
-/* line 18, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+/* line 17, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
 .playbar-track_detail, .controls-progress-container, .volume-container {
   height: 10vh;
 }
 
-/* line 22, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+/* line 21, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
 .playbar-track-detail {
   display: flex;
   flex-direction: row;
   margin-left: 5vh;
   width: 20%;
+  margin-right: 20vh;
 }
 
 /* line 29, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
@@ -111,52 +139,48 @@
 
 /* line 33, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
 .playbar-track-image {
-  width: 8vh;
-  height: 8vh;
+  width: 7vh;
+  height: 7vh;
+  margin-top: 0.25vh;
 }
 
-/* line 38, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+/* line 39, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
 .playbar-track-title {
   font-size: 2vh;
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-/* line 44, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+/* line 45, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
 .playbar-track-artist {
   font-size: 1.75vh;
 }
 
-/* line 48, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+/* line 49, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
 .controls-progress-container, .volume-container {
   margin-top: 2.5vh;
 }
 
-/* line 52, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+/* line 53, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
 .controls-progress-container {
   display: flex;
   flex-direction: column;
   width: 50%;
 }
 
-/* line 58, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+/* line 59, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
 .controls {
   display: flex;
   flex-direction: row;
   align-self: center;
 }
 
-/* line 64, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+/* line 65, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
 .volume-button, .controls > button {
   margin: 0 5vh;
 }
 
-/* line 68, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
-.repeat-on {
-  color: #41AECB;
-}
-
-/* line 72, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+/* line 69, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
 .progress-container {
   display: flex;
   flex-direction: row;
@@ -164,27 +188,28 @@
   align-items: center;
 }
 
-/* line 79, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+/* line 76, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
 .time {
   margin-bottom: 3vh;
 }
 
-/* line 82, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+/* line 79, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
 .progressbar {
   margin: -5vh 2.5vh;
   width: 100%;
 }
 
-/* line 87, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+/* line 84, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
 .volume-container {
   display: flex;
   flex-direction: row;
   width: 25%;
   align-items: center;
+  margin-left: 10vh;
   margin-right: 5vh;
 }
 
-/* line 95, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+/* line 93, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
 .volume-slider {
   margin-top: 1vh;
   display: flex;
@@ -193,16 +218,17 @@
   height: 100%;
 }
 
-/* line 103, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+/* line 101, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
 .volume-button {
   margin-left: 7.5vh;
-  margin-bottom: 1vh;
+  margin-bottom: 2.5vh;
   display: flex;
   flex-direction: row;
+  font-size: 2vh !important;
 }
 
-/* line 110, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
-.like-unlike-highlight {
+/* line 109, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/playbar.scss */
+.like-dislike-highlight, .repeat-on {
   color: #FF7100;
 }
 /* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/searchbar/searchbar.scss */
@@ -215,26 +241,27 @@
   border: 1px solid gray;
   border-radius: 35vh;
   text-align: center;
+  margin-left: 22.5vh;
 }
 
-/* line 12, /Users/tyler/Git/eden/app/assets/stylesheets/components/searchbar/searchbar.scss */
+/* line 13, /Users/tyler/Git/eden/app/assets/stylesheets/components/searchbar/searchbar.scss */
 .search-item {
   background-color: #fff;
 }
 
-/* line 16, /Users/tyler/Git/eden/app/assets/stylesheets/components/searchbar/searchbar.scss */
+/* line 17, /Users/tyler/Git/eden/app/assets/stylesheets/components/searchbar/searchbar.scss */
 .search-img {
   height: 20vh;
   width: 20vh;
 }
 
-/* line 22, /Users/tyler/Git/eden/app/assets/stylesheets/components/searchbar/searchbar.scss */
+/* line 23, /Users/tyler/Git/eden/app/assets/stylesheets/components/searchbar/searchbar.scss */
 .search-item {
   color: black;
   text-align: center;
 }
 
-/* line 27, /Users/tyler/Git/eden/app/assets/stylesheets/components/searchbar/searchbar.scss */
+/* line 28, /Users/tyler/Git/eden/app/assets/stylesheets/components/searchbar/searchbar.scss */
 .search-item:hover {
   color: black;
 }
@@ -319,7 +346,7 @@
 .track-profile {
   height: 100%;
   padding-bottom: 20vh;
-  background-image: url("https://s3-us-west-1.amazonaws.com/eden-audio/application_images/track_detail_background.jpg"), linear-gradient(to right, #3B30CA, #2847BB);
+  background-image: url("https://s3-us-west-1.amazonaws.com/eden-audio/application_images/track_detail_background.jpg"), radial-gradient(#3B30CA, #2847BB);
   background-blend-mode: overlay;
   background-size: cover;
   background-repeat: no-repeat;
@@ -327,7 +354,7 @@
   justify-content: center;
 }
 
-/* line 13, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track_profile.scss */
+/* line 12, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track_profile.scss */
 .track-detail {
   margin-top: 10vh;
   align-items: center;
@@ -336,19 +363,19 @@
   color: #fff;
 }
 
-/* line 21, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track_profile.scss */
+/* line 20, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track_profile.scss */
 .track-detail-img {
   width: 40vh;
   height: 40vh;
 }
 
-/* line 26, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track_profile.scss */
+/* line 25, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track_profile.scss */
 .track-detail-title {
   margin-top: 2.5vh;
   font-size: 3vh;
 }
 
-/* line 31, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track_profile.scss */
+/* line 30, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track_profile.scss */
 .track-detail-artist {
   margin: 1vh 0;
 }
@@ -371,18 +398,23 @@
 }
 
 /* line 10, /Users/tyler/Git/eden/app/assets/stylesheets/components/user/user_profile.scss */
+.dropdown-button {
+  margin-bottom: 1.75vh;
+}
+
+/* line 13, /Users/tyler/Git/eden/app/assets/stylesheets/components/user/user_profile.scss */
 .user-profile-icon {
-  height: 5vh;
-  width: 5vh;
+  height: 3.5vh;
+  width: 3.5vh;
   margin-right: 5vh;
 }
 
-/* line 16, /Users/tyler/Git/eden/app/assets/stylesheets/components/user/user_profile.scss */
+/* line 19, /Users/tyler/Git/eden/app/assets/stylesheets/components/user/user_profile.scss */
 .auth-modal {
   margin-bottom: 2.5vh;
 }
 
-/* line 20, /Users/tyler/Git/eden/app/assets/stylesheets/components/user/user_profile.scss */
+/* line 23, /Users/tyler/Git/eden/app/assets/stylesheets/components/user/user_profile.scss */
 .user-detail {
   display: flex;
   flex-direction: column;
