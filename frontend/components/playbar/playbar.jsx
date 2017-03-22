@@ -19,8 +19,7 @@ class Playbar extends React.Component {
       played: 0,
       loaded: 0,
       duration: 0,
-      isLiked: false,
-      isDisliked: false
+      likeStatus: 'neutral'
     };
     this.dislike = this.dislike.bind(this);
     this.back = this.back.bind(this);
@@ -38,6 +37,7 @@ class Playbar extends React.Component {
   }
 
   componentWillMount() {
+    // this.setState({ likeStatus: 'neutral' });
     const currentUser = this.props.currentUser;
     if (!currentUser) return;
     this.props.fetchUserLikes(currentUser.id);
@@ -51,21 +51,22 @@ class Playbar extends React.Component {
     const url = selectedTrack.track_url;
     const playing = nextProps.playing;
     this.setState({ url, playing })
+
     const currentUser = this.props.currentUser;
-    this.setState({ isLiked: false });
+    if (!currentUser) return;
+
     for (let i = 0; i < nextProps.likes.length; i++) {
       let like = nextProps.likes[i];
-      // debugger;
       if (like.track_id == selectedTrack.id && like.user_id == currentUser.id) {
-        this.setState({ isLiked: true });
+        this.setState({ likeStatus: 'liked' });
+        return;
       }
     }
-    this.setState({ isDisliked: false });
-    for (let i = 0; i < nextProps.dislikes.length; i++) {
-      let dislike = nextProps.dislikes[i];
-      // debugger;
+    for (let j = 0; j < nextProps.dislikes.length; j++) {
+      let dislike = nextProps.dislikes[j];
       if (dislike.track_id == selectedTrack.id && dislike.user_id == currentUser.id) {
-        this.setState({ isDisliked: true });
+        this.setState({ likeStatus: 'disliked' });
+        return;
       }
     }
   }
@@ -79,40 +80,59 @@ class Playbar extends React.Component {
   }
 
   like() {
-    const isLiked = this.state.isLiked;
-    const isDisliked = this.state.isDisliked;
 
-    if (!isLiked) {
-      this.props.likeTrack(this.props.selectedTrack.id)
-      if (isDisliked) this.props.undislikeTrack(this.props.selectedTrack.id);
-      this.setState({ isLiked: true, isDisliked: false });
-    } else {
-      for (let i = 0; i < this.props.likes.length; i++) {
-        let like = this.props.likes[i];
-        if (like.track_id == this.props.selectedTrack.id && like.user_id == this.props.currentUser.id) {
-          this.props.unlikeTrack(like.id);
+    if (this.state.likeStatus === 'neutral') {
+      this.props.likeTrack(this.props.selectedTrack.id);
+      this.setState({ likeStatus: 'liked' });
+    } else if (this.state.likeStatus === 'disliked') {
+      for (let i = 0; i < this.props.dislikes.length; i++) {
+        let dislike = this.props.dislikes[i];
+        if (dislike.track_id == this.props.selectedTrack.id
+             && dislike.user_id == this.props.currentUser.id) {
+          this.props.undislikeTrack(dislike.id);
+          this.props.likeTrack(this.props.selectedTrack.id);
+          this.setState({ likeStatus: 'liked' });
+          return;
         }
       }
-      this.setState({ isLiked: false });
+    } else {
+      for (let j = 0; j < this.props.likes.length; j++) {
+        let like = this.props.likes[j];
+        if (like.track_id == this.props.selectedTrack.id
+             && like.user_id == this.props.currentUser.id) {
+          this.props.unlikeTrack(like.id);
+          this.setState({ likeStatus: 'neutral' });
+          return;
+        }
+      }
     }
   }
 
   dislike() {
-    const isLiked = this.state.isLiked;
-    const isDisliked = this.state.isDisliked;
-
-    if (!isDisliked) {
-      this.props.dislikeTrack(this.props.selectedTrack.id)
-      if (isLiked) this.props.unlikeTrack(this.props.selectedTrack.id);
-      this.setState({ isLiked: false, isDisliked: true });
-    } else {
-      for (let i = 0; i < this.props.dislikes.length; i++) {
-        let dislike = this.props.dislikes[i];
-        if (dislike.track_id == this.props.selectedTrack.id && dislike.user_id == this.props.currentUser.id) {
-          this.props.undislikeTrack(dislike.id);
+    if (this.state.likeStatus === 'neutral') {
+      this.props.dislikeTrack(this.props.selectedTrack.id);
+      this.setState({ likeStatus: 'disliked' });
+    } else if (this.state.likeStatus === 'liked') {
+      for (let i = 0; i < this.props.likes.length; i++) {
+        let like = this.props.likes[i];
+        if (like.track_id == this.props.selectedTrack.id
+             && like.user_id == this.props.currentUser.id) {
+          this.props.unlikeTrack(like.id);
+          this.props.dislikeTrack(this.props.selectedTrack.id);
+          this.setState({ likeStatus: 'disliked' });
+          return;
         }
       }
-      this.setState({ isDisliked: false });
+    } else {
+      for (let j = 0; j < this.props.dislikes.length; j++) {
+        let dislike = this.props.dislikes[j];
+        if (dislike.track_id == this.props.selectedTrack.id
+             && dislike.user_id == this.props.currentUser.id) {
+          this.props.undislikeTrack(dislike.id);
+          this.setState({ likeStatus: 'neutral' });
+          return;
+        }
+      }
     }
   }
 
@@ -186,9 +206,9 @@ class Playbar extends React.Component {
     const playbarKlass = (selectedTrack ? 'playbar' : 'playbar hidden');
 
     let likeKlass = 'fa fa-thumbs-up like-button';
-    if (this.state.isLiked) likeKlass += ' like-unlike-highlight';
+    if (this.state.likeStatus === 'liked') likeKlass += ' like-dislike-highlight';
     let dislikeKlass = 'fa fa-thumbs-down dislike-button';
-    if (this.state.isDisliked) dislikeKlass += ' like-unlike-highlight';
+    if (this.state.likeStatus === 'disliked') dislikeKlass += ' like-dislike-highlight';
 
     let trackDetail;
     if (selectedTrack) {
