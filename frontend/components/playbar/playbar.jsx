@@ -37,7 +37,6 @@ class Playbar extends React.Component {
   }
 
   componentWillMount() {
-    // this.setState({ likeStatus: 'neutral' });
     const currentUser = this.props.currentUser;
     if (!currentUser) return;
     this.props.fetchUserLikes(currentUser.id);
@@ -50,7 +49,7 @@ class Playbar extends React.Component {
     const selectedTrack = nextProps.selectedTrack;
     const url = selectedTrack.track_url;
     const playing = nextProps.playing;
-    this.setState({ url, playing })
+    this.setState({ url, playing });
 
     const currentUser = this.props.currentUser;
     if (!currentUser) return;
@@ -186,6 +185,7 @@ class Playbar extends React.Component {
     if (this.state.loop) {
       this.player.seekTo(0);
     } else {
+      this.setState({ likeStatus: 'netural' });
       this.props.selectPlayPauseTrack(this.props.nextTrack);
       this.props.fetchNextTrack(this.props.nextTrack);
     }

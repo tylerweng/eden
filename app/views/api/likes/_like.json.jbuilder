@@ -8,5 +8,5 @@ json.user do
 end
 
 json.track do
-  json.extract! like.track, :title
+  json.extract! like.track, :title, :artist, :track_url, :img_url, :description
 end
