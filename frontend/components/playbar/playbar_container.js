@@ -5,11 +5,12 @@ import { playPauseTrack } from '../../actions/track_actions';
 import { likeTrack, unlikeTrack, fetchUserLikes } from '../../actions/like_actions';
 import { dislikeTrack, undislikeTrack, fetchUserDislikes } from '../../actions/dislike_actions';
 
-const mapStateToProps = ({ tracks, session, likes }) => ({
+const mapStateToProps = ({ tracks, session, likes, dislikes }) => ({
   selectedTrack: tracks.selectedTrack,
   playing: tracks.playing,
   currentUser: session.currentUser,
-  likes: _.values(likes.likes)
+  likes: _.values(likes.likes),
+  dislikes: _.values(dislikes.dislikes)
 });
 
 const mapDispatchToProps = dispatch => ({
