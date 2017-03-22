@@ -1,5 +1,7 @@
 json.extract! like,
-  :id
+  :id,
+  :user_id,
+  :track_id
 
 json.user do
   json.extract! like.user, :username

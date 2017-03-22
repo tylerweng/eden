@@ -49,7 +49,7 @@ class UserDropdown extends React.Component {
             </span>
           </Link>
           <div>
-            <Link to='/'>
+            <Link to='/homepage'>
               <span
                 onClick={this.handleLogout()}
                 className='link'>

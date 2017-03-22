@@ -19,11 +19,14 @@ class Playbar extends React.Component {
       played: 0,
       loaded: 0,
       duration: 0,
+      isLiked: false
     };
+    this.unlike = this.unlike.bind(this);
     this.back = this.back.bind(this);
     this.forward = this.forward.bind(this);
     this.playPause = this.playPause.bind(this);
     this.repeat = this.repeat.bind(this);
+    this.like = this.like.bind(this);
     this.setVolume = this.setVolume.bind(this);
     this.muteUnmute = this.muteUnmute.bind(this);
     this.onSeekMouseDown = this.onSeekMouseDown.bind(this);
@@ -33,12 +36,28 @@ class Playbar extends React.Component {
     this.onEnded = this.onEnded.bind(this);
   }
 
+  componentWillMount() {
+    const currentUser = this.props.currentUser;
+    if (!currentUser) return;
+    this.props.fetchUserLikes(currentUser.id);
+  }
+
+
   componentWillReceiveProps(nextProps) {
     if (!nextProps.selectedTrack) return;
     const selectedTrack = nextProps.selectedTrack;
     const url = selectedTrack.track_url;
     const playing = nextProps.playing;
     this.setState({ url, playing })
+    const currentUser = this.props.currentUser;
+    for (let i = 0; i < nextProps.likes.length; i++) {
+      let like = nextProps.likes[i];
+      if (like.track_id == selectedTrack.id && like.user_id == currentUser.id) {
+        this.setState({ isLiked: true });
+        return;
+      }
+    }
+    this.setState({ isLiked: false });
   }
 
   load(e) {
@@ -47,6 +66,15 @@ class Playbar extends React.Component {
       played: 0,
       loaded: 0
     });
+  }
+
+  like() {
+    this.props.likeTrack(this.props.selectedTrack.id);
+    this.setState({ isLiked: !this.state.isLiked });
+  }
+
+  unlike() {
+
   }
 
   back(e) {
@@ -118,6 +146,9 @@ class Playbar extends React.Component {
                        : 'fa fa-volume-off') + ' volume-button';
     const playbarKlass = (selectedTrack ? 'playbar' : 'playbar hidden');
 
+    let likeKlass = 'fa fa-thumbs-up like-button';
+    if (this.state.isLiked) likeKlass += ' like-unlike-highlight';
+
     let trackDetail;
     if (selectedTrack) {
       trackDetail = (
@@ -165,6 +196,9 @@ class Playbar extends React.Component {
         { trackDetail }
         <div className='controls-progress-container'>
           <div className='controls'>
+            <button onClick={this.unlike}>
+              <i className='fa fa-thumbs-down' aria-hidden='true'></i>
+            </button>
             <button onClick={this.back}>
               <i className='fa fa-undo' aria-hidden='true'></i>
             </button>
@@ -176,6 +210,9 @@ class Playbar extends React.Component {
             </button>
             <button onClick={this.repeat}>
               <i className={faRepeat} aria-hidden='true'></i>
+            </button>
+            <button onClick={this.like}>
+              <i className={likeKlass} aria-hidden='true'></i>
             </button>
           </div>
           <div className='progress-container'>

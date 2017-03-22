@@ -1,6 +1,6 @@
 .playbar {
   width: 100%;
-  background-color: #1C2989;
+  background-color: #18298A;
   color: #FFF;
   border-top: 1px solid #fff;
   position: fixed;
@@ -105,4 +105,8 @@
   margin-bottom: 1vh;
   display: flex;
   flex-direction: row;
+}
+
+.like-unlike-highlight {
+  color: #FF7100;
 }

@@ -1,14 +1,19 @@
 class Api::LikesController < ApplicationController
 
-  before_action :require_logged_in
+  before_action :require_logged_in, only: [:create, :destroy]
   before_action :require_owner, only: [:destroy]
 
+  def index
+    @likes = Like.find_user_likes(params[:user_id])
+    render :index
+  end
+
   def create
-    @like = Like.new(user_id: current_user.id, track_id: like_params[:track_id])
+    @like = current_user.likes.new(like_params)
 
     if @like.save
       render :create
-    else 
+    else
       render json: @like.errors.full_messages, status: 422
     end
   end
