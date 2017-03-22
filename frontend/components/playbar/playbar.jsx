@@ -80,6 +80,7 @@ class Playbar extends React.Component {
   }
 
   like() {
+    if (!this.props.currentUser) return;
 
     if (this.state.likeStatus === 'neutral') {
       this.props.likeTrack(this.props.selectedTrack.id);
@@ -109,6 +110,8 @@ class Playbar extends React.Component {
   }
 
   dislike() {
+    if (!this.props.currentUser) return;
+
     if (this.state.likeStatus === 'neutral') {
       this.props.dislikeTrack(this.props.selectedTrack.id);
       this.setState({ likeStatus: 'disliked' });

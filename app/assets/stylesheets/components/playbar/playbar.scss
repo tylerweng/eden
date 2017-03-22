@@ -24,6 +24,7 @@
   flex-direction: row;
   margin-left: 5vh;
   width: 20%;
+  margin-right: 20vh;
 }
 
 .playbar-track-text {
@@ -89,6 +90,7 @@
   flex-direction: row;
   width: 25%;
   align-items: center;
+  margin-left: 10vh;
   margin-right: 5vh;
 }
 
@@ -102,9 +104,10 @@
 
 .volume-button {
   margin-left: 7.5vh;
-  margin-bottom: 1vh;
+  margin-bottom: 2.5vh;
   display: flex;
   flex-direction: row;
+  font-size: 2vh !important;
 }
 
 .like-dislike-highlight {
