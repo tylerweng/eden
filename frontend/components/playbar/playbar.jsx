@@ -144,7 +144,8 @@ class Playbar extends React.Component {
   }
 
   forward(e) {
-
+    this.props.selectPlayPauseTrack(this.props.nextTrack);
+    this.props.fetchNextTrack(this.props.nextTrack);
   }
 
   repeat(e) {
@@ -185,7 +186,8 @@ class Playbar extends React.Component {
     if (this.state.loop) {
       this.player.seekTo(0);
     } else {
-      this.setState({playing: false})
+      this.props.selectPlayPauseTrack(this.props.nextTrack);
+      this.props.fetchNextTrack(this.props.nextTrack);
     }
   }
 
