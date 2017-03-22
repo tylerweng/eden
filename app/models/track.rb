@@ -17,9 +17,15 @@ class Track < ApplicationRecord
   validates :track_url, uniqueness: true
 
   belongs_to :user
+
   has_many :likes
   has_many :user_likes,
     through: :likes,
+    source: :user
+
+  has_many :dislikes
+  has_many :user_dislikes,
+    through: :dislikes,
     source: :user
 
   def self.search(queryValue)

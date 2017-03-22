@@ -22,9 +22,15 @@ class User < ApplicationRecord
   before_validation :ensure_session_token_uniqueness
 
   has_many :tracks
+
   has_many :likes
   has_many :liked_tracks,
     through: :likes,
+    source: :track
+
+  has_many :dislikes
+  has_many :disliked_tracks,
+    through: :dislikes,
     source: :track
 
   def self.search(queryValue)

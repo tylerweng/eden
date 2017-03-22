@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show, :update]
     resources :tracks, only: [:index, :create, :show, :update, :destroy]
     resources :likes, only: [:create, :destroy, :index]
+    resources :dislikes, only: [:create, :destroy, :index]
   end
   root to: 'static_pages#index'
 end
