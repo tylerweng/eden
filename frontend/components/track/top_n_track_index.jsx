@@ -1,7 +1,7 @@
 import React from 'react';
 import TrackIndexItem from './track_index_item';
 
-class Top20TrackIndex extends React.Component {
+class TopNTrackIndex extends React.Component {
 
   constructor(props) {
     super(props);
@@ -13,7 +13,7 @@ class Top20TrackIndex extends React.Component {
   }
 
   componentWillMount() {
-    this.props.fetchTop20Tracks();
+    this.props.fetchTopNTracks(8);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -24,7 +24,7 @@ class Top20TrackIndex extends React.Component {
   render() {
     if(!this.state.tracks) return <div></div>;
     return (
-      <div className='body track-index'>
+      <div className='homepage-sidebar'>
         {this.state.tracks.map(track => (
           <TrackIndexItem
             key={track.id}
@@ -38,4 +38,4 @@ class Top20TrackIndex extends React.Component {
 
 }
 
-export default Top20TrackIndex;
+export default TopNTrackIndex;

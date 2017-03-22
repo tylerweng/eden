@@ -1,0 +1,41 @@
+.homepage {
+  display: flex;
+  flex-direction: row;
+}
+
+.homepage-sidebar {
+  flex-direction: column;
+  width: 20.5%;
+  background: #3728C7; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#3728C7, #231D45); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#3728C7, #231D45); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#3728C7, #231D45); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#3728C7, #231D45); /* Standard syntax */
+  background-blend-mode: overlay;
+  background-size: contain;
+  background-repeat: no-repeat;
+  justify-content: center;
+  color: #fff;
+}
+
+.parallax {
+
+  /* Full height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-image: url('	https://s3-us-west-1.amazonaws.com/eden-audio/application_images/splashpage.gif');
+
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: left 15vh top;
+  height: 315vh;
+  width: 79.5%;
+  display: flex;
+  flex-direction: column;
+  font-size: 36px;
+  overflow-x: auto;
+  overflow-y: auto;
+
+}

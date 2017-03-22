@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Splashpage = () => (
-  <div className='splashpage parallax'>
+  <div className='homepage-main parallax'>
     <div className='splash1'>
     Scroll Up and Down this page to see the parallax scrolling effect.
     This div is just here to enable scrolling.

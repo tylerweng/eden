@@ -1,9 +1,8 @@
 .track-profile {
   height: 100%;
   padding-bottom: 20vh;
-  background-image:url('https://s3-us-west-1.amazonaws.com/eden-audio/application_images/track_detail_background.jpg'), linear-gradient(to right, #3B30CA, #2847BB);
+  background-image:url('https://s3-us-west-1.amazonaws.com/eden-audio/application_images/track_detail_background.jpg'), radial-gradient(#3B30CA, #2847BB);
   background-blend-mode: overlay;
-  // background-image:url('https://s3-us-west-1.amazonaws.com/eden-audio/application_images/track_detail_background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;

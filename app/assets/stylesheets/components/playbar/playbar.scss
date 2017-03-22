@@ -2,13 +2,12 @@
   width: 100%;
   background-color: #18298A;
   color: #FFF;
-  border-top: 1px solid #fff;
   position: fixed;
   bottom: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 9.25vh;
+  height: 10vh;
 }
 
 .react-player {
@@ -32,8 +31,9 @@
 }
 
 .playbar-track-image {
-  width: 8vh;
-  height: 8vh;
+  width: 7vh;
+  height: 7vh;
+  margin-top: 0.25vh;
 }
 
 .playbar-track-title {
@@ -64,10 +64,6 @@
 
 .volume-button, .controls > button {
   margin: 0 5vh;
-}
-
-.repeat-on {
-  color: #41AECB;
 }
 
 .progress-container {
@@ -110,6 +106,6 @@
   font-size: 2vh !important;
 }
 
-.like-dislike-highlight {
+.like-dislike-highlight, .repeat-on {
   color: #FF7100;
 }
