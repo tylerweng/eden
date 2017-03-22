@@ -30,6 +30,7 @@ class TrackIndex extends React.Component {
             key={track.id}
             track={track}
             selectPlayPauseTrack={this.props.selectPlayPauseTrack}
+            fetchNextTrack={this.props.fetchNextTrack}
             selectTrack={this.props.selectTrack} />
         ))}
       </div>

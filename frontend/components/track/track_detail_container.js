@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import TrackDetail from './track_detail';
-import { selectPlayPauseTrack, fetchTrack } from '../../actions/track_actions';
+import { selectPlayPauseTrack, fetchNextTrack } from '../../actions/track_actions';
 
 const mapStateToProps = ({ tracks }) => ({
   selectedTrack: tracks.selectedTrack,
@@ -8,7 +8,8 @@ const mapStateToProps = ({ tracks }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  selectPlayPauseTrack: track => dispatch(selectPlayPauseTrack(track))
+  selectPlayPauseTrack: track => dispatch(selectPlayPauseTrack(track)),
+  fetchNextTrack: selectedTrack => dispatch(fetchNextTrack(selectedTrack))
 });
 
 const TrackDetailContainer = connect(

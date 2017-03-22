@@ -31,6 +31,7 @@ class TopNTrackIndex extends React.Component {
             track={track}
             selectPlayPauseTrack={this.props.selectPlayPauseTrack}
             selectTrack={this.props.selectTrack}
+            fetchNextTrack={this.props.fetchNextTrack}
             className='homepage-sidebar-item'/>
         ))}
       </div>

@@ -18,6 +18,7 @@ class TrackDetail extends React.Component {
   handleClick(event) {
     event.preventDefault();
     this.props.selectPlayPauseTrack(this.props.profileTrack);
+    this.props.fetchNextTrack(this.props.profileTrack);
   }
 
   render() {

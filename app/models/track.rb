@@ -36,9 +36,11 @@ class Track < ApplicationRecord
     self.order(created_at: :desc).limit(num_tracks)
   end
 
-  def self.find_similar_tracks(selectedTrack)
-    artist = selectedTrack.artist
-    self.where("artist ILIKE ?", "%#{artist}%").limit(5).order("RANDOM()")
+  def self.find_next_track(selectedTrack)
+    artist = selectedTrack[:artist]
+    title = selectedTrack[:title]
+    query = "artist ILIKE ?", "%#{artist}%"
+    self.where(query).limit(5).order("RANDOM()").first
   end
 
 end

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import TrackIndex from './track_index';
-import { fetchAllTracks, selectPlayPauseTrack } from '../../actions/track_actions';
+import { fetchAllTracks, selectPlayPauseTrack, fetchNextTrack } from '../../actions/track_actions';
 import _ from 'lodash';
 
 const mapStateToProps = ({session, tracks}) => ({
@@ -10,7 +10,8 @@ const mapStateToProps = ({session, tracks}) => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchAllTracks: user_id => dispatch(fetchAllTracks(user_id)),
-  selectPlayPauseTrack: selectedTrack => dispatch(selectPlayPauseTrack(selectedTrack))
+  selectPlayPauseTrack: selectedTrack => dispatch(selectPlayPauseTrack(selectedTrack)),
+  fetchNextTrack: selectedTrack => dispatch(fetchNextTrack(selectedTrack))
 });
 
 const TrackIndexContainer = connect(

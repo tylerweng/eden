@@ -5,7 +5,18 @@ class Api::TracksController < ApplicationController
 
   def index
     if params[:selectedTrack]
-      @track = Track.find_similar_tracks(params[:selectedTrack]).first
+       selectedTrack = {
+        track: {
+          id: params[:selectedTrack][:id],
+          title: params[:selectedTrack][:title],
+          artist: params[:selectedTrack][:artist],
+          track_url: params[:selectedTrack][:track_url],
+          img_url: params[:selectedTrack][:img_url],
+          description: params[:selectedTrack][:description],
+          user: params[:selectedTrack][:user]
+        }
+      }
+      @track = Track.find_next_track(selectedTrack)
       render :show
     elsif logged_in?
       @tracks = Track.where(user_id: params[:user_id])
