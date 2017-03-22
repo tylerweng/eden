@@ -91,10 +91,9 @@ class Playbar extends React.Component {
         let like = this.props.likes[i];
         if (like.track_id == this.props.selectedTrack.id && like.user_id == this.props.currentUser.id) {
           this.props.unlikeTrack(like.id);
-          this.setState({ isLiked: false });
-          return;
         }
       }
+      this.setState({ isLiked: false });
     }
   }
 
@@ -111,10 +110,9 @@ class Playbar extends React.Component {
         let dislike = this.props.dislikes[i];
         if (dislike.track_id == this.props.selectedTrack.id && dislike.user_id == this.props.currentUser.id) {
           this.props.undislikeTrack(dislike.id);
-          this.setState({ isDisliked: false });
-          return;
         }
       }
+      this.setState({ isDisliked: false });
     }
   }
 
