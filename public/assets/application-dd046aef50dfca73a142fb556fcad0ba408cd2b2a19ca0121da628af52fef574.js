@@ -11578,6 +11578,10 @@ return jQuery;
 
 
 }).call(this);
+(function() {
+
+
+}).call(this);
 /******/
  (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -14774,7 +14778,7 @@ module.exports = DOMProperty;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.fetchTop20Tracks = exports.fetchAllTracks = exports.upload = exports.selectPlayPauseTrack = exports.playPauseTrack = exports.selectTrack = exports.SELECT_PLAY_PAUSE_TRACK = exports.PLAY_PAUSE_TRACK = exports.SELECT_TRACK = exports.UPLOAD_TRACK = exports.RECEIVE_TOP_20_TRACKS = exports.RECEIVE_ALL_TRACKS = exports.RECEIVE_TRACK = undefined;
+exports.fetchTop20Tracks = exports.fetchAllTracks = exports.fetchProfileTrack = exports.upload = exports.selectPlayPauseTrack = exports.playPauseTrack = exports.SELECT_PLAY_PAUSE_TRACK = exports.PLAY_PAUSE_TRACK = exports.RECEIVE_PROFILE_TRACK = exports.UPLOAD_TRACK = exports.RECEIVE_TOP_20_TRACKS = exports.RECEIVE_ALL_TRACKS = exports.RECEIVE_TRACK = undefined;
 
 var _track_api_util = __webpack_require__(321);
 
@@ -14788,7 +14792,7 @@ var RECEIVE_TRACK = exports.RECEIVE_TRACK = 'RECEIVE_TRACK';
 var RECEIVE_ALL_TRACKS = exports.RECEIVE_ALL_TRACKS = 'RECEIVE_ALL_TRACKS';
 var RECEIVE_TOP_20_TRACKS = exports.RECEIVE_TOP_20_TRACKS = 'RECEIVE_TOP_20_TRACKS';
 var UPLOAD_TRACK = exports.UPLOAD_TRACK = 'UPLOAD_TRACK';
-var SELECT_TRACK = exports.SELECT_TRACK = 'SELECT_TRACK';
+var RECEIVE_PROFILE_TRACK = exports.RECEIVE_PROFILE_TRACK = 'RECEIVE_PROFILE_TRACK';
 var PLAY_PAUSE_TRACK = exports.PLAY_PAUSE_TRACK = 'PLAY_PAUSE_TRACK';
 var SELECT_PLAY_PAUSE_TRACK = exports.SELECT_PLAY_PAUSE_TRACK = 'SELECT_PLAY_PAUSE_TRACK';
 
@@ -14813,10 +14817,10 @@ var uploadTrack = function uploadTrack(track) {
   };
 };
 
-var selectTrack = exports.selectTrack = function selectTrack(selectedTrack) {
+var receiveProfileTrack = function receiveProfileTrack(profileTrack) {
   return {
-    type: SELECT_TRACK,
-    selectedTrack: selectedTrack
+    type: RECEIVE_PROFILE_TRACK,
+    profileTrack: profileTrack
   };
 };
 
@@ -14838,6 +14842,16 @@ var upload = exports.upload = function upload(track) {
   return function (dispatch) {
     return _track_api_util2.default.upload(track).then(function (track) {
       return dispatch(uploadTrack(track));
+    }, function (errors) {
+      return dispatch((0, _error_actions.receiveErrors)(errors.responseJSON));
+    });
+  };
+};
+
+var fetchProfileTrack = exports.fetchProfileTrack = function fetchProfileTrack(id) {
+  return function (dispatch) {
+    return _track_api_util2.default.fetchTrack(id).then(function (profileTrack) {
+      return dispatch(receiveProfileTrack(profileTrack));
     }, function (errors) {
       return dispatch((0, _error_actions.receiveErrors)(errors.responseJSON));
     });
@@ -50381,14 +50395,14 @@ var Links = function (_React$Component) {
         _react2.default.createElement(
           _reactRouterDom.Link,
           {
-            to: 'nowplaying',
+            to: '/nowplaying',
             className: 'header-link now-playing' },
           'Now Playing'
         ),
         _react2.default.createElement(
           _reactRouterDom.Link,
           {
-            to: 'mystations',
+            to: '/mystations',
             className: 'header-link my-stations' },
           'My Stations'
         )
@@ -50534,12 +50548,15 @@ var Playbar = function (_React$Component) {
       priorVolume: 0.5,
       played: 0,
       loaded: 0,
-      duration: 0
+      duration: 0,
+      isLiked: false
     };
+    _this.unlike = _this.unlike.bind(_this);
     _this.back = _this.back.bind(_this);
     _this.forward = _this.forward.bind(_this);
     _this.playPause = _this.playPause.bind(_this);
     _this.repeat = _this.repeat.bind(_this);
+    _this.like = _this.like.bind(_this);
     _this.setVolume = _this.setVolume.bind(_this);
     _this.muteUnmute = _this.muteUnmute.bind(_this);
     _this.onSeekMouseDown = _this.onSeekMouseDown.bind(_this);
@@ -50551,6 +50568,13 @@ var Playbar = function (_React$Component) {
   }
 
   _createClass(Playbar, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var currentUser = this.props.currentUser;
+      if (!currentUser) return;
+      this.props.fetchUserLikes(currentUser.id);
+    }
+  }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       if (!nextProps.selectedTrack) return;
@@ -50558,6 +50582,15 @@ var Playbar = function (_React$Component) {
       var url = selectedTrack.track_url;
       var playing = nextProps.playing;
       this.setState({ url: url, playing: playing });
+      var currentUser = this.props.currentUser;
+      for (var i = 0; i < nextProps.likes.length; i++) {
+        var like = nextProps.likes[i];
+        if (like.track_id == selectedTrack.id && like.user_id == currentUser.id) {
+          this.setState({ isLiked: true });
+          return;
+        }
+      }
+      this.setState({ isLiked: false });
     }
   }, {
     key: 'load',
@@ -50568,6 +50601,27 @@ var Playbar = function (_React$Component) {
         loaded: 0
       });
     }
+  }, {
+    key: 'like',
+    value: function like() {
+      var isLiked = this.state.isLiked;
+      if (!isLiked) {
+        this.props.likeTrack(this.props.selectedTrack.id);
+        this.setState({ isLiked: !isLiked });
+      } else {
+        for (var i = 0; i < this.props.likes.length; i++) {
+          var like = this.props.likes[i];
+          if (like.track_id == this.props.selectedTrack.id && like.user_id == this.props.currentUser.id) {
+            this.props.unlikeTrack(like.id);
+            this.setState({ isLiked: !isLiked });
+            return;
+          }
+        }
+      }
+    }
+  }, {
+    key: 'unlike',
+    value: function unlike() {}
   }, {
     key: 'back',
     value: function back(e) {
@@ -50649,6 +50703,9 @@ var Playbar = function (_React$Component) {
       var faRepeat = this.state.loop ? 'fa fa-repeat repeat-on' : 'fa fa-repeat repeat-off';
       var faVolume = (this.state.volume ? this.state.volume > 0.5 ? 'fa fa-volume-up' : 'fa fa-volume-down' : 'fa fa-volume-off') + ' volume-button';
       var playbarKlass = selectedTrack ? 'playbar' : 'playbar hidden';
+
+      var likeKlass = 'fa fa-thumbs-up like-button';
+      if (this.state.isLiked) likeKlass += ' like-unlike-highlight';
 
       var trackDetail = void 0;
       if (selectedTrack) {
@@ -50732,6 +50789,11 @@ var Playbar = function (_React$Component) {
             { className: 'controls' },
             _react2.default.createElement(
               'button',
+              { onClick: this.unlike },
+              _react2.default.createElement('i', { className: 'fa fa-thumbs-down', 'aria-hidden': 'true' })
+            ),
+            _react2.default.createElement(
+              'button',
               { onClick: this.back },
               _react2.default.createElement('i', { className: 'fa fa-undo', 'aria-hidden': 'true' })
             ),
@@ -50749,6 +50811,11 @@ var Playbar = function (_React$Component) {
               'button',
               { onClick: this.repeat },
               _react2.default.createElement('i', { className: faRepeat, 'aria-hidden': 'true' })
+            ),
+            _react2.default.createElement(
+              'button',
+              { onClick: this.like },
+              _react2.default.createElement('i', { className: likeKlass, 'aria-hidden': 'true' })
             )
           ),
           _react2.default.createElement(
@@ -50824,13 +50891,19 @@ var _lodash2 = _interopRequireDefault(_lodash);
 
 var _track_actions = __webpack_require__(40);
 
+var _like_actions = __webpack_require__(758);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(_ref) {
-  var tracks = _ref.tracks;
+  var tracks = _ref.tracks,
+      session = _ref.session,
+      likes = _ref.likes;
   return {
     selectedTrack: tracks.selectedTrack,
-    playing: tracks.playing
+    playing: tracks.playing,
+    currentUser: session.currentUser,
+    likes: _lodash2.default.values(likes.likes)
   };
 };
 
@@ -50838,6 +50911,15 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     playPauseTrack: function playPauseTrack(track) {
       return dispatch((0, _track_actions.playPauseTrack)(track));
+    },
+    likeTrack: function likeTrack(track_id) {
+      return dispatch((0, _like_actions.likeTrack)(track_id));
+    },
+    unlikeTrack: function unlikeTrack(id) {
+      return dispatch((0, _like_actions.unlikeTrack)(id));
+    },
+    fetchUserLikes: function fetchUserLikes(user_id) {
+      return dispatch((0, _like_actions.fetchUserLikes)(user_id));
     }
   };
 };
@@ -50892,8 +50974,7 @@ var Searchbar = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Searchbar.__proto__ || Object.getPrototypeOf(Searchbar)).call(this, props));
 
     _this.state = {
-      queryValue: '',
-      selectedTrackId: _this.props.selectedTrackId
+      queryValue: ''
     };
 
     _this.handleSelect = _this.handleSelect.bind(_this);
@@ -50904,7 +50985,11 @@ var Searchbar = function (_React$Component) {
 
   _createClass(Searchbar, [{
     key: 'handleSelect',
-    value: function handleSelect() {}
+    value: function handleSelect(value, item) {
+      if (item.title) {
+        this.props.fetchProfileTrack(item.id);
+      };
+    }
   }, {
     key: 'handleItemValue',
     value: function handleItemValue(item) {
@@ -50958,19 +51043,20 @@ var Searchbar = function (_React$Component) {
       var users = search.users && search.users.length ? search.users : {};
       var tracks = search.tracks && search.tracks.length ? search.tracks : {};
       var queryResultsArray = _lodash2.default.values(users).concat(_lodash2.default.values(tracks));
-      return _react2.default.createElement(
-        'div',
-        { className: 'searchbar' },
-        _react2.default.createElement(_reactAutocomplete2.default, {
-          ref: 'autocomplete',
-          defaultValue: 'Create Station',
-          value: this.state.queryValue,
-          onChange: this.update('queryValue'),
-          items: queryResultsArray,
-          getItemValue: this.handleItemValue,
-          onSelect: this.handleSelect,
-          renderItem: this.handleRenderItem })
-      );
+
+      var inputProps = {
+        placeholder: "Create Station",
+        className: 'searchbar'
+      };
+      return _react2.default.createElement(_reactAutocomplete2.default, {
+        inputProps: inputProps,
+        ref: 'autocomplete',
+        value: this.state.queryValue,
+        onChange: this.update('queryValue'),
+        items: queryResultsArray,
+        getItemValue: this.handleItemValue,
+        onSelect: this.handleSelect,
+        renderItem: this.handleRenderItem });
     }
   }]);
 
@@ -51006,7 +51092,6 @@ var mapStateToProps = function mapStateToProps(_ref) {
   var tracks = _ref.tracks,
       search = _ref.search;
   return {
-    selectedTrackId: tracks.selectedTrackId,
     search: search
   };
 };
@@ -51016,8 +51101,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     query: function query(queryValue) {
       return dispatch((0, _search_actions.query)(queryValue));
     },
-    selectTrack: function selectTrack(selectedTrack) {
-      return dispatch((0, _track_actions.selectTrack)(selectedTrack));
+    fetchProfileTrack: function fetchProfileTrack(id) {
+      return dispatch((0, _track_actions.fetchProfileTrack)(id));
     }
   };
 };
@@ -51945,28 +52030,36 @@ var TrackDetail = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (TrackDetail.__proto__ || Object.getPrototypeOf(TrackDetail)).call(this, props));
 
+    _this.state = {
+      profileTrack: null
+    };
     _this.handleClick = _this.handleClick.bind(_this);
     return _this;
   }
 
   _createClass(TrackDetail, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var profileTrack = this.props.profileTrack;
+      this.setState({ profileTrack: profileTrack });
+    }
+  }, {
     key: 'handleClick',
     value: function handleClick(event) {
       event.preventDefault();
-      var selectedTrack = this.props.selectedTrack;
-      this.props.playPauseTrack(selectedTrack);
+      this.props.selectPlayPauseTrack(this.props.profileTrack);
     }
   }, {
     key: 'render',
     value: function render() {
-      var selectedTrack = this.props.selectedTrack;
-      if (!selectedTrack) return _react2.default.createElement('div', null);
+      var profileTrack = this.props.profileTrack;
+      if (!profileTrack) return _react2.default.createElement('div', null);
 
-      var title = selectedTrack.title;
-      var artist = selectedTrack.artist;
-      var img_url = selectedTrack.img_url;
-      var track_url = selectedTrack.track_url;
-      var username = selectedTrack.user.username;
+      var title = profileTrack.title;
+      var artist = profileTrack.artist;
+      var img_url = profileTrack.img_url;
+      var track_url = profileTrack.track_url;
+      var username = profileTrack.user.username;
 
       return _react2.default.createElement(
         'button',
@@ -52028,14 +52121,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var mapStateToProps = function mapStateToProps(_ref) {
   var tracks = _ref.tracks;
   return {
-    selectedTrack: tracks.selectedTrack
+    selectedTrack: tracks.selectedTrack,
+    profileTrack: tracks.profileTrack
   };
 };
 
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
-    playPauseTrack: function playPauseTrack(track) {
-      return dispatch((0, _track_actions.playPauseTrack)(track));
+    selectPlayPauseTrack: function selectPlayPauseTrack(track) {
+      return dispatch((0, _track_actions.selectPlayPauseTrack)(track));
     }
   };
 };
@@ -52163,8 +52257,8 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     fetchAllTracks: function fetchAllTracks(user_id) {
       return dispatch((0, _track_actions.fetchAllTracks)(user_id));
     },
-    selectPlayPauseTrack: function selectPlayPauseTrack(track) {
-      return dispatch((0, _track_actions.selectPlayPauseTrack)(track));
+    selectPlayPauseTrack: function selectPlayPauseTrack(selectedTrack) {
+      return dispatch((0, _track_actions.selectPlayPauseTrack)(selectedTrack));
     }
   };
 };
@@ -52360,7 +52454,7 @@ var UserDropdown = function (_React$Component) {
           { className: 'dropdown-content' },
           _react2.default.createElement(
             _reactRouterDom.Link,
-            { to: 'myprofile' },
+            { to: '/myprofile' },
             _react2.default.createElement(
               'span',
               {
@@ -52374,7 +52468,7 @@ var UserDropdown = function (_React$Component) {
             null,
             _react2.default.createElement(
               _reactRouterDom.Link,
-              { to: '/' },
+              { to: '/homepage' },
               _react2.default.createElement(
                 'span',
                 {
@@ -52552,15 +52646,22 @@ var _search_reducer = __webpack_require__(316);
 
 var _search_reducer2 = _interopRequireDefault(_search_reducer);
 
+var _likes_reducer = __webpack_require__(759);
+
+var _likes_reducer2 = _interopRequireDefault(_likes_reducer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Components
+// Libraries
 var rootReducer = (0, _redux.combineReducers)({
   session: _session_reducer2.default,
   errors: _errors_reducer2.default,
   tracks: _tracks_reducer2.default,
-  search: _search_reducer2.default
-}); // Libraries
+  search: _search_reducer2.default,
+  likes: _likes_reducer2.default
+});
+
+// Components
 exports.default = rootReducer;
 
 /***/ }),
@@ -52662,10 +52763,11 @@ var _nullTracks = Object.freeze({
   tracks: {},
   selectedTrack: null,
   playing: false,
-  selectedTrackId: null
+  profileTrack: null
 });
 
 // Components
+
 
 var tracksReducer = function tracksReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _nullTracks;
@@ -52674,8 +52776,8 @@ var tracksReducer = function tracksReducer() {
   Object.freeze(state);
   var newState = (0, _merge2.default)({}, state);
   switch (action.type) {
-    case _track_actions.RECEIVE_TRACK:
-      newState.tracks = action.track;
+    case _track_actions.RECEIVE_PROFILE_TRACK:
+      newState.profileTrack = action.profileTrack;
       return newState;
     case _track_actions.UPLOAD_TRACK:
       newState.tracks = (0, _merge2.default)(newState.tracks, action.track);
@@ -52686,21 +52788,18 @@ var tracksReducer = function tracksReducer() {
     case _track_actions.RECEIVE_TOP_20_TRACKS:
       newState.tracks = action.tracks;
       return newState;
-    case _track_actions.SELECT_TRACK:
-      newState.selectedTrackId = action.selectedTrack.id;
-      return newState;
     case _track_actions.PLAY_PAUSE_TRACK:
       newState.playing = !state.playing;
       return newState;
     case _track_actions.SELECT_PLAY_PAUSE_TRACK:
-      var priorTrackId = state.selectedTrackId;
-      if (priorTrackId) {
-        newState.playing = priorTrackId === action.selectedTrack.id ? !state.playing : true;
+      var priorTrack = state.selectedTrack;
+      if (priorTrack) {
+        newState.playing = priorTrack === action.selectedTrack ? !state.playing : true;
       } else {
         newState.playing = true;
       }
       newState.selectedTrack = action.selectedTrack;
-      newState.selectedTrackId = action.selectedTrack.id;
+      newState.profileTrack = action.selectedTrack;
       return newState;
     default:
       return state;
@@ -52781,6 +52880,12 @@ var TrackAPIUtil = {
       type: 'POST',
       url: 'api/tracks',
       data: track
+    });
+  },
+  fetchTrack: function fetchTrack(id) {
+    return $.ajax({
+      type: 'GET',
+      url: 'api/tracks/' + id
     });
   },
   fetchAllTracks: function fetchAllTracks(user_id) {
@@ -91178,6 +91283,167 @@ var MyStationsDetail = function MyStationsDetail(_ref) {
 };
 
 exports.default = MyStationsDetail;
+
+/***/ }),
+/* 758 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fetchUserLikes = exports.unlikeTrack = exports.likeTrack = exports.RECEIVE_USER_LIKES = exports.RECEIVE_TRACK_UNLIKE = exports.RECEIVE_TRACK_LIKE = undefined;
+
+var _like_api_util = __webpack_require__(760);
+
+var _like_api_util2 = _interopRequireDefault(_like_api_util);
+
+var _error_actions = __webpack_require__(34);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var RECEIVE_TRACK_LIKE = exports.RECEIVE_TRACK_LIKE = 'RECEIVE_TRACK_LIKE';
+var RECEIVE_TRACK_UNLIKE = exports.RECEIVE_TRACK_UNLIKE = 'RECEIVE_TRACK_UNLIKE';
+var RECEIVE_USER_LIKES = exports.RECEIVE_USER_LIKES = 'RECEIVE_USER_LIKES';
+
+var receiveTrackLike = function receiveTrackLike(like) {
+  return {
+    type: RECEIVE_TRACK_LIKE,
+    like: like
+  };
+};
+
+var receiveTrackUnlike = function receiveTrackUnlike(like) {
+  return {
+    type: RECEIVE_TRACK_UNLIKE,
+    like: like
+  };
+};
+
+var receiveUserLikes = function receiveUserLikes(likes) {
+  return {
+    type: RECEIVE_USER_LIKES,
+    likes: likes
+  };
+};
+
+var likeTrack = exports.likeTrack = function likeTrack(track_id) {
+  return function (dispatch) {
+    return _like_api_util2.default.likeTrack(track_id).then(function (like) {
+      return dispatch(receiveTrackLike(like));
+    }, function (errors) {
+      return dispatch((0, _error_actions.receiveErrors)(errors.responseJSON));
+    });
+  };
+};
+
+var unlikeTrack = exports.unlikeTrack = function unlikeTrack(id) {
+  return function (dispatch) {
+    return _like_api_util2.default.unlikeTrack(id).then(function (like) {
+      return dispatch(receiveTrackUnlike(like));
+    }, function (errors) {
+      return dispatch((0, _error_actions.receiveErrors)(errors.responseJSON));
+    });
+  };
+};
+
+var fetchUserLikes = exports.fetchUserLikes = function fetchUserLikes(user_id) {
+  return function (dispatch) {
+    return _like_api_util2.default.fetchUserLikes(user_id).then(function (likes) {
+      return dispatch(receiveUserLikes(likes));
+    }, function (errors) {
+      return dispatch((0, _error_actions.receiveErrors)(errors.responseJSON));
+    });
+  };
+};
+
+/***/ }),
+/* 759 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _merge2 = __webpack_require__(212);
+
+var _merge3 = _interopRequireDefault(_merge2);
+
+var _like_actions = __webpack_require__(758);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } // Libraries
+
+// Components
+
+
+var _nullLikes = Object.freeze({
+  likes: {}
+});
+
+var likesReducer = function likesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _nullLikes;
+  var action = arguments[1];
+
+  Object.freeze(state);
+  var newState = (0, _merge3.default)({}, state);
+  switch (action.type) {
+    case _like_actions.RECEIVE_TRACK_LIKE:
+      newState.likes = (0, _merge3.default)(newState.likes, _defineProperty({}, action.like.like.id, action.like.like));
+      return newState;
+    case _like_actions.RECEIVE_TRACK_UNLIKE:
+      delete newState.likes[action.like.like.id];
+      return newState;
+    case _like_actions.RECEIVE_USER_LIKES:
+      newState.likes = action.likes;
+      return newState;
+    default:
+      return state;
+  }
+};
+
+exports.default = likesReducer;
+
+/***/ }),
+/* 760 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var LikeAPIUtil = {
+  likeTrack: function likeTrack(track_id) {
+    return $.ajax({
+      type: 'POST',
+      url: '/api/likes',
+      data: { like: { track_id: track_id } }
+    });
+  },
+  unlikeTrack: function unlikeTrack(id) {
+    return $.ajax({
+      type: 'DELETE',
+      url: '/api/likes/' + id
+    });
+  },
+  fetchUserLikes: function fetchUserLikes(user_id) {
+    return $.ajax({
+      type: 'GET',
+      url: '/api/likes',
+      data: { user_id: user_id }
+    });
+  }
+};
+
+exports.default = LikeAPIUtil;
 
 /***/ })
 /******/ ]);
