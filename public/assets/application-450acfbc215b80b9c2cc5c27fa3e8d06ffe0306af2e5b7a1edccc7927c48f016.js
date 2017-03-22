@@ -11578,6 +11578,10 @@ return jQuery;
 
 
 }).call(this);
+(function() {
+
+
+}).call(this);
 /******/
  (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -50391,14 +50395,14 @@ var Links = function (_React$Component) {
         _react2.default.createElement(
           _reactRouterDom.Link,
           {
-            to: 'nowplaying',
+            to: '/nowplaying',
             className: 'header-link now-playing' },
           'Now Playing'
         ),
         _react2.default.createElement(
           _reactRouterDom.Link,
           {
-            to: 'mystations',
+            to: '/mystations',
             className: 'header-link my-stations' },
           'My Stations'
         )
@@ -50431,6 +50435,8 @@ var _top_20_track_index_container = __webpack_require__(303);
 var _top_20_track_index_container2 = _interopRequireDefault(_top_20_track_index_container);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import Splashpage from './splashpage';
 
 var Homepage = function Homepage() {
   return _react2.default.createElement(
@@ -50544,12 +50550,16 @@ var Playbar = function (_React$Component) {
       priorVolume: 0.5,
       played: 0,
       loaded: 0,
-      duration: 0
+      duration: 0,
+      isLiked: false,
+      isDisliked: false
     };
+    _this.dislike = _this.dislike.bind(_this);
     _this.back = _this.back.bind(_this);
     _this.forward = _this.forward.bind(_this);
     _this.playPause = _this.playPause.bind(_this);
     _this.repeat = _this.repeat.bind(_this);
+    _this.like = _this.like.bind(_this);
     _this.setVolume = _this.setVolume.bind(_this);
     _this.muteUnmute = _this.muteUnmute.bind(_this);
     _this.onSeekMouseDown = _this.onSeekMouseDown.bind(_this);
@@ -50561,6 +50571,13 @@ var Playbar = function (_React$Component) {
   }
 
   _createClass(Playbar, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var currentUser = this.props.currentUser;
+      if (!currentUser) return;
+      this.props.fetchUserLikes(currentUser.id);
+    }
+  }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       if (!nextProps.selectedTrack) return;
@@ -50568,6 +50585,15 @@ var Playbar = function (_React$Component) {
       var url = selectedTrack.track_url;
       var playing = nextProps.playing;
       this.setState({ url: url, playing: playing });
+      var currentUser = this.props.currentUser;
+      for (var i = 0; i < nextProps.likes.length; i++) {
+        var like = nextProps.likes[i];
+        if (like.track_id == selectedTrack.id && like.user_id == currentUser.id) {
+          this.setState({ isLiked: true });
+          return;
+        }
+      }
+      this.setState({ isLiked: false });
     }
   }, {
     key: 'load',
@@ -50578,6 +50604,27 @@ var Playbar = function (_React$Component) {
         loaded: 0
       });
     }
+  }, {
+    key: 'like',
+    value: function like() {
+      var isLiked = this.state.isLiked;
+      if (!isLiked) {
+        this.props.likeTrack(this.props.selectedTrack.id);
+        this.setState({ isLiked: !isLiked });
+      } else {
+        for (var i = 0; i < this.props.likes.length; i++) {
+          var like = this.props.likes[i];
+          if (like.track_id == this.props.selectedTrack.id && like.user_id == this.props.currentUser.id) {
+            this.props.unlikeTrack(like.id);
+            this.setState({ isLiked: !isLiked });
+            return;
+          }
+        }
+      }
+    }
+  }, {
+    key: 'dislike',
+    value: function dislike() {}
   }, {
     key: 'back',
     value: function back(e) {
@@ -50659,6 +50706,11 @@ var Playbar = function (_React$Component) {
       var faRepeat = this.state.loop ? 'fa fa-repeat repeat-on' : 'fa fa-repeat repeat-off';
       var faVolume = (this.state.volume ? this.state.volume > 0.5 ? 'fa fa-volume-up' : 'fa fa-volume-down' : 'fa fa-volume-off') + ' volume-button';
       var playbarKlass = selectedTrack ? 'playbar' : 'playbar hidden';
+
+      var likeKlass = 'fa fa-thumbs-up like-button';
+      if (this.state.isLiked) likeKlass += ' like-unlike-highlight';
+      var dislikeKlass = 'fa fa-thumbs-down dislike-button';
+      if (this.state.isDisliked) dislikeKlass += ' like-unlike-highlight';
 
       var trackDetail = void 0;
       if (selectedTrack) {
@@ -50742,6 +50794,11 @@ var Playbar = function (_React$Component) {
             { className: 'controls' },
             _react2.default.createElement(
               'button',
+              { onClick: this.dislike },
+              _react2.default.createElement('i', { className: dislikeKlass, 'aria-hidden': 'true' })
+            ),
+            _react2.default.createElement(
+              'button',
               { onClick: this.back },
               _react2.default.createElement('i', { className: 'fa fa-undo', 'aria-hidden': 'true' })
             ),
@@ -50759,6 +50816,11 @@ var Playbar = function (_React$Component) {
               'button',
               { onClick: this.repeat },
               _react2.default.createElement('i', { className: faRepeat, 'aria-hidden': 'true' })
+            ),
+            _react2.default.createElement(
+              'button',
+              { onClick: this.like },
+              _react2.default.createElement('i', { className: likeKlass, 'aria-hidden': 'true' })
             )
           ),
           _react2.default.createElement(
@@ -50834,13 +50896,21 @@ var _lodash2 = _interopRequireDefault(_lodash);
 
 var _track_actions = __webpack_require__(40);
 
+var _like_actions = __webpack_require__(758);
+
+var _dislike_actions = __webpack_require__(762);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mapStateToProps = function mapStateToProps(_ref) {
-  var tracks = _ref.tracks;
+  var tracks = _ref.tracks,
+      session = _ref.session,
+      likes = _ref.likes;
   return {
     selectedTrack: tracks.selectedTrack,
-    playing: tracks.playing
+    playing: tracks.playing,
+    currentUser: session.currentUser,
+    likes: _lodash2.default.values(likes.likes)
   };
 };
 
@@ -50848,6 +50918,24 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     playPauseTrack: function playPauseTrack(track) {
       return dispatch((0, _track_actions.playPauseTrack)(track));
+    },
+    likeTrack: function likeTrack(track_id) {
+      return dispatch((0, _like_actions.likeTrack)(track_id));
+    },
+    unlikeTrack: function unlikeTrack(id) {
+      return dispatch((0, _like_actions.unlikeTrack)(id));
+    },
+    fetchUserLikes: function fetchUserLikes(user_id) {
+      return dispatch((0, _like_actions.fetchUserLikes)(user_id));
+    },
+    dislikeTrack: function dislikeTrack(track_id) {
+      return dispatch((0, _dislike_actions.dislikeTrack)(track_id));
+    },
+    undislikeTrack: function undislikeTrack(id) {
+      return dispatch((0, _dislike_actions.undislikeTrack)(id));
+    },
+    fetchUserDislikes: function fetchUserDislikes(user_id) {
+      return dispatch((0, _dislike_actions.fetchUserDislikes)(user_id));
     }
   };
 };
@@ -52382,7 +52470,7 @@ var UserDropdown = function (_React$Component) {
           { className: 'dropdown-content' },
           _react2.default.createElement(
             _reactRouterDom.Link,
-            { to: 'myprofile' },
+            { to: '/myprofile' },
             _react2.default.createElement(
               'span',
               {
@@ -52396,7 +52484,7 @@ var UserDropdown = function (_React$Component) {
             null,
             _react2.default.createElement(
               _reactRouterDom.Link,
-              { to: '/' },
+              { to: '/homepage' },
               _react2.default.createElement(
                 'span',
                 {
@@ -52574,6 +52662,14 @@ var _search_reducer = __webpack_require__(316);
 
 var _search_reducer2 = _interopRequireDefault(_search_reducer);
 
+var _likes_reducer = __webpack_require__(759);
+
+var _likes_reducer2 = _interopRequireDefault(_likes_reducer);
+
+var _dislikes_reducer = __webpack_require__(763);
+
+var _dislikes_reducer2 = _interopRequireDefault(_dislikes_reducer);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // Components
@@ -52581,7 +52677,9 @@ var rootReducer = (0, _redux.combineReducers)({
   session: _session_reducer2.default,
   errors: _errors_reducer2.default,
   tracks: _tracks_reducer2.default,
-  search: _search_reducer2.default
+  search: _search_reducer2.default,
+  likes: _likes_reducer2.default,
+  dislikes: _dislikes_reducer2.default
 }); // Libraries
 exports.default = rootReducer;
 
@@ -52688,6 +52786,7 @@ var _nullTracks = Object.freeze({
 });
 
 // Components
+
 
 var tracksReducer = function tracksReducer() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _nullTracks;
@@ -91203,6 +91302,329 @@ var MyStationsDetail = function MyStationsDetail(_ref) {
 };
 
 exports.default = MyStationsDetail;
+
+/***/ }),
+/* 758 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fetchUserLikes = exports.unlikeTrack = exports.likeTrack = exports.RECEIVE_USER_LIKES = exports.RECEIVE_TRACK_UNLIKE = exports.RECEIVE_TRACK_LIKE = undefined;
+
+var _like_api_util = __webpack_require__(760);
+
+var _like_api_util2 = _interopRequireDefault(_like_api_util);
+
+var _error_actions = __webpack_require__(34);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var RECEIVE_TRACK_LIKE = exports.RECEIVE_TRACK_LIKE = 'RECEIVE_TRACK_LIKE';
+var RECEIVE_TRACK_UNLIKE = exports.RECEIVE_TRACK_UNLIKE = 'RECEIVE_TRACK_UNLIKE';
+var RECEIVE_USER_LIKES = exports.RECEIVE_USER_LIKES = 'RECEIVE_USER_LIKES';
+
+var receiveTrackLike = function receiveTrackLike(like) {
+  return {
+    type: RECEIVE_TRACK_LIKE,
+    like: like
+  };
+};
+
+var receiveTrackUnlike = function receiveTrackUnlike(like) {
+  return {
+    type: RECEIVE_TRACK_UNLIKE,
+    like: like
+  };
+};
+
+var receiveUserLikes = function receiveUserLikes(likes) {
+  return {
+    type: RECEIVE_USER_LIKES,
+    likes: likes
+  };
+};
+
+var likeTrack = exports.likeTrack = function likeTrack(track_id) {
+  return function (dispatch) {
+    return _like_api_util2.default.likeTrack(track_id).then(function (like) {
+      return dispatch(receiveTrackLike(like));
+    }, function (errors) {
+      return dispatch((0, _error_actions.receiveErrors)(errors.responseJSON));
+    });
+  };
+};
+
+var unlikeTrack = exports.unlikeTrack = function unlikeTrack(id) {
+  return function (dispatch) {
+    return _like_api_util2.default.unlikeTrack(id).then(function (like) {
+      return dispatch(receiveTrackUnlike(like));
+    }, function (errors) {
+      return dispatch((0, _error_actions.receiveErrors)(errors.responseJSON));
+    });
+  };
+};
+
+var fetchUserLikes = exports.fetchUserLikes = function fetchUserLikes(user_id) {
+  return function (dispatch) {
+    return _like_api_util2.default.fetchUserLikes(user_id).then(function (likes) {
+      return dispatch(receiveUserLikes(likes));
+    }, function (errors) {
+      return dispatch((0, _error_actions.receiveErrors)(errors.responseJSON));
+    });
+  };
+};
+
+/***/ }),
+/* 759 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _merge2 = __webpack_require__(212);
+
+var _merge3 = _interopRequireDefault(_merge2);
+
+var _like_actions = __webpack_require__(758);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } // Libraries
+
+// Components
+
+
+var _nullLikes = Object.freeze({
+  likes: {}
+});
+
+var likesReducer = function likesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _nullLikes;
+  var action = arguments[1];
+
+  Object.freeze(state);
+  var newState = (0, _merge3.default)({}, state);
+  switch (action.type) {
+    case _like_actions.RECEIVE_TRACK_LIKE:
+      newState.likes = (0, _merge3.default)(newState.likes, _defineProperty({}, action.like.like.id, action.like.like));
+      return newState;
+    case _like_actions.RECEIVE_TRACK_UNLIKE:
+      delete newState.likes[action.like.like.id];
+      return newState;
+    case _like_actions.RECEIVE_USER_LIKES:
+      newState.likes = action.likes;
+      return newState;
+    default:
+      return state;
+  }
+};
+
+exports.default = likesReducer;
+
+/***/ }),
+/* 760 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var LikeAPIUtil = {
+  likeTrack: function likeTrack(track_id) {
+    return $.ajax({
+      type: 'POST',
+      url: '/api/likes',
+      data: { like: { track_id: track_id } }
+    });
+  },
+  unlikeTrack: function unlikeTrack(id) {
+    return $.ajax({
+      type: 'DELETE',
+      url: '/api/likes/' + id
+    });
+  },
+  fetchUserLikes: function fetchUserLikes(user_id) {
+    return $.ajax({
+      type: 'GET',
+      url: '/api/likes',
+      data: { user_id: user_id }
+    });
+  }
+};
+
+exports.default = LikeAPIUtil;
+
+/***/ }),
+/* 761 */,
+/* 762 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fetchUserDislikes = exports.undislikeTrack = exports.dislikeTrack = exports.RECEIVE_USER_DISLIKES = exports.RECEIVE_TRACK_UNDISLIKE = exports.RECEIVE_TRACK_DISLIKE = undefined;
+
+var _dislike_api_util = __webpack_require__(764);
+
+var _dislike_api_util2 = _interopRequireDefault(_dislike_api_util);
+
+var _error_actions = __webpack_require__(34);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var RECEIVE_TRACK_DISLIKE = exports.RECEIVE_TRACK_DISLIKE = 'RECEIVE_TRACK_DISLIKE';
+var RECEIVE_TRACK_UNDISLIKE = exports.RECEIVE_TRACK_UNDISLIKE = 'RECEIVE_TRACK_UNDISLIKE';
+var RECEIVE_USER_DISLIKES = exports.RECEIVE_USER_DISLIKES = 'RECEIVE_USER_DISLIKES';
+
+var receiveTrackDislike = function receiveTrackDislike(dislike) {
+  return {
+    type: RECEIVE_TRACK_DISLIKE,
+    dislike: dislike
+  };
+};
+
+var receiveTrackUndislike = function receiveTrackUndislike(dislike) {
+  return {
+    type: RECEIVE_TRACK_UNDISLIKE,
+    dislike: dislike
+  };
+};
+
+var receiveUserDislikes = function receiveUserDislikes(dislikes) {
+  return {
+    type: RECEIVE_USER_DISLIKES,
+    dislikes: dislikes
+  };
+};
+
+var dislikeTrack = exports.dislikeTrack = function dislikeTrack(track_id) {
+  return function (dispatch) {
+    return _dislike_api_util2.default.dislikeTrack(track_id).then(function (dislike) {
+      return dispatch(receiveTrackDislike(dislike));
+    }, function (errors) {
+      return dispatch((0, _error_actions.receiveErrors)(errors.responseJSON));
+    });
+  };
+};
+
+var undislikeTrack = exports.undislikeTrack = function undislikeTrack(id) {
+  return function (dispatch) {
+    return _dislike_api_util2.default.undislikeTrack(id).then(function (dislike) {
+      return dispatch(receiveTrackUndislike(dislike));
+    }, function (errors) {
+      return dispatch((0, _error_actions.receiveErrors)(errors.responseJSON));
+    });
+  };
+};
+
+var fetchUserDislikes = exports.fetchUserDislikes = function fetchUserDislikes(user_id) {
+  return function (dispatch) {
+    return _dislike_api_util2.default.fetchUserDislikes(user_id).then(function (dislikes) {
+      return dispatch(receiveUserDislikes(dislikes));
+    }, function (errors) {
+      return dispatch((0, _error_actions.receiveErrors)(errors.responseJSON));
+    });
+  };
+};
+
+/***/ }),
+/* 763 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _merge2 = __webpack_require__(212);
+
+var _merge3 = _interopRequireDefault(_merge2);
+
+var _dislike_actions = __webpack_require__(762);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; } // Libraries
+
+// Components
+
+
+var _nullDislikes = Object.freeze({
+  dislikes: {}
+});
+
+var dislikesReducer = function dislikesReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _nullDislikes;
+  var action = arguments[1];
+
+  Object.freeze(state);
+  var newState = (0, _merge3.default)({}, state);
+  switch (action.type) {
+    case _dislike_actions.RECEIVE_TRACK_DISLIKE:
+      newState.dislikes = (0, _merge3.default)(newState.dislikes, _defineProperty({}, action.dislike.dislike.id, action.dislike.dislike));
+      return newState;
+    case _dislike_actions.RECEIVE_TRACK_UNDISLIKE:
+      delete newState.dislikes[action.dislike.dislike.id];
+      return newState;
+    case _dislike_actions.RECEIVE_USER_DISLIKES:
+      newState.dislikes = action.dislikes;
+      return newState;
+    default:
+      return state;
+  }
+};
+
+exports.default = dislikesReducer;
+
+/***/ }),
+/* 764 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var DislikeAPIUtil = {
+  dislikeTrack: function dislikeTrack(track_id) {
+    return $.ajax({
+      type: 'POST',
+      url: '/api/dislikes',
+      data: { dislike: { track_id: track_id } }
+    });
+  },
+  undislikeTrack: function undislikeTrack(id) {
+    return $.ajax({
+      type: 'DELETE',
+      url: '/api/dislikes/' + id
+    });
+  },
+  fetchUserDislikes: function fetchUserDislikes(user_id) {
+    return $.ajax({
+      type: 'GET',
+      url: '/api/dislikes',
+      data: { user_id: user_id }
+    });
+  }
+};
+
+exports.default = DislikeAPIUtil;
 
 /***/ })
 /******/ ]);
