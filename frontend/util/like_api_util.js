@@ -6,6 +6,12 @@ const LikeAPIUtil = {
       data: { like: {track_id} }
     })
   ),
+  unlikeTrack: id => (
+    $.ajax({
+      type: 'DELETE',
+      url: `/api/likes/${id}`
+    })
+  ),
   fetchUserLikes: user_id => (
     $.ajax({
       type: 'GET',

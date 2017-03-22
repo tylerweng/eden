@@ -69,8 +69,20 @@ class Playbar extends React.Component {
   }
 
   like() {
-    this.props.likeTrack(this.props.selectedTrack.id);
-    this.setState({ isLiked: !this.state.isLiked });
+    const isLiked = this.state.isLiked;
+    if (!isLiked) {
+      this.props.likeTrack(this.props.selectedTrack.id)
+      this.setState({ isLiked: !isLiked });
+    } else {
+      for (let i = 0; i < this.props.likes.length; i++) {
+        let like = this.props.likes[i];
+        if (like.track_id == this.props.selectedTrack.id && like.user_id == this.props.currentUser.id) {
+          this.props.unlikeTrack(like.id);
+          this.setState({ isLiked: !isLiked });
+          return;
+        }
+      }
+    }
   }
 
   unlike() {

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Playbar from './playbar';
 import _ from 'lodash';
 import { playPauseTrack } from '../../actions/track_actions';
-import { likeTrack, fetchUserLikes } from '../../actions/like_actions';
+import { likeTrack, unlikeTrack, fetchUserLikes } from '../../actions/like_actions';
 
 const mapStateToProps = ({ tracks, session, likes }) => ({
   selectedTrack: tracks.selectedTrack,
@@ -14,6 +14,7 @@ const mapStateToProps = ({ tracks, session, likes }) => ({
 const mapDispatchToProps = dispatch => ({
   playPauseTrack: track => dispatch(playPauseTrack(track)),
   likeTrack: track_id => dispatch(likeTrack(track_id)),
+  unlikeTrack: id => dispatch(unlikeTrack(id)),
   fetchUserLikes: user_id => dispatch(fetchUserLikes(user_id))
 });
 

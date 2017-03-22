@@ -21,6 +21,13 @@ export const likeTrack = track_id => dispatch => (
           errors => dispatch(receiveErrors(errors.responseJSON)))
 );
 
+export const unlikeTrack = id => dispatch => (
+  LikeAPIUtil
+    .unlikeTrack(id)
+    .then(like => dispatch(receiveTrackLike(null)),
+          errors => dispatch(receiveErrors(errors.responseJSON)))
+);
+
 export const fetchUserLikes = user_id => dispatch => (
   LikeAPIUtil
     .fetchUserLikes(user_id)
