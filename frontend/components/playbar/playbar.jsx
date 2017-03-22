@@ -41,6 +41,7 @@ class Playbar extends React.Component {
     const currentUser = this.props.currentUser;
     if (!currentUser) return;
     this.props.fetchUserLikes(currentUser.id);
+    this.props.fetchUserDislikes(currentUser.id);
   }
 
 
@@ -51,14 +52,22 @@ class Playbar extends React.Component {
     const playing = nextProps.playing;
     this.setState({ url, playing })
     const currentUser = this.props.currentUser;
+    this.setState({ isLiked: false });
     for (let i = 0; i < nextProps.likes.length; i++) {
       let like = nextProps.likes[i];
+      // debugger;
       if (like.track_id == selectedTrack.id && like.user_id == currentUser.id) {
         this.setState({ isLiked: true });
-        return;
       }
     }
-    this.setState({ isLiked: false });
+    this.setState({ isDisliked: false });
+    for (let i = 0; i < nextProps.dislikes.length; i++) {
+      let dislike = nextProps.dislikes[i];
+      // debugger;
+      if (dislike.track_id == selectedTrack.id && dislike.user_id == currentUser.id) {
+        this.setState({ isDisliked: true });
+      }
+    }
   }
 
   load(e) {
