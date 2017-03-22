@@ -7,13 +7,15 @@ import errorsReducer from './errors_reducer';
 import tracksReducer from './tracks_reducer';
 import searchReducer from './search_reducer';
 import likesReducer from './likes_reducer';
+import dislikesReducer from './dislikes_reducer';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   errors: errorsReducer,
   tracks: tracksReducer,
   search: searchReducer,
-  likes: likesReducer
+  likes: likesReducer,
+  dislikes: dislikesReducer
 });
 
 export default rootReducer;

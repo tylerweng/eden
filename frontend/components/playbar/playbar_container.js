@@ -3,6 +3,7 @@ import Playbar from './playbar';
 import _ from 'lodash';
 import { playPauseTrack } from '../../actions/track_actions';
 import { likeTrack, unlikeTrack, fetchUserLikes } from '../../actions/like_actions';
+import { dislikeTrack, undislikeTrack, fetchUserDislikes } from '../../actions/dislike_actions';
 
 const mapStateToProps = ({ tracks, session, likes }) => ({
   selectedTrack: tracks.selectedTrack,
@@ -15,7 +16,10 @@ const mapDispatchToProps = dispatch => ({
   playPauseTrack: track => dispatch(playPauseTrack(track)),
   likeTrack: track_id => dispatch(likeTrack(track_id)),
   unlikeTrack: id => dispatch(unlikeTrack(id)),
-  fetchUserLikes: user_id => dispatch(fetchUserLikes(user_id))
+  fetchUserLikes: user_id => dispatch(fetchUserLikes(user_id)),
+  dislikeTrack: track_id => dispatch(dislikeTrack(track_id)),
+  undislikeTrack: id => dispatch(undislikeTrack(id)),
+  fetchUserDislikes: user_id => dispatch(fetchUserDislikes(user_id))
 });
 
 const PlaybarContainer = connect(

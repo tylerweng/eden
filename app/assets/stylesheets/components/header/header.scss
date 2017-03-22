@@ -1,9 +1,16 @@
 .header {
+  width: 100%;
+  background-color: #18298A;
+  color: #FFF;
+  position: fixed;
+  border-bottom: 1px solid #fff;
+  top: 0;
   display: flex;
   justify-content: space-between;
-  height: 11.5vh;
-  background: #18298A;
+  align-items: center;
+  height: 9.25vh;
 }
+
 
 .header-name {
   color: #fff;
@@ -14,12 +21,4 @@
 .auth{
   display: flex;
   flex-direction: row;
-}
-
-.header > div {
-  margin-top: 10px;
-}
-
-.fa-user {
-  color: #fff;
 }

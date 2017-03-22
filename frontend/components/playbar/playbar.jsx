@@ -19,9 +19,10 @@ class Playbar extends React.Component {
       played: 0,
       loaded: 0,
       duration: 0,
-      isLiked: false
+      isLiked: false,
+      isDisliked: false
     };
-    this.unlike = this.unlike.bind(this);
+    this.dislike = this.dislike.bind(this);
     this.back = this.back.bind(this);
     this.forward = this.forward.bind(this);
     this.playPause = this.playPause.bind(this);
@@ -85,7 +86,7 @@ class Playbar extends React.Component {
     }
   }
 
-  unlike() {
+  dislike() {
 
   }
 
@@ -160,6 +161,8 @@ class Playbar extends React.Component {
 
     let likeKlass = 'fa fa-thumbs-up like-button';
     if (this.state.isLiked) likeKlass += ' like-unlike-highlight';
+    let dislikeKlass = 'fa fa-thumbs-down dislike-button';
+    if (this.state.isDisliked) dislikeKlass += ' like-unlike-highlight';
 
     let trackDetail;
     if (selectedTrack) {
@@ -208,8 +211,8 @@ class Playbar extends React.Component {
         { trackDetail }
         <div className='controls-progress-container'>
           <div className='controls'>
-            <button onClick={this.unlike}>
-              <i className='fa fa-thumbs-down' aria-hidden='true'></i>
+            <button onClick={this.dislike}>
+              <i className={dislikeKlass} aria-hidden='true'></i>
             </button>
             <button onClick={this.back}>
               <i className='fa fa-undo' aria-hidden='true'></i>
