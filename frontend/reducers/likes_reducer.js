@@ -3,16 +3,27 @@ import merge from 'lodash/merge';
 // Components
 import {
   RECEIVE_TRACK_LIKE,
+  RECEIVE_TRACK_UNLIKE,
   RECEIVE_USER_LIKES
 } from '../actions/like_actions';
 
-const likesReducer = (state = {}, action) => {
+const _nullLikes = Object.freeze({
+  likes: {}
+});
+
+const likesReducer = (state = _nullLikes, action) => {
   Object.freeze(state);
+  const newState = merge({}, state);
   switch(action.type) {
     case RECEIVE_TRACK_LIKE:
-      return merge({}, state, {likes: action.like} )
+      newState.likes = merge(newState.likes, {[action.like.like.id]: action.like.like });
+      return newState;
+    case RECEIVE_TRACK_UNLIKE:
+      delete newState.likes[action.like.like.id];
+      return newState;
     case RECEIVE_USER_LIKES:
-      return merge({}, state, {likes: action.likes} )
+      newState.likes = action.likes;
+      return newState;
     default:
       return state;
   }

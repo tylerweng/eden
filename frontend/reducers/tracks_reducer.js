@@ -17,7 +17,8 @@ const _nullTracks = Object.freeze({
   selectedTrack: null,
   playing: false,
   profileTrack: null
-})
+});
+
 const tracksReducer = (state = _nullTracks, action) => {
   Object.freeze(state);
   const newState = merge({}, state);
