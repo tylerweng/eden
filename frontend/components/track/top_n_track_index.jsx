@@ -30,7 +30,8 @@ class TopNTrackIndex extends React.Component {
             key={track.id}
             track={track}
             selectPlayPauseTrack={this.props.selectPlayPauseTrack}
-            selectTrack={this.props.selectTrack} />
+            selectTrack={this.props.selectTrack}
+            className='homepage-sidebar-item'/>
         ))}
       </div>
     );

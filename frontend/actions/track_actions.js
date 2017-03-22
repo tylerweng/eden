@@ -1,16 +1,16 @@
 import TrackAPIUtil from '../util/track_api_util';
 import { receiveErrors, resetErrors } from './error_actions';
 
-export const RECEIVE_TRACK = 'RECEIVE_TRACK';
+export const RECEIVE_NEXT_TRACK = 'RECEIVE_NEXT_TRACK';
 export const RECEIVE_ALL_TRACKS = 'RECEIVE_ALL_TRACKS';
 export const UPLOAD_TRACK = 'UPLOAD_TRACK';
 export const RECEIVE_PROFILE_TRACK = 'RECEIVE_PROFILE_TRACK';
 export const PLAY_PAUSE_TRACK = 'PLAY_PAUSE_TRACK';
 export const SELECT_PLAY_PAUSE_TRACK = 'SELECT_PLAY_PAUSE_TRACK';
 
-const receiveTrack = track => ({
-  type: RECEIVE_TRACK,
-  track
+const receiveNextTrack = nextTrack => ({
+  type: RECEIVE_NEXT_TRACK,
+  nextTrack
 });
 
 const receiveAllTracks = tracks => ({
@@ -49,6 +49,13 @@ export const fetchProfileTrack = id => dispatch => (
   TrackAPIUtil
     .fetchTrack(id)
     .then(profileTrack => dispatch(receiveProfileTrack(profileTrack)),
+          errors => dispatch(receiveErrors(errors.responseJSON)))
+);
+
+export const fetchNextTrack = selectedTrack => dispatch => (
+  TrackAPIUtil
+    .fetchNextTrack(selectedTrack)
+    .then(nextTrack => dispatch(receiveNextTrack(nextTrack)),
           errors => dispatch(receiveErrors(errors.responseJSON)))
 );
 

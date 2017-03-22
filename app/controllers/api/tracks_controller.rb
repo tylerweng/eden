@@ -4,7 +4,10 @@ class Api::TracksController < ApplicationController
   before_action :require_owner, only: [:update, :destroy]
 
   def index
-    if logged_in?
+    if params[:selectedTrack]
+      @track = Track.find_similar_tracks(params[:selectedTrack]).first
+      render :show
+    elsif logged_in?
       @tracks = Track.where(user_id: params[:user_id])
       render :index
     else

@@ -3,6 +3,7 @@ import merge from 'lodash/merge';
 
 // Components
 import {
+  RECEIVE_NEXT_TRACK,
   RECEIVE_PROFILE_TRACK,
   RECEIVE_ALL_TRACKS,
   RECEIVE_TOP_20_TRACKS,
@@ -15,6 +16,7 @@ import {
 const _nullTracks = Object.freeze({
   tracks: {},
   selectedTrack: null,
+  nextTrack: null,
   playing: false,
   profileTrack: null
 });
@@ -23,6 +25,9 @@ const tracksReducer = (state = _nullTracks, action) => {
   Object.freeze(state);
   const newState = merge({}, state);
   switch(action.type) {
+    case RECEIVE_NEXT_TRACK:
+      newState.nextTrack = action.nextTrack;
+      return newState;
     case RECEIVE_PROFILE_TRACK:
       newState.profileTrack = action.profileTrack;
       return newState;

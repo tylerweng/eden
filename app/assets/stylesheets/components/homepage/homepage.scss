@@ -5,12 +5,13 @@
 
 .homepage-sidebar {
   flex-direction: column;
-  width: 20.5%;
-  background: #3728C7; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(#3728C7, #231D45); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#3728C7, #231D45); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#3728C7, #231D45); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#3728C7, #231D45); /* Standard syntax */
+  width: 21.75%;
+
+  background: #20008A; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(#20008A, #1E105B); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#20008A, #1E105B); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#20008A, #1E105B); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#20008A, #1E105B); /* Standard syntax */
   background-blend-mode: overlay;
   background-size: contain;
   background-repeat: no-repeat;
@@ -18,7 +19,8 @@
   color: #fff;
 }
 
-.parallax {
+
+.homepage-main {
 
   /* Full height */
   height: 100%;
@@ -31,11 +33,9 @@
   background-size: cover;
   background-position: left 15vh top;
   height: 315vh;
-  width: 79.5%;
+  width: 78.25%;
   display: flex;
   flex-direction: column;
   font-size: 36px;
-  overflow-x: auto;
-  overflow-y: auto;
 
 }

@@ -12,6 +12,13 @@ const TrackAPIUtil = {
       url: `api/tracks/${id}`
     })
   ),
+  fetchNextTrack: selectedTrack => (
+    $.ajax({
+      type: 'GET',
+      url: `api/tracks`,
+      data: { selectedTrack }
+    })
+  ),
   fetchAllTracks: user_id => (
     $.ajax({
       type: 'GET',
