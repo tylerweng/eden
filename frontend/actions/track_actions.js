@@ -7,6 +7,7 @@ export const UPLOAD_TRACK = 'UPLOAD_TRACK';
 export const RECEIVE_PROFILE_TRACK = 'RECEIVE_PROFILE_TRACK';
 export const PLAY_PAUSE_TRACK = 'PLAY_PAUSE_TRACK';
 export const SELECT_PLAY_PAUSE_TRACK = 'SELECT_PLAY_PAUSE_TRACK';
+export const RECEIVE_LIKE_STATUS = 'RECEIVE_LIKE_STATUS';
 
 const receiveNextTrack = nextTrack => ({
   type: RECEIVE_NEXT_TRACK,
@@ -26,17 +27,23 @@ const uploadTrack = track => ({
 const receiveProfileTrack = profileTrack => ({
   type: RECEIVE_PROFILE_TRACK,
   profileTrack
-})
+});
+
+const receiveLikeStatus = likeStatus => ({
+  type: RECEIVE_LIKE_STATUS,
+  likeStatus
+});
+
 
 export const playPauseTrack = selectedTrack => ({
   type: PLAY_PAUSE_TRACK,
   selectedTrack
-})
+});
 
 export const selectPlayPauseTrack = selectedTrack => ({
   type: SELECT_PLAY_PAUSE_TRACK,
   selectedTrack
-})
+});
 
 export const upload = track => dispatch => (
   TrackAPIUtil
@@ -70,5 +77,12 @@ export const fetchTopNTracks = (num_tracks = 8) => dispatch => (
   TrackAPIUtil
     .fetchTopNTracks(num_tracks)
     .then(tracks => dispatch(receiveAllTracks(tracks)),
+          errors => dispatch(receiveErrors(errors.responseJSON)))
+);
+
+export const fetchLikeStatus = id => dispatch => (
+  TrackAPIUtil
+    .fetchLikeStatus(id)
+    .then(likeStatus => dispatch(receiveLikeStatus(likeStatus)),
           errors => dispatch(receiveErrors(errors.responseJSON)))
 );

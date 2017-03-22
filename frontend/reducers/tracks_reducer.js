@@ -10,12 +10,14 @@ import {
   UPLOAD_TRACK,
   SELECT_TRACK_PROFILE_ID,
   PLAY_PAUSE_TRACK,
-  SELECT_PLAY_PAUSE_TRACK
+  SELECT_PLAY_PAUSE_TRACK,
+  RECEIVE_LIKE_STATUS
 } from '../actions/track_actions';
 
 const _nullTracks = Object.freeze({
   tracks: {},
   selectedTrack: null,
+  likeStatus: 'neutral',
   nextTrack: null,
   playing: false,
   profileTrack: null
@@ -25,6 +27,9 @@ const tracksReducer = (state = _nullTracks, action) => {
   Object.freeze(state);
   const newState = merge({}, state);
   switch(action.type) {
+    case RECEIVE_LIKE_STATUS:
+      newState.likeStatus = action.likeStatus;
+      return newState;
     case RECEIVE_NEXT_TRACK:
       newState.nextTrack = action.nextTrack;
       return newState;
