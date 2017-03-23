@@ -1,5 +1,6 @@
 import LikeAPIUtil from '../util/like_api_util';
 import { receiveErrors, resetErrors } from './error_actions';
+import { fetchLikeStatus } from './track_actions';
 
 export const RECEIVE_TRACK_LIKE = 'RECEIVE_TRACK_LIKE';
 export const RECEIVE_TRACK_UNLIKE = 'RECEIVE_TRACK_UNLIKE';
@@ -20,23 +21,26 @@ const receiveUserLikes = likes => ({
   likes
 });
 
-export const likeTrack = track_id => dispatch => (
-  LikeAPIUtil
+export const likeTrack = track_id => dispatch => {
+  return LikeAPIUtil
     .likeTrack(track_id)
     .then(like => dispatch(receiveTrackLike(like)),
           errors => console.log('buffering'))
-);
+    .then(() => dispatch(fetchLikeStatus(track_id)));
+};
 
-export const unlikeTrack = id => dispatch => (
-  LikeAPIUtil
+export const unlikeTrack = id => dispatch => {
+  return LikeAPIUtil
     .unlikeTrack(id)
-    .then(like => dispatch(receiveTrackUnlike(like)),
-          errors => console.log('buffering'))
-);
+    .then(like => {
+      dispatch(fetchLikeStatus(like ? like.like.track_id : like));
+      dispatch(receiveTrackUnlike(like));
+    },  errors => dispatch(receiveErrors(errors.responseJSON)))
+};
 
 export const fetchUserLikes = user_id => dispatch => (
   LikeAPIUtil
     .fetchUserLikes(user_id)
     .then(likes => dispatch(receiveUserLikes(likes)),
-          errors => console.log('buffering'))
+          errors => dispatch(receiveErrors(errors.responseJSON)))
 );

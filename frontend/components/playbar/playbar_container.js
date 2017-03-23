@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Playbar from './playbar';
 import _ from 'lodash';
-import { playPauseTrack, selectPlayPauseTrack, fetchNextTrack, fetchLikeStatus } from '../../actions/track_actions';
+import { playPauseTrack, selectPlayPauseTrack, fetchNextTrack } from '../../actions/track_actions';
 import { likeTrack, unlikeTrack, fetchUserLikes } from '../../actions/like_actions';
 import { dislikeTrack, undislikeTrack, fetchUserDislikes } from '../../actions/dislike_actions';
 
@@ -24,8 +24,7 @@ const mapDispatchToProps = dispatch => ({
   fetchUserLikes: user_id => dispatch(fetchUserLikes(user_id)),
   dislikeTrack: track_id => dispatch(dislikeTrack(track_id)),
   undislikeTrack: id => dispatch(undislikeTrack(id)),
-  fetchUserDislikes: user_id => dispatch(fetchUserDislikes(user_id)),
-  fetchLikeStatus: id => dispatch(fetchLikeStatus(id))
+  fetchUserDislikes: user_id => dispatch(fetchUserDislikes(user_id))
 });
 
 const PlaybarContainer = connect(
