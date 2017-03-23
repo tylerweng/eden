@@ -8,6 +8,8 @@ class Api::LikesController < ApplicationController
     render :index
   end
 
+
+
   def create
     @like = current_user.likes.new(like_params)
 

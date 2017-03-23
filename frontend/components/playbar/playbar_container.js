@@ -11,7 +11,8 @@ const mapStateToProps = ({ tracks, session, likes, dislikes }) => ({
   playing: tracks.playing,
   currentUser: session.currentUser,
   likes: _.values(likes.likes),
-  dislikes: _.values(dislikes.dislikes)
+  dislikes: _.values(dislikes.dislikes),
+  likeStatus: tracks.likeStatus
 });
 
 const mapDispatchToProps = dispatch => ({

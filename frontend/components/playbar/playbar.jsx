@@ -19,7 +19,7 @@ class Playbar extends React.Component {
       played: 0,
       loaded: 0,
       duration: 0,
-      likeStatus: 'neutral'
+      likeStatus: this.props.likeStatus
     };
     this.dislike = this.dislike.bind(this);
     this.back = this.back.bind(this);
@@ -41,6 +41,8 @@ class Playbar extends React.Component {
     if (!currentUser) return;
     this.props.fetchUserLikes(currentUser.id);
     this.props.fetchUserDislikes(currentUser.id);
+    if (!this.props.selectedTrack) return;
+    this.props.fetchLikeStatus(this.props.selectedTrack.id);
   }
 
 
@@ -54,22 +56,24 @@ class Playbar extends React.Component {
     const currentUser = this.props.currentUser;
     if (!currentUser) return;
 
-    for (let i = 0; i < nextProps.likes.length; i++) {
-      let like = nextProps.likes[i];
-      if (like === undefined) continue;
-      if (like.track_id == selectedTrack.id && like.user_id == currentUser.id) {
-        this.setState({ likeStatus: 'liked' });
-        return;
-      }
-    }
-    for (let j = 0; j < nextProps.dislikes.length; j++) {
-      let dislike = nextProps.dislikes[j];
-      if (dislike === undefined) continue;
-      if (dislike.track_id == selectedTrack.id && dislike.user_id == currentUser.id) {
-        this.setState({ likeStatus: 'disliked' });
-        return;
-      }
-    }
+    // if (nextProps.likeStatus)
+    //
+    // for (let i = 0; i < nextProps.likes.length; i++) {
+    //   let like = nextProps.likes[i];
+    //   if (like === undefined) continue;
+    //   if (like.track_id == selectedTrack.id && like.user_id == currentUser.id) {
+    //     this.setState({ likeStatus: 'liked' });
+    //     return;
+    //   }
+    // }
+    // for (let j = 0; j < nextProps.dislikes.length; j++) {
+    //   let dislike = nextProps.dislikes[j];
+    //   if (dislike === undefined) continue;
+    //   if (dislike.track_id == selectedTrack.id && dislike.user_id == currentUser.id) {
+    //     this.setState({ likeStatus: 'disliked' });
+    //     return;
+    //   }
+    // }
   }
 
   load(e) {
@@ -81,6 +85,7 @@ class Playbar extends React.Component {
   }
 
   like() {
+    debugger;
     if (!this.props.currentUser) return;
 
     if (this.state.likeStatus === 'neutral') {
@@ -89,24 +94,20 @@ class Playbar extends React.Component {
     } else if (this.state.likeStatus === 'disliked') {
       for (let i = 0; i < this.props.dislikes.length; i++) {
         let dislike = this.props.dislikes[i];
-        if (dislike === undefined) continue;
         if (dislike.track_id == this.props.selectedTrack.id
              && dislike.user_id == this.props.currentUser.id) {
           this.props.undislikeTrack(dislike.id);
-          this.props.likeTrack(this.props.selectedTrack.id);
-          this.setState({ likeStatus: 'liked' });
-          return;
         }
+        this.props.likeTrack(this.props.selectedTrack.id);
+        this.setState({ likeStatus: 'liked' });
       }
     } else {
       for (let j = 0; j < this.props.likes.length; j++) {
         let like = this.props.likes[j];
-        if (like === undefined) continue;
         if (like.track_id == this.props.selectedTrack.id
              && like.user_id == this.props.currentUser.id) {
           this.props.unlikeTrack(like.id);
           this.setState({ likeStatus: 'neutral' });
-          return;
         }
       }
     }
@@ -121,24 +122,20 @@ class Playbar extends React.Component {
     } else if (this.state.likeStatus === 'liked') {
       for (let i = 0; i < this.props.likes.length; i++) {
         let like = this.props.likes[i];
-        if (like === undefined) continue;
         if (like.track_id == this.props.selectedTrack.id
              && like.user_id == this.props.currentUser.id) {
           this.props.unlikeTrack(like.id);
-          this.props.dislikeTrack(this.props.selectedTrack.id);
-          this.setState({ likeStatus: 'disliked' });
-          return;
         }
+        this.props.dislikeTrack(this.props.selectedTrack.id);
+        this.setState({ likeStatus: 'disliked' });
       }
     } else {
       for (let j = 0; j < this.props.dislikes.length; j++) {
         let dislike = this.props.dislikes[j];
-        if (dislike === undefined) continue;
         if (dislike.track_id == this.props.selectedTrack.id
              && dislike.user_id == this.props.currentUser.id) {
           this.props.undislikeTrack(dislike.id);
           this.setState({ likeStatus: 'neutral' });
-          return;
         }
       }
     }
