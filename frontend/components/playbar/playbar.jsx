@@ -18,8 +18,7 @@ class Playbar extends React.Component {
       priorVolume: 0.5,
       played: 0,
       loaded: 0,
-      duration: 0,
-      likeStatus: this.props.likeStatus
+      duration: 0
     };
     this.dislike = this.dislike.bind(this);
     this.back = this.back.bind(this);
@@ -48,6 +47,7 @@ class Playbar extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (!nextProps.selectedTrack) return;
+    this.props.fetchLikeStatus(nextProps.selectedTrack.id)
     const selectedTrack = nextProps.selectedTrack;
     const url = selectedTrack.track_url;
     const playing = nextProps.playing;
@@ -65,10 +65,9 @@ class Playbar extends React.Component {
   like() {
     if (!this.props.currentUser) return;
 
-    if (this.state.likeStatus === 'neutral') {
+    if (this.props.likeStatus === 'neutral') {
       this.props.likeTrack(this.props.selectedTrack.id);
-      this.setState({ likeStatus: 'liked' });
-    } else if (this.state.likeStatus === 'disliked') {
+    } else if (this.props.likeStatus === 'disliked') {
       for (let i = 0; i < this.props.dislikes.length; i++) {
         let dislike = this.props.dislikes[i];
         if (dislike.track_id == this.props.selectedTrack.id
@@ -76,7 +75,6 @@ class Playbar extends React.Component {
           this.props.undislikeTrack(dislike.id);
         }
         this.props.likeTrack(this.props.selectedTrack.id);
-        this.setState({ likeStatus: 'liked' });
       }
     } else {
       for (let j = 0; j < this.props.likes.length; j++) {
@@ -84,7 +82,6 @@ class Playbar extends React.Component {
         if (like.track_id == this.props.selectedTrack.id
              && like.user_id == this.props.currentUser.id) {
           this.props.unlikeTrack(like.id);
-          this.setState({ likeStatus: 'neutral' });
         }
       }
     }
@@ -93,10 +90,9 @@ class Playbar extends React.Component {
   dislike() {
     if (!this.props.currentUser) return;
 
-    if (this.state.likeStatus === 'neutral') {
+    if (this.props.likeStatus === 'neutral') {
       this.props.dislikeTrack(this.props.selectedTrack.id);
-      this.setState({ likeStatus: 'disliked' });
-    } else if (this.state.likeStatus === 'liked') {
+    } else if (this.props.likeStatus === 'liked') {
       for (let i = 0; i < this.props.likes.length; i++) {
         let like = this.props.likes[i];
         if (like.track_id == this.props.selectedTrack.id
@@ -104,7 +100,6 @@ class Playbar extends React.Component {
           this.props.unlikeTrack(like.id);
         }
         this.props.dislikeTrack(this.props.selectedTrack.id);
-        this.setState({ likeStatus: 'disliked' });
       }
     } else {
       for (let j = 0; j < this.props.dislikes.length; j++) {
@@ -112,7 +107,6 @@ class Playbar extends React.Component {
         if (dislike.track_id == this.props.selectedTrack.id
              && dislike.user_id == this.props.currentUser.id) {
           this.props.undislikeTrack(dislike.id);
-          this.setState({ likeStatus: 'neutral' });
         }
       }
     }
@@ -123,7 +117,6 @@ class Playbar extends React.Component {
   }
 
   forward(e) {
-    // debugger
     if (this.props.currentUser) this.props.fetchLikeStatus(this.props.nextTrack.id);
     this.props.selectPlayPauseTrack(this.props.nextTrack);
     this.props.fetchNextTrack(this.props.nextTrack);
@@ -167,7 +160,6 @@ class Playbar extends React.Component {
     if (this.state.loop) {
       this.player.seekTo(0);
     } else {
-      this.setState({ likeStatus: 'netural' });
       if (this.props.currentUser) this.props.fetchLikeStatus(this.props.nextTrack.id);
       this.props.selectPlayPauseTrack(this.props.nextTrack);
       this.props.fetchNextTrack(this.props.nextTrack);
@@ -194,9 +186,9 @@ class Playbar extends React.Component {
     const playbarKlass = (selectedTrack ? 'playbar' : 'playbar hidden');
 
     let likeKlass = 'fa fa-thumbs-up like-button';
-    if (this.state.likeStatus === 'liked') likeKlass += ' like-dislike-highlight';
+    if (this.props.likeStatus === 'liked') likeKlass += ' like-dislike-highlight';
     let dislikeKlass = 'fa fa-thumbs-down dislike-button';
-    if (this.state.likeStatus === 'disliked') dislikeKlass += ' like-dislike-highlight';
+    if (this.props.likeStatus === 'disliked') dislikeKlass += ' like-dislike-highlight';
 
     let trackDetail;
     if (selectedTrack) {
