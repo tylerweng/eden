@@ -19,7 +19,6 @@ const Root = ({ store }) => (
         <Redirect from="/" to="/homepage" />
         <Route path='/homepage' component={ Homepage } />
         <Route path='/myprofile' component={ UserProfile } />
-        <Route path='/nowplaying' component={ TrackProfile } />
         <Route path='/mystations' component={ MyStations } />
         <Route path='/tracks/:id' component={ TrackDetailContainer } />
       </App>

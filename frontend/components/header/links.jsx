@@ -7,18 +7,35 @@ class Links extends React.Component {
   }
 
   render() {
+    let nowPlaying;
+    if (this.props.selectedTrack) {
+      nowPlaying = (
+          <Link
+            to={`/tracks/${this.props.selectedTrack.id}`}
+            className={'header-link now-playing'}>
+            Now Playing
+          </Link>
+      );
+    } else {
+      nowPlaying = <div>Now Playing</div>;
+    }
+
+    let myStations;
+    if (this.props.currentUser) {
+      myStations = (
+          <Link
+            to={`/mystations`}
+            className={'header-link my-stations'}>
+            My Stations
+          </Link>
+      );
+    } else {
+      myStations = <div>My Stations</div>;
+    }
     return (
       <div className='links'>
-        <Link
-          to='/nowplaying'
-          className={'header-link now-playing'}>
-          Now Playing
-        </Link>
-        <Link
-          to='/mystations'
-          className={'header-link my-stations'}>
-          My Stations
-        </Link>
+        { nowPlaying }
+        { myStations }
       </div>
     );
   }

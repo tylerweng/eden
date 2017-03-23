@@ -1,7 +1,6 @@
-.track-detail {
+.track-detail-container {
   height: 100%;
-  padding-top: 15vh;
-  padding-bottom: 15vh;
+  padding-bottom: 17.5vh;
   background-image:url('https://s3-us-west-1.amazonaws.com/eden-audio/application_images/track_detail_background.jpg'), radial-gradient(#3B30CA, #2847BB);
   background-blend-mode: overlay;
   background-size: cover;
@@ -16,7 +15,7 @@
 }
 
 .track-detail {
-  margin-top: 10vh;
+  margin-top: 15vh;
   align-items: center;
   display: flex;
   flex-direction: column;
