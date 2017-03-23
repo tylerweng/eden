@@ -86,12 +86,13 @@ export const fetchTopNTracks = (num_tracks = 20) => dispatch => (
           errors => dispatch(receiveErrors(errors.responseJSON)))
 );
 
-export const fetchLikeStatus = id => dispatch => (
-  TrackAPIUtil
+export const fetchLikeStatus = id => dispatch => {
+  debugger;
+  return TrackAPIUtil
     .fetchLikeStatus(id)
     .then(likeStatus => dispatch(receiveLikeStatus(likeStatus)),
           errors => dispatch(receiveErrors(errors.responseJSON)))
-);
+};
 
 export const showProfile = id => dispatch => (
   TrackAPIUtil

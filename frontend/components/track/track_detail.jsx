@@ -15,6 +15,7 @@ class TrackDetail extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (this.state.pageId === nextProps.match.params.id) return;
     this.setState({ pageId: nextProps.match.params.id});
     this.props.showProfile(this.state.pageId);
   }
