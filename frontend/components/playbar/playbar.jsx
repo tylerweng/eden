@@ -85,7 +85,6 @@ class Playbar extends React.Component {
   }
 
   like() {
-    debugger;
     if (!this.props.currentUser) return;
 
     if (this.state.likeStatus === 'neutral') {

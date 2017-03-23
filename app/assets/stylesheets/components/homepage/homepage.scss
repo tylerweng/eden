@@ -5,7 +5,7 @@
 
 .homepage-sidebar {
   flex-direction: column;
-  width: 21.75%;
+  width: 150px;
 
   background: #20008A; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(#20008A, #1E105B); /* For Safari 5.1 to 6.0 */
@@ -17,6 +17,12 @@
   background-repeat: no-repeat;
   justify-content: center;
   color: #fff;
+
+}
+
+.homepage-sidebar-header {
+  margin-left: 42.5px;
+
 }
 
 
@@ -33,7 +39,7 @@
   background-size: cover;
   background-position: left 15vh top;
   height: 315vh;
-  width: 78.25%;
+  width: 90%;
   display: flex;
   flex-direction: column;
   font-size: 36px;

@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 10vh;
+  height: 64px;
 }
 
 .react-player {
@@ -91,7 +91,7 @@
 }
 
 .volume-slider {
-  margin-top: 1vh;
+  margin-bottom: 2vh;
   display: flex;
   flex-direction: row;
   width: 50%;

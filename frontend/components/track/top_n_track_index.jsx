@@ -1,32 +1,27 @@
 import React from 'react';
-import TrackIndexItem from './track_index_item';
+import TrackSidebarItem from './track_sidebar_item';
 
 class TopNTrackIndex extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      tracks: this.props.tracks
-    };
-
   }
 
   componentWillMount() {
-    this.props.fetchTopNTracks(8);
+    this.props.fetchTopNTracks(20);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const tracks = nextProps.tracks;
-    this.setState({ tracks })
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   this.props.fetchTopNTracks(20);
+  // }
 
   render() {
-    if(!this.state.tracks) return <div></div>;
+    if(!this.props.tracks) return <div></div>;
     return (
       <div className='homepage-sidebar'>
-        {this.state.tracks.map(track => (
-          <TrackIndexItem
+        <div className='homepage-sidebar-header'>Latest Hits</div>
+        {this.props.tracks.map(track => (
+          <TrackSidebarItem
             key={track.id}
             track={track}
             selectPlayPauseTrack={this.props.selectPlayPauseTrack}

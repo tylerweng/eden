@@ -32,8 +32,8 @@ class Track < ApplicationRecord
     self.where("title ILIKE ?", "%#{queryValue}%").limit(10)
   end
 
-  def self.top(num_tracks = 8)
-    self.order(created_at: :desc).limit(num_tracks)
+  def self.top(num_tracks = 20)
+    self.order(created_at: :desc).limit(num_tracks).shuffle
   end
 
   def self.find_next_track(selectedTrack)
