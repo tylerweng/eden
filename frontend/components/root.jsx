@@ -10,6 +10,7 @@ import Homepage from './homepage/homepage';
 import UserProfile from './user/user_profile';
 import MyStations from './user/my_stations';
 import TrackProfile from './track/track_profile';
+import TrackDetailContainer from './track/track_detail_container';
 
 const Root = ({ store }) => (
   <Provider store={ store }>
@@ -20,7 +21,7 @@ const Root = ({ store }) => (
         <Route path='/myprofile' component={ UserProfile } />
         <Route path='/nowplaying' component={ TrackProfile } />
         <Route path='/mystations' component={ MyStations } />
-        <Route path='/tracks/:id' component={ TrackProfile } />
+        <Route path='/tracks/:id' component={ TrackDetailContainer } />
       </App>
     </HashRouter>
   </Provider>

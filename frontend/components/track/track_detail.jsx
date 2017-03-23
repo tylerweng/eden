@@ -4,8 +4,10 @@ class TrackDetail extends React.Component {
 
   constructor(props) {
     super(props);
+    debugger;
     this.state = {
-      profileTrack: null
+      profileTrack: null,
+      pageId: this.props.match.params.id
     }
     this.handleClick = this.handleClick.bind(this);
   }
@@ -13,6 +15,14 @@ class TrackDetail extends React.Component {
   componentWillMount() {
     const profileTrack = this.props.profileTrack;
     this.setState({ profileTrack });
+    this.props.showProfile(this.state.pageId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const profileTrack = nextProps.profileTrack;
+    this.setState({ profileTrack });
+    this.setState({ pageId: nextProps.match.params.id});
+    this.props.showProfile(this.state.pageId);
   }
 
   handleClick(event) {

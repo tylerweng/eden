@@ -11,7 +11,8 @@ import {
   SELECT_TRACK_PROFILE_ID,
   PLAY_PAUSE_TRACK,
   SELECT_PLAY_PAUSE_TRACK,
-  RECEIVE_LIKE_STATUS
+  RECEIVE_LIKE_STATUS,
+  RECEIVE_TRACK_PROFILE
 } from '../actions/track_actions';
 
 const _nullTracks = Object.freeze({
@@ -28,7 +29,8 @@ const tracksReducer = (state = _nullTracks, action) => {
   const newState = merge({}, state);
   switch(action.type) {
     case RECEIVE_LIKE_STATUS:
-      newState.likeStatus = action.likeStatus;
+      debugger;
+      newState.likeStatus = action.likeStatus.status;
       return newState;
     case RECEIVE_NEXT_TRACK:
       newState.nextTrack = action.nextTrack;
@@ -50,15 +52,20 @@ const tracksReducer = (state = _nullTracks, action) => {
       return newState;
     case SELECT_PLAY_PAUSE_TRACK:
       const priorTrack = state.selectedTrack;
-      if (priorTrack) {
-        newState.playing = (priorTrack === action.selectedTrack
-                                          ? !state.playing
-                                          : true);
+      if (!priorTrack) {
+        newState.playing = true
+      }
+      else if (priorTrack.track_url === action.selectedTrack.track_url
+                && state.playing === true) {
+        newState.playing = false;
       } else {
         newState.playing = true;
       }
       newState.selectedTrack = action.selectedTrack;
       newState.profileTrack = action.selectedTrack;
+      return newState;
+    case RECEIVE_TRACK_PROFILE:
+      newState.profileTrack = action.profileTrack;
       return newState;
     default:
       return state;

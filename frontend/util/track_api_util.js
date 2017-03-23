@@ -39,6 +39,12 @@ const TrackAPIUtil = {
       url: `api/tracks/${id}`,
       data: { retrieveLikeStatus: 'Retrieving Like Status!' }
     })
+  ),
+  showProfile: id => (
+    $.ajax({
+      type: 'GET',
+      url: `api/tracks/${id}`
+    })
   )
 };
 

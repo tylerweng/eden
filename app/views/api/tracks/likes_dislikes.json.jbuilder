@@ -8,4 +8,4 @@ json.array! @track.dislikes do |dislike|
   like_status = 'disliked' if dislike.track_id == @track.id && dislike.user_id == current_user.id
 end
 
-like_status
+{ status: like_status }
