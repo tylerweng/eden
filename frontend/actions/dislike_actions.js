@@ -24,19 +24,19 @@ export const dislikeTrack = track_id => dispatch => (
   DislikeAPIUtil
     .dislikeTrack(track_id)
     .then(dislike => dispatch(receiveTrackDislike(dislike)),
-          errors => dispatch(receiveErrors(errors.responseJSON)))
+          errors => console.log('buffering'))
 );
 
 export const undislikeTrack = id => dispatch => (
   DislikeAPIUtil
     .undislikeTrack(id)
     .then(dislike => dispatch(receiveTrackUndislike(dislike)),
-          errors => dispatch(receiveErrors(errors.responseJSON)))
+          errors => console.log('buffering'))
 );
 
 export const fetchUserDislikes = user_id => dispatch => (
   DislikeAPIUtil
     .fetchUserDislikes(user_id)
     .then(dislikes => dispatch(receiveUserDislikes(dislikes)),
-          errors => dispatch(receiveErrors(errors.responseJSON)))
+          errors => console.log('buffering'))
 );

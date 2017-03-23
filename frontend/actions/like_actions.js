@@ -24,19 +24,19 @@ export const likeTrack = track_id => dispatch => (
   LikeAPIUtil
     .likeTrack(track_id)
     .then(like => dispatch(receiveTrackLike(like)),
-          errors => dispatch(receiveErrors(errors.responseJSON)))
+          errors => console.log('buffering'))
 );
 
 export const unlikeTrack = id => dispatch => (
   LikeAPIUtil
     .unlikeTrack(id)
     .then(like => dispatch(receiveTrackUnlike(like)),
-          errors => dispatch(receiveErrors(errors.responseJSON)))
+          errors => console.log('buffering'))
 );
 
 export const fetchUserLikes = user_id => dispatch => (
   LikeAPIUtil
     .fetchUserLikes(user_id)
     .then(likes => dispatch(receiveUserLikes(likes)),
-          errors => dispatch(receiveErrors(errors.responseJSON)))
+          errors => console.log('buffering'))
 );

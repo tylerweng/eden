@@ -10,6 +10,9 @@ User.destroy_all
 Track.destroy_all
 
 User.create(username: 'guest', password: 'password', email: 'user@gmail.com')
+User.create(username: 'Steve', password: 'password', email: 'Steve@gmail.com')
+User.create(username: 'Dylan', password: 'password', email: 'Dylan@gmail.com')
+User.create(username: 'barrybluejeans', password: 'password', email: 'barrybluejeans@gmail.com')
 
 Track.create(user_id: 1, title: 'All We Know', artist: 'The Chainsmokers', track_url:'https://s3-us-west-1.amazonaws.com/eden-audio/tracks/01+All+We+Know+(feat.+Phoebe+Ryan).m4a', img_url: 'https://images.genius.com/b88df63fd6fa744089bb3b07188f4249.1000x1000x1.jpg')
 Track.create(user_id: 1, title: 'Closer', artist: 'The Chainsmokers', track_url:'https://s3-us-west-1.amazonaws.com/eden-audio/tracks/01+Closer+(feat.+Halsey).m4a', img_url: 'https://images.genius.com/6e44a91448d28714d0a0f91a27193e91.1000x1000x1.jpg')

@@ -47,10 +47,9 @@ class Playbar extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (!nextProps.selectedTrack) return;
-    if (this.props.selectedTrack &&
-        nextProps.selectedTrack.id !== this.props.selectedTrack.id) {
-        this.props.fetchLikeStatus(nextProps.selectedTrack.id);
-    }
+    // if (nextProps.selectedTrack) {
+    //   this.props.fetchLikeStatus(nextProps.selectedTrack.id);
+    // }
     const selectedTrack = nextProps.selectedTrack;
     const url = selectedTrack.track_url;
     const playing = nextProps.playing;
@@ -73,6 +72,7 @@ class Playbar extends React.Component {
     } else if (this.props.likeStatus === 'disliked') {
       for (let i = 0; i < this.props.dislikes.length; i++) {
         let dislike = this.props.dislikes[i];
+        if (dislike === undefined) continue;
         if (dislike.track_id == this.props.selectedTrack.id
              && dislike.user_id == this.props.currentUser.id) {
           this.props.undislikeTrack(dislike.id);
@@ -82,12 +82,14 @@ class Playbar extends React.Component {
     } else {
       for (let j = 0; j < this.props.likes.length; j++) {
         let like = this.props.likes[j];
+        if (like === undefined) continue;
         if (like.track_id == this.props.selectedTrack.id
              && like.user_id == this.props.currentUser.id) {
           this.props.unlikeTrack(like.id);
         }
       }
     }
+    this.props.fetchLikeStatus(this.props.selectedTrack.id);
   }
 
   dislike() {
@@ -98,6 +100,7 @@ class Playbar extends React.Component {
     } else if (this.props.likeStatus === 'liked') {
       for (let i = 0; i < this.props.likes.length; i++) {
         let like = this.props.likes[i];
+        if (like === undefined) continue;
         if (like.track_id == this.props.selectedTrack.id
              && like.user_id == this.props.currentUser.id) {
           this.props.unlikeTrack(like.id);
@@ -107,12 +110,14 @@ class Playbar extends React.Component {
     } else {
       for (let j = 0; j < this.props.dislikes.length; j++) {
         let dislike = this.props.dislikes[j];
+        if (dislike === undefined) continue;
         if (dislike.track_id == this.props.selectedTrack.id
              && dislike.user_id == this.props.currentUser.id) {
           this.props.undislikeTrack(dislike.id);
         }
       }
     }
+    this.props.fetchLikeStatus(this.props.selectedTrack.id);
   }
 
   back(e) {
@@ -120,9 +125,10 @@ class Playbar extends React.Component {
   }
 
   forward(e) {
-    if (this.props.currentUser) this.props.fetchLikeStatus(this.props.nextTrack.id);
-    this.props.selectPlayPauseTrack(this.props.nextTrack);
-    this.props.fetchNextTrack(this.props.nextTrack);
+    // if (this.props.currentUser) this.props.fetchLikeStatus(this.props.nextTrack.id);
+    // this.props.selectPlayPauseTrack(this.props.nextTrack);
+    // this.props.fetchNextTrack(this.props.nextTrack);
+    this.onEnded();
   }
 
   repeat(e) {

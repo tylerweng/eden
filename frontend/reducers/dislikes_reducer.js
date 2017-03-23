@@ -16,9 +16,11 @@ const dislikesReducer = (state = _nullDislikes, action) => {
   const newState = merge({}, state);
   switch(action.type) {
     case RECEIVE_TRACK_DISLIKE:
+      if (action.dislike === undefined) return newState;
       newState.dislikes = merge(newState.dislikes, {[action.dislike.dislike.id]: action.dislike.dislike });
       return newState;
     case RECEIVE_TRACK_UNDISLIKE:
+      if (action.dislike === undefined) return newState;
       delete newState.dislikes[action.dislike.dislike.id];
       return newState;
     case RECEIVE_USER_DISLIKES:

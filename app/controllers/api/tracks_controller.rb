@@ -38,13 +38,14 @@ class Api::TracksController < ApplicationController
   end
 
   def show
-    if (params[:retrieveLikeStatus])
+    if (params[:retrieveLikeStatus] && current_user)
       @track = Track.find_by(id: params[:id])
       like_status = 'neutral'
       like_status = 'liked' if current_user.likes.find_by(track_id: @track.id)
       like_status = 'disliked' if current_user.dislikes.find_by(track_id: @track.id)
       render json: [like_status]
     else
+      return unless params[:id]
       @track = Track.find_by(id: params[:id])
       render :show
     end

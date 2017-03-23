@@ -18,15 +18,21 @@ class Track < ApplicationRecord
 
   belongs_to :user
 
-  has_many :likes
+  has_many :likes,
+    dependent: :destroy
+
   has_many :user_likes,
     through: :likes,
-    source: :user
+    source: :user,
+    dependent: :destroy
 
-  has_many :dislikes
+  has_many :dislikes,
+    dependent: :destroy
+
   has_many :user_dislikes,
     through: :dislikes,
-    source: :user
+    source: :user,
+    dependent: :destroy
 
   def self.search(queryValue)
     self.where("title ILIKE ?", "%#{queryValue}%").limit(10)

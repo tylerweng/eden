@@ -23,15 +23,21 @@ class User < ApplicationRecord
 
   has_many :tracks
 
-  has_many :likes
+  has_many :likes,
+    dependent: :destroy
+
   has_many :liked_tracks,
     through: :likes,
-    source: :track
+    source: :track,
+    dependent: :destroy
 
-  has_many :dislikes
+  has_many :dislikes,
+    dependent: :destroy
+
   has_many :disliked_tracks,
     through: :dislikes,
-    source: :track
+    source: :track,
+    dependent: :destroy
 
   def self.search(queryValue)
     self.where("username ILIKE ?", "%#{queryValue}%").limit(5)

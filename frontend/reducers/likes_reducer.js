@@ -16,9 +16,11 @@ const likesReducer = (state = _nullLikes, action) => {
   const newState = merge({}, state);
   switch(action.type) {
     case RECEIVE_TRACK_LIKE:
+      if (action.like === undefined) return newState;
       newState.likes = merge(newState.likes, {[action.like.like.id]: action.like.like });
       return newState;
     case RECEIVE_TRACK_UNLIKE:
+      if (action.like === undefined) return newState;
       delete newState.likes[action.like.like.id];
       return newState;
     case RECEIVE_USER_LIKES:
