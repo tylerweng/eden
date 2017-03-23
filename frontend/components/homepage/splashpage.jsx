@@ -3,9 +3,7 @@ import React from 'react';
 const Splashpage = () => (
   <div className='homepage-main'>
     <div className='homepage-intro'>
-    Scroll Up and Down this page to see the parallax scrolling effect.
-    This div is just here to enable scrolling.
-    Tip: Try to remove the background-attachment property to remove the scrolling effect.
+    Welcome to eden.
     </div>
     <div className='homepage-features'>
       <div className='homepage-feature-1'>
