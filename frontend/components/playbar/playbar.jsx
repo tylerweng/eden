@@ -123,7 +123,8 @@ class Playbar extends React.Component {
   }
 
   forward(e) {
-    // if (this.props.currentUser) this.props.fetchLikeStatus(this.props.nextTrack.id);
+    // debugger
+    if (this.props.currentUser) this.props.fetchLikeStatus(this.props.nextTrack.id);
     this.props.selectPlayPauseTrack(this.props.nextTrack);
     this.props.fetchNextTrack(this.props.nextTrack);
   }
@@ -167,7 +168,7 @@ class Playbar extends React.Component {
       this.player.seekTo(0);
     } else {
       this.setState({ likeStatus: 'netural' });
-      // if (this.props.currentUser) this.props.fetchLikeStatus(this.props.nextTrack.id);
+      if (this.props.currentUser) this.props.fetchLikeStatus(this.props.nextTrack.id);
       this.props.selectPlayPauseTrack(this.props.nextTrack);
       this.props.fetchNextTrack(this.props.nextTrack);
     }

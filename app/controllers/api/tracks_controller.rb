@@ -42,15 +42,8 @@ class Api::TracksController < ApplicationController
     if (params[:retrieveLikeStatus])
       @track = Track.find_by(id: params[:id])
       like_status = 'neutral'
-
-      @track.likes do |like|
-        like_status = 'liked' if like.track_id == @track.id && like.user_id == current_user.id
-      end
-
-      @track.dislikes do |dislike|
-        like_status = 'disliked' if dislike.track_id == @track.id && dislike.user_id == current_user.id
-      end
-
+      like_status = 'liked' if current_user.likes.find_by(track_id: @track.id)
+      like_status = 'disliked' if current_user.dislikes.find_by(track_id: @track.id)
       render json: [like_status]
     else
       @track = Track.find_by(id: params[:id])

@@ -87,7 +87,7 @@ export const fetchTopNTracks = (num_tracks = 20) => dispatch => (
 );
 
 export const fetchLikeStatus = id => dispatch => {
-  debugger;
+  // debugger;
   return TrackAPIUtil
     .fetchLikeStatus(id)
     .then(likeStatus => dispatch(receiveLikeStatus(likeStatus)),
