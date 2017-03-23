@@ -47,7 +47,10 @@ class Playbar extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (!nextProps.selectedTrack) return;
-    this.props.fetchLikeStatus(nextProps.selectedTrack.id)
+    if (this.props.selectedTrack &&
+        nextProps.selectedTrack.id !== this.props.selectedTrack.id) {
+        this.props.fetchLikeStatus(nextProps.selectedTrack.id);
+    }
     const selectedTrack = nextProps.selectedTrack;
     const url = selectedTrack.track_url;
     const playing = nextProps.playing;

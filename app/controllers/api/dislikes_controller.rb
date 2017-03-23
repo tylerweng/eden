@@ -1,7 +1,7 @@
 class Api::DislikesController < ApplicationController
 
   before_action :require_logged_in, only: [:create, :destroy]
-  before_action :require_owner, only: [:destroy]
+  # before_action :require_owner, only: [:destroy]
 
   def index
     @dislikes = Dislike.find_user_dislikes(params[:user_id])
@@ -19,7 +19,7 @@ class Api::DislikesController < ApplicationController
   end
 
   def destroy
-    @dislike = Dislike.find(params[:id])
+    @dislike = Dislike.find_by(id: params[:id])
     @dislike.destroy
     render :show
   end
@@ -30,7 +30,7 @@ class Api::DislikesController < ApplicationController
     params.require(:dislike).permit(:track_id)
   end
 
-  def require_owner
-    forbidden unless current_user.dislikes.exists?(id: params[:id])
-  end
+  # def require_owner
+  #   forbidden unless current_user.dislikes.exists?(id: params[:id])
+  # end
 end

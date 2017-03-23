@@ -1,7 +1,7 @@
 class Api::LikesController < ApplicationController
 
   before_action :require_logged_in, only: [:create, :destroy]
-  before_action :require_owner, only: [:destroy]
+  # before_action :require_owner, only: [:destroy]
 
   def index
     @likes = Like.find_user_likes(params[:user_id])
@@ -21,7 +21,7 @@ class Api::LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find(params[:id])
+    @like = Like.find_by(id: params[:id])
     @like.destroy
     render :show
   end
@@ -32,7 +32,7 @@ class Api::LikesController < ApplicationController
     params.require(:like).permit(:track_id)
   end
 
-  def require_owner
-    forbidden unless current_user.likes.exists?(id: params[:id])
-  end
+  # def require_owner
+  #   forbidden unless current_user.likes.exists?(id: params[:id])
+  # end
 end

@@ -1,7 +1,6 @@
 class Api::TracksController < ApplicationController
 
   before_action :require_logged_in, only: [:create, :update, :destroy]
-  before_action :require_owner, only: [:update, :destroy]
 
   def index
     if params[:selectedTrack]
@@ -63,7 +62,5 @@ class Api::TracksController < ApplicationController
     params.require(:track).permit(:title, :description, :artist, :track_url, :img_url)
   end
 
-  def require_owner
-  end
 
 end
