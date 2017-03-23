@@ -29,8 +29,8 @@ const tracksReducer = (state = _nullTracks, action) => {
   const newState = merge({}, state);
   switch(action.type) {
     case RECEIVE_LIKE_STATUS:
+      newState.likeStatus = action.likeStatus[0];
       debugger;
-      newState.likeStatus = action.likeStatus.status;
       return newState;
     case RECEIVE_NEXT_TRACK:
       newState.nextTrack = action.nextTrack;
