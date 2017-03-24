@@ -10,7 +10,7 @@ class MyDislikes extends React.Component {
     if(!this.props.dislikes) return <div></div>;
     return (
       <div>
-        <div className='track-index -header'>Disliked Stations</div>
+        <div className='track-index-header'>Disliked Stations</div>
         <div className='track-index '>
           {this.props.dislikes.map(dislike => (
             <MyDislikeItem
