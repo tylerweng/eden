@@ -10,6 +10,8 @@ Eden is a personal project by Tyler Weng.
 
 ## Features
 
+[![eden.audio][my stations]][eden]
+
 - User accounts with secure authentication
 - Uninterrupted music streaming with controls
 - Audio uploading and management
@@ -38,6 +40,7 @@ architectural framework on the frontend. Please refer to the
 [eden]: http://eden.audio
 [homepage]: https://s3-us-west-1.amazonaws.com/eden-audio/application_images/Homepage.png
 [station]: https://s3-us-west-1.amazonaws.com/eden-audio/application_images/Station.png
+[my stations]: https://s3-us-west-1.amazonaws.com/eden-audio/application_images/MyStations.png
 [proposal]: https://github.com/tylerweng/eden/blob/master/docs/README.md
 [wireframes]: https://github.com/tylerweng/eden/tree/master/docs/wireframes
 [technical specifications]: https://github.com/tylerweng/eden/blob/master/docs/technical-specifications.md
