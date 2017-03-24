@@ -225,13 +225,9 @@ class Playbar extends React.Component {
           played={played}
           loaded={loaded}
           duration={duration}
-          onReady={() => console.log('onReady')}
-          onStart={() => console.log('onStart')}
           onPlay={() => this.setState({ playing: true })}
           onPause={() => this.setState({ playing: false })}
-          onBuffer={() => console.log('onBuffer')}
           onEnded={() => this.onEnded()}
-          onError={e => console.log('onError', e)}
           onProgress={this.onProgress}
           onDuration={duration => this.setState({ duration })}
         />

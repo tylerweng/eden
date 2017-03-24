@@ -47,7 +47,7 @@ class Track < ApplicationRecord
   def self.find_next_track(selectedTrack)
     artist = selectedTrack[:artist]
     title = selectedTrack[:title]
-    query = "title ILIKE ? OR artist ILIKE ?", "%#{queryValue}%", "%#{queryValue}%"
+    query = "title ILIKE ? OR artist ILIKE ?", "%#{title}%", "%#{artist}%"
     self.where(query).limit(5).order("RANDOM()").first
   end
 
