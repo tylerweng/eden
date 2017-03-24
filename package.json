@@ -55,10 +55,6 @@
     "node": "6.2.1",
     "npm": "3.9.3"
   },
-  "scripts": {
-    "postinstall": "webpack",
-    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tylerweng/eden.git"
