@@ -19,6 +19,13 @@ const TrackAPIUtil = {
       data: { selectedTrack }
     })
   ),
+  fetchSimilarTracks: similarTrack => (
+    $.ajax({
+      type: 'GET',
+      url: `api/tracks`,
+      data: { similarTrack }
+    })
+  ),
   fetchAllTracks: user_id => (
     $.ajax({
       type: 'GET',

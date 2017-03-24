@@ -10,6 +10,12 @@ export const SELECT_PLAY_PAUSE_TRACK = 'SELECT_PLAY_PAUSE_TRACK';
 export const SELECT_TRACK = 'SELECT_TRACK';
 export const RECEIVE_LIKE_STATUS = 'RECEIVE_LIKE_STATUS';
 export const RECEIVE_TRACK_PROFILE = 'RECEIVE_TRACK_PROFILE';
+export const RECEIVE_SIMILAR_TRACKS = 'RECEIVE_SIMILAR_TRACKS';
+
+const receiveSimilarTracks = similarTracks => ({
+  type: RECEIVE_SIMILAR_TRACKS,
+  similarTracks
+});
 
 const receiveNextTrack = nextTrack => ({
   type: RECEIVE_NEXT_TRACK,
@@ -78,6 +84,13 @@ export const fetchNextTrack = selectedTrack => dispatch => (
           errors => dispatch(receiveErrors(errors.responseJSON)))
 );
 
+export const fetchSimilarTracks = similarTrack => dispatch => (
+  TrackAPIUtil
+    .fetchSimilarTracks(similarTrack)
+    .then(similarTracks => dispatch(receiveSimilarTracks(similarTracks)),
+          errors => dispatch(receiveErrors(errors.responseJSON)))
+);
+
 export const fetchAllTracks = user_id => dispatch => (
   TrackAPIUtil
     .fetchAllTracks(user_id)
@@ -92,12 +105,12 @@ export const fetchTopNTracks = (num_tracks = 20) => dispatch => (
           errors => dispatch(receiveErrors(errors.responseJSON)))
 );
 
-export const fetchLikeStatus = id => dispatch => {
-  return TrackAPIUtil
+export const fetchLikeStatus = id => dispatch => (
+  TrackAPIUtil
     .fetchLikeStatus(id)
     .then(likeStatus => dispatch(receiveLikeStatus(likeStatus)),
           errors => dispatch(receiveErrors(errors.responseJSON)))
-};
+);
 
 export const showProfile = id => dispatch => (
   TrackAPIUtil

@@ -16,7 +16,6 @@ const Root = ({ store }) => (
   <Provider store={ store }>
     <HashRouter>
       <App>
-        <Redirect from='/' to='/homepage' />
         <Route path='/homepage' component={ Homepage } />
         <Route path='/myprofile' component={ UserProfile } />
         <Route path='/mystations' component={ MyStations } />

@@ -13,7 +13,8 @@ import {
   SELECT_PLAY_PAUSE_TRACK,
   SELECT_TRACK,
   RECEIVE_LIKE_STATUS,
-  RECEIVE_TRACK_PROFILE
+  RECEIVE_TRACK_PROFILE,
+  RECEIVE_SIMILAR_TRACKS
 } from '../actions/track_actions';
 
 const _nullTracks = Object.freeze({
@@ -22,7 +23,8 @@ const _nullTracks = Object.freeze({
   likeStatus: 'neutral',
   nextTrack: null,
   playing: false,
-  profileTrack: null
+  profileTrack: null,
+  similarTracks: []
 });
 
 const tracksReducer = (state = _nullTracks, action) => {
@@ -43,6 +45,9 @@ const tracksReducer = (state = _nullTracks, action) => {
       return newState;
     case RECEIVE_ALL_TRACKS:
       if(action.tracks.length) newState.tracks = action.tracks;
+      return newState;
+    case RECEIVE_SIMILAR_TRACKS:
+      newState.similarTracks = action.similarTracks;
       return newState;
     case RECEIVE_TOP_20_TRACKS:
       newState.tracks = action.tracks;

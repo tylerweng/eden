@@ -1,9 +1,16 @@
-.track-detail-container {
+.track-profile{
+  color: white;
+  padding-top: 9vh;
   height: 100vh;
   background-image:url('https://s3-us-west-1.amazonaws.com/eden-audio/application_images/track_detail_background.jpg'), radial-gradient(#3B30CA, #2847BB);
   background-blend-mode: overlay;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.track-detail-container {
+  padding-top: 5vh;
+
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -33,4 +40,40 @@
 
 .track-detail-artist {
   margin: 1vh 0;
+}
+
+.similar-tracks-column{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+}
+.similar-tracks-body{
+  width: 350px;
+}
+
+.similar-track-item{
+  display: flex;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  // background-color: pink;
+  margin-bottom: 10px;
+  text-align: left;
+}
+.similar-track-item > img{
+  width: 75px;
+}
+// .similar-track-item > div {
+//   background-color: wheat;
+// }
+
+.track-item-text{
+  margin: 5px 12px;
+}
+.similar-tracks-header{
+  // background-color: pink;
+  margin-right: 67px;
 }

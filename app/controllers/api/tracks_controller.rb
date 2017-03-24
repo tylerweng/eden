@@ -4,7 +4,7 @@ class Api::TracksController < ApplicationController
 
   def index
     if params[:selectedTrack]
-       selectedTrack = {
+      selectedTrack = {
         track: {
           id: params[:selectedTrack][:id],
           title: params[:selectedTrack][:title],
@@ -17,6 +17,20 @@ class Api::TracksController < ApplicationController
       }
       @track = Track.find_next_track(selectedTrack)
       render :show
+    elsif params[:similarTrack]
+      similarTrack = {
+        track: {
+          id: params[:similarTrack][:id],
+          title: params[:similarTrack][:title],
+          artist: params[:similarTrack][:artist],
+          track_url: params[:similarTrack][:track_url],
+          img_url: params[:similarTrack][:img_url],
+          description: params[:similarTrack][:description],
+          user: params[:similarTrack][:user]
+        }
+      }
+      @tracks = Track.find_similar_tracks(similarTrack)
+      render :index
     elsif logged_in?
       @tracks = Track.where(user_id: params[:user_id])
       render :index
