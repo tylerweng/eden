@@ -12,7 +12,7 @@ class TrackDetail extends React.Component {
   }
 
   componentWillMount() {
-    if (this.props.profileTrack) this.props.fetchSimilarTracks(this.props.profileTrack)
+    if (this.props.profileTrack) this.props.fetchSimilarTracks(this.props.profileTrack);
     this.props.showProfile(this.state.pageId);
   }
 
