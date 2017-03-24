@@ -4,7 +4,7 @@ Eden allows users to create their own personalized stations based on
 artists or songs.
 
 Eden is a personal project by Tyler Weng.
-[splash][splash] 
+![Eden splash: http://eden.audio][splash] 
 ## Features
 
 ## Project Design
