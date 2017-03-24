@@ -26,7 +26,8 @@ Basalmiq Mockups was used to create [wireframes][wireframes].
 
 Eden is a single-page application that utilizes Ruby on Rails and a
 PostgreSQL database on the backend, with a React.js and Redux
-architectural framework on the frontend.H
+architectural framework on the frontend. Please refer to the
+[technical specifications][technical specifications] for more detail.
 
 ## Future Implementations
 
