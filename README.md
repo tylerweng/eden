@@ -16,6 +16,7 @@ Eden is a personal project by Tyler Weng.
 - Creating stations by searching for tracks or artists
 - Liking, unliking and disliking stations
 
+[![eden.audio][station]][eden]
 ## Project Design
 
 Eden was designed and built in two weeks. A [proposal][proposal] was
@@ -36,6 +37,7 @@ architectural framework on the frontend. Please refer to the
 
 [eden]: http://eden.audio
 [homepage]: https://s3-us-west-1.amazonaws.com/eden-audio/application_images/Homepage.png
+[station]: https://s3-us-west-1.amazonaws.com/eden-audio/application_images/Station.png
 [proposal]: https://github.com/tylerweng/eden/blob/master/docs/README.md
 [wireframes]: https://github.com/tylerweng/eden/tree/master/docs/wireframes
 [technical specifications]: https://github.com/tylerweng/eden/blob/master/docs/technical-specifications.md
