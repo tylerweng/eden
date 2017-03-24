@@ -8,9 +8,9 @@
 }
 
 .dropdown-button {
-  width: 100%;
-  width: 1px;
-  height: 1px;
+  width: 0.1px;
+  height: 0.1px;
+  z-index: 10000;
 }
 .dropdown-menu{
   top: 5.7vh !important;

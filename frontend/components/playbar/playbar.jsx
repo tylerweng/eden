@@ -62,11 +62,9 @@ class Playbar extends React.Component {
   }
 
   like() {
-    console.log('initial like callback');
     if (!this.props.currentUser) return;
 
     if (this.props.likeStatus === 'neutral') {
-      console.log('neutral to liked');
       this.props.likeTrack(this.props.selectedTrack.id);
     } else if (this.props.likeStatus === 'disliked') {
       for (let i = 0; i < this.props.dislikes.length; i++) {
@@ -91,7 +89,6 @@ class Playbar extends React.Component {
   }
 
   dislike() {
-    console.log('initial dislike callback');
     if (!this.props.currentUser) return;
 
     if (this.props.likeStatus === 'neutral') {
