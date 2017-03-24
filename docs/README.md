@@ -35,7 +35,7 @@ on Amazon S3.
 
 **Objective:** Allow users to like, unlike and dislike tracks.
 
-### Phase 5: Search (Stations) (3 days)
+### Phase 5: Search (Stations) (2 days)
 
 **Objective:** Generate stations by artist or track.
 
