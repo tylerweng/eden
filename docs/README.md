@@ -8,10 +8,9 @@ Eden is a web application inspired by Pandora, built on Rails and React.js.
 Eden allows users to:
 
 - [x] Sign up new accounts, login, logout and perform a guest login
-- [x] Add, remove and share stations
-- [x] Bookmark artists and tracks
+- [x] Like, unlike and dislike tracks
 - [x] Stream tracks without interruption
-- [x] Generate stations by searching by artists, tracks or genre
+- [x] Generate stations by searching by artists or tracks.
 - [x] Upload and share tracks
 - [x] Like and unlike individual tracks
 
@@ -32,13 +31,13 @@ on Amazon S3.
 
 **Objective:** Allow users to stream tracks uninterrupted.
 
-### Phase 4: Likes and Bookmarks (1 day)
+### Phase 4: Likes, Unlikes and Dislikes (1 day)
 
-**Objective:** Allow users to like tracks and bookmark artists and tracks.
+**Objective:** Allow users to like, unlike and dislike tracks.
 
 ### Phase 5: Search (Stations) (3 days)
 
-**Objective:** Generate stations by artist, song or genre
+**Objective:** Generate stations by artist or track.
 
 ### Phase 6: Cleanup (1 day)
 
