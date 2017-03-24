@@ -35,7 +35,8 @@ class Track < ApplicationRecord
     dependent: :destroy
 
   def self.search(queryValue)
-    self.where("title ILIKE ?", "%#{queryValue}%").limit(10)
+    query = "title ILIKE ? OR artist ILIKE ?", "%#{queryValue}%", "%#{queryValue}%"
+    self.where(query).limit(10)
   end
 
   def self.top(num_tracks = 20)
@@ -45,14 +46,11 @@ class Track < ApplicationRecord
   def self.find_next_track(selectedTrack)
     artist = selectedTrack[:artist]
     title = selectedTrack[:title]
-    query = "artist ILIKE ?", "%#{artist}%"
+    query = "title ILIKE ? OR artist ILIKE ?", "%#{queryValue}%", "%#{queryValue}%"
     self.where(query).limit(5).order("RANDOM()").first
   end
 
   def self.find_similar_tracks(similarTrack)
-    # artist = similarTrack[:track][:artist]
-    # query = "artist ILIKE ?", "%#{artist}%"
-    # self.where(query).limit(5)
     self.order("RANDOM()").limit(5)
   end
 
