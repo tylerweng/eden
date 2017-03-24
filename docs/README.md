@@ -47,8 +47,4 @@ on Amazon S3.
 - [ ] Find similar artists
 - [ ] Create personalized stations by user likes and unlikes
 
-## Technology
-
-## Future Implementations
-
 [eden]: http://eden.audio
