@@ -7,6 +7,7 @@ export const UPLOAD_TRACK = 'UPLOAD_TRACK';
 export const RECEIVE_PROFILE_TRACK = 'RECEIVE_PROFILE_TRACK';
 export const PLAY_PAUSE_TRACK = 'PLAY_PAUSE_TRACK';
 export const SELECT_PLAY_PAUSE_TRACK = 'SELECT_PLAY_PAUSE_TRACK';
+export const SELECT_TRACK = 'SELECT_TRACK';
 export const RECEIVE_LIKE_STATUS = 'RECEIVE_LIKE_STATUS';
 export const RECEIVE_TRACK_PROFILE = 'RECEIVE_TRACK_PROFILE';
 
@@ -43,6 +44,11 @@ const receiveTrackProfile = profileTrack => ({
 
 export const playPauseTrack = selectedTrack => ({
   type: PLAY_PAUSE_TRACK,
+  selectedTrack
+});
+
+export const selectTrack = selectedTrack => ({
+  type: SELECT_TRACK,
   selectedTrack
 });
 

@@ -11,6 +11,7 @@ import {
   SELECT_TRACK_PROFILE_ID,
   PLAY_PAUSE_TRACK,
   SELECT_PLAY_PAUSE_TRACK,
+  SELECT_TRACK,
   RECEIVE_LIKE_STATUS,
   RECEIVE_TRACK_PROFILE
 } from '../actions/track_actions';
@@ -45,6 +46,10 @@ const tracksReducer = (state = _nullTracks, action) => {
       return newState;
     case RECEIVE_TOP_20_TRACKS:
       newState.tracks = action.tracks;
+      return newState;
+    case SELECT_TRACK:
+      newState.selectedTrack = action.selectedTrack;
+      newState.playing = true;
       return newState;
     case PLAY_PAUSE_TRACK:
       newState.playing = !state.playing;
