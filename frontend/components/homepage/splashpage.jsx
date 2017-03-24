@@ -19,11 +19,6 @@ const Splashpage = () => (
         Share
       </div>
     </div>
-    <div className='homepage-footer'>
-      <div className='homepage-footer-detail'>Github</div>
-      <div className='homepage-footer-detail'>LinkedIn</div>
-      <div className='homepage-footer-detail'>App Academy</div>
-    </div>
   </div>
 );
 
