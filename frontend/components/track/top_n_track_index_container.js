@@ -3,9 +3,10 @@ import TopNTrackIndex from './top_N_track_index';
 import { fetchTopNTracks, selectPlayPauseTrack, fetchNextTrack } from '../../actions/track_actions';
 import _ from 'lodash';
 
-const mapStateToProps = ({ tracks }) => ({
+const mapStateToProps = ({ tracks }) => {
+  return{
   tracks: _.values(tracks.tracks)
-});
+}};
 
 const mapDispatchToProps = dispatch => ({
   fetchTopNTracks: (num_tracks) => dispatch(fetchTopNTracks(num_tracks)),

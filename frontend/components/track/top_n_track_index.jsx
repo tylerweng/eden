@@ -5,19 +5,28 @@ class TopNTrackIndex extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      tracks: this.props.tracks
+    };
   }
 
   componentWillMount() {
     this.props.fetchTopNTracks(20);
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.state.tracks = nextProps.tracks
+  }
+
+
 
   render() {
-    if(!this.props.tracks) return <div></div>;
+    if (!this.state.tracks) this.forceUpdate(() => this.props.fetchTopNTracks(20));
     return (
       <div className='homepage-sidebar'>
         <div className='homepage-sidebar-header'>Latest Hits</div>
-        {this.props.tracks.map(track => (
+        {this.state.tracks.map(track => (
           <TrackSidebarItem
             key={track.id}
             track={track}

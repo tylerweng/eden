@@ -41,7 +41,7 @@ const tracksReducer = (state = _nullTracks, action) => {
       newState.tracks = merge(newState.tracks, action.track);
       return newState;
     case RECEIVE_ALL_TRACKS:
-      newState.tracks = action.tracks;
+      if(action.tracks.length) newState.tracks = action.tracks;
       return newState;
     case RECEIVE_TOP_20_TRACKS:
       newState.tracks = action.tracks;
