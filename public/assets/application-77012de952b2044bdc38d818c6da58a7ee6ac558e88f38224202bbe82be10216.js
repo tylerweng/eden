@@ -53048,19 +53048,19 @@ var MyLikeItem = function (_React$Component) {
         'button',
         {
           onClick: this.handleClick,
-          className: 'my-like-item' },
+          className: 'track-item' },
         _react2.default.createElement('img', {
           src: track.img_url,
           alt: track.title,
-          className: 'my-like-item-content my-like-item-image' }),
+          className: 'track-item-content track-item-image' }),
         _react2.default.createElement(
           'div',
-          { className: 'my-like-item-content my-like-item-text' },
+          { className: 'track-item-content track-item-text' },
           track.title
         ),
         _react2.default.createElement(
           'div',
-          { className: 'my-like-item-content my-like-item-text' },
+          { className: 'track-item-content track-item-text' },
           track.artist
         )
       );
@@ -53118,10 +53118,10 @@ var MyLikes = function (_React$Component) {
       if (!this.props.likes) return _react2.default.createElement('div', null);
       return _react2.default.createElement(
         'div',
-        { className: 'my-likes' },
+        { className: 'track-index ' },
         _react2.default.createElement(
           'span',
-          { className: 'my-likes-header' },
+          { className: 'track-index -header' },
           'Liked Stations'
         ),
         this.props.likes.map(function (like) {

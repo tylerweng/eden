@@ -1,0 +1,31 @@
+.user-profile{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10vh 10em;
+}
+.track-index-header{
+  font-size: 40px;
+  // background-color: wheat;
+  border-bottom: 1px solid grey;
+  margin: 20px 0px;
+
+}
+
+.track-index {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  // background-color: pink;
+}
+
+.track-item{
+  width: 200px;
+  margin: 10px 20px;
+
+}
+
+.track-item-content{
+  width: 100%;
+}

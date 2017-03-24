@@ -22,13 +22,13 @@ class MyLikeItem extends React.Component {
     return (
       <button
         onClick={this.handleClick}
-        className='my-like-item'>
+        className='track-item'>
         <img
           src={track.img_url}
           alt={track.title}
-          className='my-like-item-content my-like-item-image' />
-        <div className='my-like-item-content my-like-item-text'>{track.title}</div>
-        <div className='my-like-item-content my-like-item-text'>{track.artist}</div>
+          className='track-item-content track-item-image' />
+        <div className='track-item-content track-item-text'>{track.title}</div>
+        <div className='track-item-content track-item-text'>{track.artist}</div>
       </button>
     )
   }

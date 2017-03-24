@@ -31,9 +31,9 @@
 }
 
 .playbar-track-image {
-  width: 7vh;
-  height: 7vh;
-  margin-top: 0.25vh;
+  width: 50px;
+  height: 50px;
+  margin-top: 7.5px;
 }
 
 .playbar-track-title {
@@ -54,6 +54,7 @@
   display: flex;
   flex-direction: column;
   width: 50%;
+  height: 100%;
 }
 
 .controls {
@@ -88,10 +89,11 @@
   align-items: center;
   margin-left: 10vh;
   margin-right: 5vh;
+  height: 100%;
 }
 
 .volume-slider {
-  margin-bottom: 2vh;
+  margin-bottom: 2.5px;
   display: flex;
   flex-direction: row;
   width: 50%;
@@ -100,7 +102,6 @@
 
 .volume-button {
   margin-left: 7.5vh;
-  margin-bottom: 2.5vh;
   display: flex;
   flex-direction: row;
   font-size: 2vh !important;

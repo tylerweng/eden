@@ -9,15 +9,17 @@ class MyDislikes extends React.Component {
   render() {
     if(!this.props.dislikes) return <div></div>;
     return (
-      <div className='my-dislikes'>
-        <span className='my-dislikes-header'>Disliked Stations</span>
-        {this.props.dislikes.map(dislike => (
-          <MyDislikeItem
-            key={dislike.id}
-            dislike={dislike}
-            selectPlayPauseTrack={this.props.selectPlayPauseTrack}
-            fetchNextTrack={this.props.fetchNextTrack} />
-        ))}
+      <div>
+        <div className='track-index -header'>Disliked Stations</div>
+        <div className='track-index '>
+          {this.props.dislikes.map(dislike => (
+            <MyDislikeItem
+              key={dislike.id}
+              dislike={dislike}
+              selectPlayPauseTrack={this.props.selectPlayPauseTrack}
+              fetchNextTrack={this.props.fetchNextTrack} />
+          ))}
+        </div>
       </div>
     );
   }

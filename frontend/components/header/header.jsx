@@ -9,14 +9,12 @@ const Header = () => (
   <div className='header'>
     <LinksContainer />
     <SearchbarContainer />
-    <div className='links'>
+    <div className="header-auth-buttons">
       <Link
         to={`/homepage`}
         className={'header-link eden'}>
         eden
       </Link>
-    </div>
-    <div>
       <Auth />
       <UserDropdownContainer />
     </div>

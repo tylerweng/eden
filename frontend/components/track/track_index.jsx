@@ -24,7 +24,7 @@ class TrackIndex extends React.Component {
   render() {
     if(!this.state.tracks) return <div></div>;
     return (
-      <div className='body track-index'>
+      <div className='body track-index '>
         {this.state.tracks.map(track => (
           <TrackIndexItem
             key={track.id}

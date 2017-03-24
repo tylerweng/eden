@@ -1,5 +1,4 @@
 .searchbar {
-  border: 1px solid #fff;
   display: grid;
   height: 3.5vh;
   width: 27.25vh;
@@ -8,15 +7,23 @@
   border-radius: 35vh;
   text-align: center;
   margin-left: 22.5vh;
+  color: grey;
 }
+
 
 .search-item {
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 250px;
 }
 
 .search-img {
-  height: 20vh;
-  width: 20vh;
+  width: 50%;
 }
 
 

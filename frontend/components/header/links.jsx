@@ -17,7 +17,7 @@ class Links extends React.Component {
           </Link>
       );
     } else {
-      nowPlaying = <div>Now Playing</div>;
+      nowPlaying = <div className={'header-link now-playing'}>Now Playing</div>;
     }
 
     let myStations;
@@ -30,7 +30,7 @@ class Links extends React.Component {
           </Link>
       );
     } else {
-      myStations = <div>My Stations</div>;
+      myStations = <div className={'header-link my-stations'}>My Stations</div>;
     }
     return (
       <div className='links'>

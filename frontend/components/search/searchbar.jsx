@@ -81,6 +81,7 @@ class Searchbar extends React.Component {
     };
     return (
       <Autocomplete
+        className="search-bar-autocomplete"
         inputProps={inputProps}
         ref='autocomplete'
         value={this.state.queryValue}

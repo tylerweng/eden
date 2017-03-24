@@ -1,6 +1,6 @@
-.user-profile {
-  background-color: #fff;
-  margin-bottom: 15vh;
+.dropdown{
+  margin-bottom: 11px;
+  margin-right: 10px;
 }
 
 .img-circle {
@@ -8,21 +8,23 @@
 }
 
 .dropdown-button {
-  margin-bottom: 1.75vh;
+  width: 100%;
+  width: 1px;
+  height: 1px;
+}
+.dropdown-menu{
+  top: 5.7vh !important;
+  left: -9em !important;
+  // left: 5em;
 }
 .user-profile-icon {
-  height: 3.5vh;
-  width: 3.5vh;
-  margin-right: 5vh;
+  position: relative;
+  top: -1.7vh;
+  left: -1.7em;
+  height: 40px;
+  width: 40px;
 }
 
-.auth-modal {
-  margin-bottom: 2.5vh;
-}
-
-.user-detail {
-  display: flex;
-  flex-direction: column;
-  font-size: 5vh;
-  margin-left: 2vh;
+.link{
+  margin-left: 10px;
 }

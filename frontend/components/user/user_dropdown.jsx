@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 class UserDropdown extends React.Component {
   constructor(props) {
@@ -39,8 +40,8 @@ class UserDropdown extends React.Component {
   displayForm(){
     if (!this.state.open) return <div></div>;
     return(
-      <div className='dropdown-form'>
-        <div className='dropdown-content'>
+      <div className='dropdown-content'>
+        <MenuItem>
           <Link to='/myprofile'>
             <span
               onClick={this.closeForm()}
@@ -48,16 +49,16 @@ class UserDropdown extends React.Component {
               My Profile
             </span>
           </Link>
-          <div>
-            <Link to='/homepage'>
-              <span
-                onClick={this.handleLogout()}
-                className='link'>
-                Log Out
-              </span>
-            </Link>
-          </div>
-        </div>
+        </MenuItem>
+        <MenuItem>
+          <Link to='/homepage'>
+            <span
+              onClick={this.handleLogout()}
+              className='link'>
+              Log Out
+            </span>
+          </Link>
+        </MenuItem>
       </div>
     );
   }
@@ -66,15 +67,17 @@ class UserDropdown extends React.Component {
   render() {
     if (!this.props.currentUser) return <div></div>;
     return (
-      <div className='session-button dropdown-button'>
-        <button onClick={this.openProfile}>
-          <img
-            src='https://s3-us-west-1.amazonaws.com/eden-audio/application_images/user_profile_icon.png'
-            className='user-profile-icon img-circle'>
-          </img>
-        </button>
+      <DropdownButton
+         title={<img
+           src='https://s3-us-west-1.amazonaws.com/eden-audio/application_images/user_profile_icon.png'
+           className='user-profile-icon img-circle'>
+         </img>}
+         id='dropdown'
+         onClick={this.openProfile}
+         noCaret
+         className='session-button dropdown-button'>
         {this.displayForm()}
-      </div>
+      </DropdownButton>
     );
   }
 };

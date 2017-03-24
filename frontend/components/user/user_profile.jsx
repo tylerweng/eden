@@ -5,7 +5,7 @@ import MyLikesContainer from './my_likes_container';
 import MyDislikesContainer from './my_dislikes_container';
 
 const UserProfile = () => (
-  <div className='audio user-profile'>
+  <div className='user-profile'>
     <UserDetailContainer />
     <NewTrackContainer />
     <MyLikesContainer />
