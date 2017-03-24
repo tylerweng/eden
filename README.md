@@ -32,7 +32,7 @@ architectural framework on the frontend. Please refer to the
 ## Future Implementations
 
 - Enhanced search functionality to search by genre and features
-- Enhanced station discovery to accommodate user likes and dislikes
+- Enhanced station discovery to better accommodate user likes and dislikes
 
 [eden]: http://eden.audio
 [homepage]: https://s3-us-west-1.amazonaws.com/eden-audio/application_images/Homepage.png
