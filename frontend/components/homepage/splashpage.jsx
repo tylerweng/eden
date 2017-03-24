@@ -6,23 +6,23 @@ const Splashpage = () => (
     Welcome to eden.
     </div>
     <div className='homepage-features'>
-      <div className='homepage-feature-1'>
-        Feature 1
+      <div className='homepage-feature'>
+        Explore
       </div>
-      <div className='homepage-feature-2'>
-        Feature 2
+      <div className='homepage-feature'>
+        Create
       </div>
-      <div className='homepage-feature-3'>
-        Feature 3
+      <div className='homepage-feature'>
+        Discover
       </div>
-      <div className='homepage-feature-4'>
-        Feature 4
+      <div className='homepage-feature'>
+        Share
       </div>
     </div>
     <div className='homepage-footer'>
-      <span>Github</span>
-      <span>LinkedIn</span>
-      <span>App Academy</span>
+      <div className='homepage-footer-detail'>Github</div>
+      <div className='homepage-footer-detail'>LinkedIn</div>
+      <div className='homepage-footer-detail'>App Academy</div>
     </div>
   </div>
 );

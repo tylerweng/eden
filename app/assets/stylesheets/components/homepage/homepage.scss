@@ -46,3 +46,25 @@
   // color: #d3d3d3;
 
 }
+
+.homepage-features {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+.homepage-feature {
+  margin-top: 200px;
+}
+
+.homepage-footer {
+  margin-top: 300px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.homepage-footer-detail {
+  display: inline;
+  margin-left: 100px;
+}
