@@ -29,8 +29,8 @@ class UserDropdown extends React.Component {
   }
 
   openProfile() {
-    const newOpen = !this.state.open;
-    this.setState({ open: newOpen});
+    // const newOpen = !this.state.open;
+    this.setState({ open: true });
   }
 
   closeForm() {
@@ -65,14 +65,18 @@ class UserDropdown extends React.Component {
 
 
   render() {
+
+    let img = (
+      <img
+        src='https://s3-us-west-1.amazonaws.com/eden-audio/application_images/user_profile_icon.png'
+        className='user-profile-icon img-circle'
+        onClick={this.openProfile} >
+     </img>
+    );
     if (!this.props.currentUser) return <div></div>;
     return (
       <DropdownButton
-         title={<img
-           src='https://s3-us-west-1.amazonaws.com/eden-audio/application_images/user_profile_icon.png'
-           className='user-profile-icon img-circle'
-           onClick={this.openProfile}>
-         </img>}
+         title={ img }
          id='dropdown'
          noCaret
          className='session-button dropdown-button'>

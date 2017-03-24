@@ -13,9 +13,16 @@
   z-index: 10000;
 }
 
+.btn-group > #dropdown {
+  // display:none;
+}
 .dropdown-menu{
   top: 5.7vh !important;
   left: -9em !important;
+  padding: 0 !important;
+  border: none !important;
+  color: #fff;
+  background-color: #fff;
 }
 
 .user-profile-icon {
