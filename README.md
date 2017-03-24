@@ -18,8 +18,9 @@ Eden is a personal project by Tyler Weng.
 
 ## Project Design
 
-Eden was designed and built in two weeks. Basalmiq Mockups was used
-to create [wireframes][wireframes]
+Eden was designed and built in two weeks. A [proposal][proposal] was
+drafted for an overall project framework with an accompanying timeline.
+Basalmiq Mockups was used to create [wireframes][wireframes].
 
 ## Technology
 
@@ -30,7 +31,7 @@ architectural framework on the frontend.
 ## Future Implementations
 
 
-[wireframes]: https://github.com/tylerweng/eden/tree/master/docs/wireframes
 [eden]: http://eden.audio
-
 [splash]: https://s3-us-west-1.amazonaws.com/eden-audio/application_images/Splash.png
+[proposal]: https://github.com/tylerweng/eden/blob/master/docs/README.md
+[wireframes]: https://github.com/tylerweng/eden/tree/master/docs/wireframes
