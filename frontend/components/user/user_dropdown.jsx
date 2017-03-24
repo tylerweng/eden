@@ -70,10 +70,10 @@ class UserDropdown extends React.Component {
       <DropdownButton
          title={<img
            src='https://s3-us-west-1.amazonaws.com/eden-audio/application_images/user_profile_icon.png'
-           className='user-profile-icon img-circle'>
+           className='user-profile-icon img-circle'
+           onClick={this.openProfile}>
          </img>}
          id='dropdown'
-         onClick={this.openProfile}
          noCaret
          className='session-button dropdown-button'>
         {this.displayForm()}

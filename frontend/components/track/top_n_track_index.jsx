@@ -11,10 +11,6 @@ class TopNTrackIndex extends React.Component {
     this.props.fetchTopNTracks(20);
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   this.props.fetchTopNTracks(20);
-  // }
-
   render() {
     if(!this.props.tracks) return <div></div>;
     return (
