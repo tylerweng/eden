@@ -5,7 +5,7 @@ artists or songs.
 
 Eden is a personal project by Tyler Weng.
 
-[![eden.audio][eden]][splash]
+[![eden.audio][splash]][eden]
 
 ## Features
 
