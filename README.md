@@ -36,3 +36,4 @@ architectural framework on the frontend. Please refer to the
 [homepage]: https://s3-us-west-1.amazonaws.com/eden-audio/application_images/Homepage.png
 [proposal]: https://github.com/tylerweng/eden/blob/master/docs/README.md
 [wireframes]: https://github.com/tylerweng/eden/tree/master/docs/wireframes
+[technical specifications]: https://github.com/tylerweng/eden/blob/master/docs/technical-specifications.md
