@@ -6,7 +6,7 @@ artists or songs.
 
 Eden is a personal project by Tyler Weng.
 
-[![eden.audio][splash]][eden]
+[![eden.audio][homepage]][eden]
 
 ## Features
 
@@ -26,12 +26,12 @@ Basalmiq Mockups was used to create [wireframes][wireframes].
 
 Eden is a single-page application that utilizes Ruby on Rails and a
 PostgreSQL database on the backend, with a React.js and Redux
-architectural framework on the frontend.
+architectural framework on the frontend.H
 
 ## Future Implementations
 
 
 [eden]: http://eden.audio
-[splash]: https://s3-us-west-1.amazonaws.com/eden-audio/application_images/Splash.png
+[homepage]: https://s3-us-west-1.amazonaws.com/eden-audio/application_images/Homepage.png
 [proposal]: https://github.com/tylerweng/eden/blob/master/docs/README.md
 [wireframes]: https://github.com/tylerweng/eden/tree/master/docs/wireframes
