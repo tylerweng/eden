@@ -1,6 +1,12 @@
-
+.track-index {
+  margin-bottom: 64px;
+}
 
 .upload-button {
   border: 1px solid gray;
   margin: 2vh 2vh;
+}
+
+.similar-track-item, .track-item, .track-sitem, .track-detail {
+  outline: none;
 }
