@@ -30,6 +30,7 @@ class TrackDetail extends React.Component {
   }
 
   render() {
+
     const profileTrack = this.props.profileTrack;
     if (!profileTrack) return <div></div>;
 
@@ -64,7 +65,7 @@ class TrackDetail extends React.Component {
     }
 
     return (
-      <div className= 'track-profile'>
+      <div className='track-profile'>
         { similarTracks }
         <div className='track-detail-container'>
           <button
