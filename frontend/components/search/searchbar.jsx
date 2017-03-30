@@ -20,6 +20,7 @@ class Searchbar extends React.Component {
     if (item.title) {
       this.props.fetchProfileTrack(item.id);
       this.props.selectTrack(item);
+      this.setState({ queryValue: '' });
     };
   }
 
@@ -80,17 +81,23 @@ class Searchbar extends React.Component {
       placeholder: "Create Station",
       className: 'searchbar'
     };
+
+    const wrapperProps = {
+      width: '10em'
+    };
     return (
-      <Autocomplete
-        className="search-bar-autocomplete"
-        inputProps={inputProps}
-        ref='autocomplete'
-        value={this.state.queryValue}
-        onChange={this.update('queryValue')}
-        items={queryResultsArray}
-        getItemValue={this.handleItemValue}
-        onSelect={this.handleSelect}
-        renderItem={this.handleRenderItem} />
+      <div className='searchbar-container'>
+        <Autocomplete
+          wrapperProps={wrapperProps}
+          inputProps={inputProps}
+          ref='autocomplete'
+          value={this.state.queryValue}
+          onChange={this.update('queryValue')}
+          items={queryResultsArray}
+          getItemValue={this.handleItemValue}
+          onSelect={this.handleSelect}
+          renderItem={this.handleRenderItem} />
+      </div>
     );
   }
 

@@ -1,12 +1,13 @@
+.searchbar-container {
+  margin-left: 10em;
+}
 .searchbar {
   display: grid;
-  height: 3.5vh;
-  width: 27.25vh;
+  height: 2.5em;
+  width: 20em;
   background-color: #fff;
-  border: 1px solid gray;
-  border-radius: 35vh;
+  border-radius: 5em;
   text-align: center;
-  margin-left: 20.5vh;
   color: grey;
 }
 

@@ -26,7 +26,6 @@
   display: flex;
   flex-direction: column;
   color: #fff;
-  margin-right: 2.5vh;
 }
 
 .track-detail-img {
@@ -55,6 +54,12 @@
 }
 .similar-tracks-body{
   width: 350px;
+}
+
+@media screen and (max-width: 1024px) {
+    .similar-tracks-body {
+        display: none !important;
+    }
 }
 
 .similar-track-item{

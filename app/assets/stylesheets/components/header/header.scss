@@ -7,13 +7,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // padding: 0 100px;
   height: 64px;
-  width: 100vw;
-  // margin-top: 300px;
 }
-.searchbar{
-  margin-left: 0px !important;
+
+
+.header div {
+  min-width: 100px !important;
+  position: relative;
 }
 
 
@@ -29,11 +29,8 @@
 }
 
 .links {
-  // position: fixed;
   display: flex;
   flex-direction: row;
-  // justify-content: space-between;
-  // width: 230px;
 }
 
 
@@ -49,14 +46,13 @@
   margin-left: 40px;
 }
 .my-stations{
-  margin-left:23px;
+  margin-left: 40px;
 }
 .header-auth-buttons{
   position: relative;
   display:flex;
   margin-right: 25px;
   align-items: center;
-  // background-color: pink;
 }
 .eden{
   margin-right: 20px;

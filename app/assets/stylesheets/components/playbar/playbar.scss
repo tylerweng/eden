@@ -21,13 +21,20 @@
 .playbar-track-detail {
   display: flex;
   flex-direction: row;
-  margin-left: 5vh;
-  width: 20%;
-  margin-right: 20vh;
+  margin-left: 25px;
 }
 
 .playbar-track-text {
-  margin-left: 1.5vh;
+  width: 300px;
+  margin-left: 7.5px;
+  flex-direction: column;
+  display: inline-flex;
+}
+
+@media screen and (max-width: 1024px) {
+    .playbar-track-text {
+        display: none !important;
+    }
 }
 
 .playbar-track-image {
@@ -37,13 +44,13 @@
 }
 
 .playbar-track-title {
-  font-size: 2vh;
+  font-size: 1.25em;
   margin-top: 3.5px;
   margin-bottom: 5px;
 }
 
 .playbar-track-artist {
-  font-size: 1.75vh;
+  font-size: 1em;
 }
 
 .controls-progress-container, .volume-container {
@@ -55,6 +62,7 @@
   flex-direction: column;
   width: 50%;
   height: 100%;
+  margin-left: 2.5em;
 }
 
 .controls {
