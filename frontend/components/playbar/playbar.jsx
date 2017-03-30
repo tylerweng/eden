@@ -186,10 +186,15 @@ class Playbar extends React.Component {
                        : 'fa fa-volume-off') + ' volume-button';
     const playbarKlass = (selectedTrack ? 'playbar' : 'playbar hidden');
 
+
     let likeKlass = 'fa fa-thumbs-up like-button';
     if (this.props.likeStatus === 'liked') likeKlass += ' like-dislike-highlight';
     let dislikeKlass = 'fa fa-thumbs-down dislike-button';
     if (this.props.likeStatus === 'disliked') dislikeKlass += ' like-dislike-highlight';
+    if (!this.props.currentUser) {
+      likeKlass = 'hidden';
+      dislikeKlass = 'hidden';
+    }
 
     let trackDetail;
     if (selectedTrack) {
