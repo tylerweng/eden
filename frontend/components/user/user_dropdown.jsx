@@ -38,7 +38,7 @@ class UserDropdown extends React.Component {
   }
 
   displayForm(){
-    if (!this.state.open) return <div></div>;
+    if (!this.state.open) return <div className='hidden'></div>;
     return(
       <div className='dropdown-content'>
         <MenuItem>
