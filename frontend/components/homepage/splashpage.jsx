@@ -2,24 +2,37 @@ import React from 'react';
 
 const Splashpage = () => (
   <div className='homepage-main'>
-    <div className='homepage-intro'>
-    Welcome to eden.
+    <div className='bgimg bgimg-1'>
+      <div className='caption'>
+        <div className="border">Welcome to Eden</div>
+      </div>
     </div>
-    <div className='homepage-features'>
-      <div className='homepage-feature'>
-        Explore
+    <div className='feature feature-1'>
+      <p>Your Radio Personalized</p>
+    </div>
+    <div className='bgimg bgimg-2'>
+      <div className='caption'>
+        <div className="border">Discover New Tracks</div>
       </div>
-      <div className='homepage-feature'>
-        Create
+    </div>
+    <div className='feature feature-2'>
+      <p>
+        Eden generates stations based upon your preferences, creating a
+        personalized listening experience.
+      </p>
+    </div>
+    <div className='bgimg bgimg-3'>
+      <div className='caption'>
+        <div className="border">Feature 3 div</div>
       </div>
-      <div className='homepage-feature'>
-        Discover
-      </div>
-      <div className='homepage-feature'>
-        Share
-      </div>
+    </div>
+    <div className='feature feature-3'>
+      <p>
+        Feature 3 paragraph
+      </p>
     </div>
   </div>
 );
+
 
 export default Splashpage;
