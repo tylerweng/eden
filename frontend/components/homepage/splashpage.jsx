@@ -8,7 +8,7 @@ const Splashpage = () => (
       </div>
     </div>
     <div className='feature feature-1'>
-      <p>Your Radio Personalized</p>
+      <p>Your radio personalized</p>
     </div>
     <div className='bgimg bgimg-2'>
       <div className='caption'>
@@ -17,18 +17,17 @@ const Splashpage = () => (
     </div>
     <div className='feature feature-2'>
       <p>
-        Eden generates stations based upon your preferences, creating a
-        personalized listening experience.
+        Eden adapts to your tastes
       </p>
     </div>
     <div className='bgimg bgimg-3'>
       <div className='caption'>
-        <div className="border">Feature 3 div</div>
+        <div className="border">Save Your Stations</div>
       </div>
     </div>
     <div className='feature feature-3'>
       <p>
-        Feature 3 paragraph
+        Listen time and time again
       </p>
     </div>
   </div>

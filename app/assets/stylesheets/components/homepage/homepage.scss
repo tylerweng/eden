@@ -60,7 +60,7 @@
 }
 
 .bgimg-3 {
-  background-image: url('https://s3-us-west-1.amazonaws.com/eden-audio/application_images/splashpagev3c.jpg');
+  background-image: url('https://s3-us-west-1.amazonaws.com/eden-audio/application_images/splashpagev3c3.jpeg');
 }
 
 .caption {
@@ -90,19 +90,25 @@
   position: relative;
   letter-spacing: 10px;
   text-align:center;
-  padding:30px 10px;
+  padding:40px 10px;
   text-align: justify;
 }
 
 
 .homepage-footer {
-  margin-top: 300px;
-  flex-direction: row;
-  justify-content: space-between;
+  padding-top: 10px;
+  padding-bottom: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  background-color: #18298A;
 }
 
-.homepage-footer-detail {
-  display: inline;
-  margin-left: 100px;
+.footer-author, .footer-icon {
+  color: #f2f5f9;
+  font-size: 26px !important;
+}
+.footer-icon {
+  margin: 0 10px;
 }

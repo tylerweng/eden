@@ -13,7 +13,7 @@ const Header = () => (
       <Link
         to={`/homepage`}
         className={'header-link eden'}>
-        eden
+        Eden
       </Link>
       <Auth />
       <UserDropdownContainer />
