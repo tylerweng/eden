@@ -18,7 +18,7 @@ class TrackIndex extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const tracks = nextProps.tracks;
-    this.setState({ tracks })
+    this.setState({ tracks });
   }
 
   render() {

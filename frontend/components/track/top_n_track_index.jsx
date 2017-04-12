@@ -16,13 +16,10 @@ class TopNTrackIndex extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.state.tracks = nextProps.tracks
+    this.setState({ tracks: nextProps.tracks });
   }
 
-
-
   render() {
-    if (!this.state.tracks) this.forceUpdate(() => this.props.fetchTopNTracks(10));
     return (
       <div className='homepage-sidebar'>
         <div className='homepage-sidebar-header'>Latest Hits</div>
