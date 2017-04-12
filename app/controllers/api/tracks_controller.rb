@@ -32,17 +32,11 @@ class Api::TracksController < ApplicationController
       @tracks = Track.find_similar_tracks(similarTrack)
       render :index
     elsif params[:num_tracks]
-      debugger
       num_tracks = (params[:num_tracks] ? params[:num_tracks] : 10)
       @tracks = Track.top(num_tracks)
       render :index
     elsif params[:user_id]
       @tracks = Track.where(user_id: params[:user_id])
-      render :index
-    elsif params[:num_tracks]
-      debugger
-      num_tracks = (params[:num_tracks] ? params[:num_tracks] : 10)
-      @tracks = Track.top(num_tracks)
       render :index
     end
   end

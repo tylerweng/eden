@@ -6,7 +6,8 @@ class TrackDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageId: this.props.match.params.id
+      pageId: this.props.match.params.id,
+      similarTracks: this.props.similarTracks
     }
     this.handleClick = this.handleClick.bind(this);
   }
@@ -17,9 +18,10 @@ class TrackDetail extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.state.pageId === nextProps.match.params.id) return;
+    if (this.state.similarTracks.length > 0) return;
     this.props.fetchSimilarTracks(nextProps.profileTrack)
     this.setState({ pageId: nextProps.match.params.id});
+    this.setState({ similarTracks: nextProps.similarTracks });
   }
 
   handleClick(event) {
@@ -43,12 +45,12 @@ class TrackDetail extends React.Component {
 
     let similarTracks;
 
-    if (this.props.similarTracks) {
+    if (this.state.similarTracks) {
       similarTracks = (
         <div className="similar-tracks-column">
 
           <div className='similar-tracks-body'>
-            { this.props.similarTracks.map(track => (
+            { this.state.similarTracks.map(track => (
               <SimilarTrackItem
                 track={track}
                 key={track.id}
