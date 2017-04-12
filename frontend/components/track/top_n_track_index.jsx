@@ -12,7 +12,7 @@ class TopNTrackIndex extends React.Component {
   }
 
   componentWillMount() {
-    this.props.fetchTopNTracks(20);
+    this.props.fetchTopNTracks(10);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -22,7 +22,7 @@ class TopNTrackIndex extends React.Component {
 
 
   render() {
-    if (!this.state.tracks) this.forceUpdate(() => this.props.fetchTopNTracks(20));
+    if (!this.state.tracks) this.forceUpdate(() => this.props.fetchTopNTracks(10));
     return (
       <div className='homepage-sidebar'>
         <div className='homepage-sidebar-header'>Latest Hits</div>

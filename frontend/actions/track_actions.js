@@ -98,7 +98,7 @@ export const fetchAllTracks = user_id => dispatch => (
           errors => dispatch(receiveErrors(errors.responseJSON)))
 );
 
-export const fetchTopNTracks = (num_tracks = 20) => dispatch => (
+export const fetchTopNTracks = (num_tracks = 10) => dispatch => (
   TrackAPIUtil
     .fetchTopNTracks(num_tracks)
     .then(tracks => dispatch(receiveAllTracks(tracks)),

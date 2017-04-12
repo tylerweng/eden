@@ -5,7 +5,7 @@
 
 .homepage-sidebar {
   flex-direction: column;
-  width: 150px;
+  width: 250px;
 
   background: #20008A; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(#20008A, #1E105B); /* For Safari 5.1 to 6.0 */
@@ -21,8 +21,9 @@
 }
 
 .homepage-sidebar-header {
-  margin-left: 42.5px;
-
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
 }
 
 
@@ -30,10 +31,6 @@
 
   /* Full height */
   height: 100%;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  // background-position: left 15vh top;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -48,19 +45,23 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 1050px;
+  height: 825px;
+}
+
+.bgimg-1, .bgimg-2, .bgimg-3 {
+  background-position: left 6.75em top;
 }
 
 .bgimg-1 {
-  background-image: url('https://s3-us-west-1.amazonaws.com/eden-audio/application_images/splashpagev3.jpg');
+  background-image: url('https://s3-us-west-1.amazonaws.com/eden-audio/application_images/splash1.jpg');
 }
 
 .bgimg-2 {
-  background-image: url('https://s3-us-west-1.amazonaws.com/eden-audio/application_images/splashpagev3b.jpg');
+  background-image: url('https://s3-us-west-1.amazonaws.com/eden-audio/application_images/splash2.jpg');
 }
 
 .bgimg-3 {
-  background-image: url('https://s3-us-west-1.amazonaws.com/eden-audio/application_images/splashpagev3c3.jpeg');
+  background-image: url('https://s3-us-west-1.amazonaws.com/eden-audio/application_images/splash3.jpeg');
 }
 
 .caption {

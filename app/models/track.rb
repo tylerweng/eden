@@ -40,7 +40,7 @@ class Track < ApplicationRecord
     self.where(query).limit(10)
   end
 
-  def self.top(num_tracks = 20)
+  def self.top(num_tracks = 10)
     self.order(created_at: :desc).limit(num_tracks).shuffle
   end
 
