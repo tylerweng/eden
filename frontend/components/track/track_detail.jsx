@@ -20,12 +20,13 @@ class TrackDetail extends React.Component {
     if (this.state.pageId === nextProps.match.params.id) return;
     this.props.fetchSimilarTracks(nextProps.profileTrack)
     this.setState({ pageId: nextProps.match.params.id});
-    this.props.showProfile(this.state.pageId);
   }
 
   handleClick(event) {
     event.preventDefault();
     this.props.selectPlayPauseTrack(this.props.profileTrack);
+    this.props.showProfile(this.props.profileTrack.id);
+    this.setState({ pageId: this.props.profileTrack.id });
     this.props.fetchNextTrack(this.props.profileTrack);
   }
 
