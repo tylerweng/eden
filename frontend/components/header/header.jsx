@@ -1,7 +1,6 @@
 import React from 'react';
 import Auth from './auth';
 import LinksContainer from './links_container';
-import UserDropdownContainer from '../user/user_dropdown_container';
 import SearchbarContainer from '../search/searchbar_container';
 import { Link } from 'react-router-dom';
 
@@ -16,7 +15,6 @@ const Header = () => (
         Eden
       </Link>
       <Auth />
-      <UserDropdownContainer />
     </div>
   </div>
 );

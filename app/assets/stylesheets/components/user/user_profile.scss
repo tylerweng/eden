@@ -25,6 +25,11 @@
   background-color: #fff;
 }
 
+.dropdown-content > li {
+  z-index: 100;
+  background-color: red;
+}
+
 .user-profile-icon {
   position: relative;
   top: -1.7vh;
