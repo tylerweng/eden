@@ -18,7 +18,8 @@ class TrackDetail extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.state.similarTracks.length > 0) return;
+    if (this.state.pageId === nextProps.match.params.id
+         && this.state.similarTracks.length > 0) return;
     this.props.fetchSimilarTracks(nextProps.profileTrack)
     this.setState({ pageId: nextProps.match.params.id});
     this.setState({ similarTracks: nextProps.similarTracks });
