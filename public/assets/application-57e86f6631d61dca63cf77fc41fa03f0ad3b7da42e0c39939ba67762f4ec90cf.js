@@ -13797,7 +13797,7 @@ var fetchAllTracks = exports.fetchAllTracks = function fetchAllTracks(user_id) {
 };
 
 var fetchTopNTracks = exports.fetchTopNTracks = function fetchTopNTracks() {
-  var num_tracks = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 20;
+  var num_tracks = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 10;
   return function (dispatch) {
     return _track_api_util2.default.fetchTopNTracks(num_tracks).then(function (tracks) {
       return dispatch(receiveAllTracks(tracks));
@@ -50532,10 +50532,6 @@ var _links_container = __webpack_require__(292);
 
 var _links_container2 = _interopRequireDefault(_links_container);
 
-var _user_dropdown_container = __webpack_require__(328);
-
-var _user_dropdown_container2 = _interopRequireDefault(_user_dropdown_container);
-
 var _searchbar_container = __webpack_require__(300);
 
 var _searchbar_container2 = _interopRequireDefault(_searchbar_container);
@@ -50560,8 +50556,7 @@ var Header = function Header() {
           className: 'header-link eden' },
         'Eden'
       ),
-      _react2.default.createElement(_auth2.default, null),
-      _react2.default.createElement(_user_dropdown_container2.default, null)
+      _react2.default.createElement(_auth2.default, null)
     )
   );
 };
@@ -51718,84 +51713,97 @@ var LoginModal = function (_React$Component) {
           );
         })
       );
-      if (this.props.currentUser) return _react2.default.createElement('div', null);
-
-      return _react2.default.createElement(
-        'div',
-        { className: 'auth-modal' },
-        _react2.default.createElement(
-          'button',
-          {
-            onClick: this.openModal(),
-            type: 'button',
-            className: 'session-button login-button' },
-          'Login'
-        ),
-        _react2.default.createElement(
-          _reactBootstrap.Modal,
-          {
-            show: this.state.open,
-            onHide: this.closeModal(),
-            className: 'login-modal' },
+      if (this.props.currentUser) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'auth-modal' },
           _react2.default.createElement(
-            _reactBootstrap.Modal.Header,
-            { closeButton: true },
-            _react2.default.createElement(
-              _reactBootstrap.Modal.Title,
-              null,
-              'Login'
-            ),
-            errorList
+            'button',
+            {
+              onClick: this.props.logout,
+              type: 'button',
+              className: 'session-button login-button' },
+            'Logout'
+          )
+        );
+      } else {
+        return _react2.default.createElement(
+          'div',
+          { className: 'auth-modal' },
+          _react2.default.createElement(
+            'button',
+            {
+              onClick: this.openModal(),
+              type: 'button',
+              className: 'session-button login-button' },
+            'Login'
           ),
           _react2.default.createElement(
-            'form',
-            { onSubmit: this.handleSubmit, className: 'session-form' },
+            _reactBootstrap.Modal,
+            {
+              show: this.state.open,
+              onHide: this.closeModal(),
+              className: 'login-modal' },
             _react2.default.createElement(
-              _reactBootstrap.Modal.Body,
-              null,
+              _reactBootstrap.Modal.Header,
+              { closeButton: true },
               _react2.default.createElement(
-                'label',
+                _reactBootstrap.Modal.Title,
                 null,
-                'Username',
-                _react2.default.createElement('input', {
-                  type: 'text',
-                  placeholder: 'Username',
-                  onChange: this.update('username'),
-                  className: 'auth-input' })
-              ),
-              _react2.default.createElement(
-                'label',
-                null,
-                'Password',
-                _react2.default.createElement('input', {
-                  type: 'password',
-                  placeholder: 'Password',
-                  onChange: this.update('password'),
-                  className: 'auth-input' })
-              )
-            ),
-            _react2.default.createElement(
-              _reactBootstrap.Modal.Footer,
-              null,
-              _react2.default.createElement(
-                _reactBootstrap.Button,
-                {
-                  type: 'submit',
-                  className: 'login-submit' },
                 'Login'
               ),
+              errorList
+            ),
+            _react2.default.createElement(
+              'form',
+              { onSubmit: this.handleSubmit, className: 'session-form' },
               _react2.default.createElement(
-                _reactBootstrap.Button,
-                {
-                  onClick: this.demo,
-                  type: 'button',
-                  className: 'login-submit' },
-                'Demo'
+                _reactBootstrap.Modal.Body,
+                null,
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  'Username',
+                  _react2.default.createElement('input', {
+                    type: 'text',
+                    placeholder: 'Username',
+                    onChange: this.update('username'),
+                    className: 'auth-input' })
+                ),
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  'Password',
+                  _react2.default.createElement('input', {
+                    type: 'password',
+                    placeholder: 'Password',
+                    onChange: this.update('password'),
+                    className: 'auth-input' })
+                )
+              ),
+              _react2.default.createElement(
+                _reactBootstrap.Modal.Footer,
+                null,
+                _react2.default.createElement(
+                  _reactBootstrap.Button,
+                  {
+                    type: 'submit',
+                    className: 'login-submit' },
+                  'Login'
+                ),
+                _react2.default.createElement(
+                  _reactBootstrap.Button,
+                  {
+                    onClick: this.demo,
+                    type: 'button',
+                    className: 'login-submit' },
+                  'Demo'
+                )
               )
             )
           )
-        )
-      );
+        );
+      }
     }
   }]);
 
@@ -51841,6 +51849,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
     processForm: function processForm(user) {
       return dispatch((0, _session_actions.login)(user));
     },
+    logout: function logout() {
+      return dispatch((0, _session_actions.logout)());
+    },
     resetErrors: function resetErrors() {
       return dispatch((0, _error_actions.resetErrors)());
     }
@@ -51871,6 +51882,8 @@ var _react2 = _interopRequireDefault(_react);
 var _reactDom = __webpack_require__(16);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _reactRouterDom = __webpack_require__(78);
 
 var _reactBootstrap = __webpack_require__(94);
 
@@ -51958,86 +51971,101 @@ var SignupModal = function (_React$Component) {
         })
       );
 
-      if (this.props.currentUser) return _react2.default.createElement('div', null);
-
-      return _react2.default.createElement(
-        'div',
-        { className: 'auth-modal' },
-        _react2.default.createElement(
-          'button',
-          {
-            onClick: this.openModal(),
-            type: 'button',
-            className: 'session-button signup-button' },
-          'Sign Up'
-        ),
-        _react2.default.createElement(
-          _reactBootstrap.Modal,
-          {
-            show: this.state.open,
-            onHide: this.closeModal(),
-            className: 'signup-modal' },
+      if (this.props.currentUser) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'auth-modal' },
           _react2.default.createElement(
-            _reactBootstrap.Modal.Header,
-            { closeButton: true },
+            _reactRouterDom.Link,
+            { to: '/myprofile' },
             _react2.default.createElement(
-              _reactBootstrap.Modal.Title,
-              null,
-              'Sign Up'
-            ),
-            errorList
+              'button',
+              {
+                className: 'session-button signup-button' },
+              'My Profile'
+            )
+          )
+        );
+      } else {
+        return _react2.default.createElement(
+          'div',
+          { className: 'auth-modal' },
+          _react2.default.createElement(
+            'button',
+            {
+              onClick: this.openModal(),
+              type: 'button',
+              className: 'session-button signup-button' },
+            'Sign Up'
           ),
           _react2.default.createElement(
-            'form',
-            { onSubmit: this.handleSubmit, className: 'session-form' },
+            _reactBootstrap.Modal,
+            {
+              show: this.state.open,
+              onHide: this.closeModal(),
+              className: 'signup-modal' },
             _react2.default.createElement(
-              _reactBootstrap.Modal.Body,
-              null,
+              _reactBootstrap.Modal.Header,
+              { closeButton: true },
               _react2.default.createElement(
-                'label',
+                _reactBootstrap.Modal.Title,
                 null,
-                'Username',
-                _react2.default.createElement('input', {
-                  type: 'text',
-                  placeholder: 'Username',
-                  onChange: this.update('username'),
-                  className: 'auth-input' })
+                'Sign Up'
               ),
-              _react2.default.createElement(
-                'label',
-                null,
-                'Email',
-                _react2.default.createElement('input', {
-                  type: 'text',
-                  placeholder: 'Email',
-                  onChange: this.update('email'),
-                  className: 'auth-input' })
-              ),
-              _react2.default.createElement(
-                'label',
-                null,
-                'Password',
-                _react2.default.createElement('input', {
-                  type: 'password',
-                  placeholder: 'Password',
-                  onChange: this.update('password'),
-                  className: 'auth-input' })
-              )
+              errorList
             ),
             _react2.default.createElement(
-              _reactBootstrap.Modal.Footer,
-              null,
+              'form',
+              { onSubmit: this.handleSubmit, className: 'session-form' },
               _react2.default.createElement(
-                _reactBootstrap.Button,
-                {
-                  type: 'submit',
-                  className: 'signup-submit' },
-                'Sign Up'
+                _reactBootstrap.Modal.Body,
+                null,
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  'Username',
+                  _react2.default.createElement('input', {
+                    type: 'text',
+                    placeholder: 'Username',
+                    onChange: this.update('username'),
+                    className: 'auth-input' })
+                ),
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  'Email',
+                  _react2.default.createElement('input', {
+                    type: 'text',
+                    placeholder: 'Email',
+                    onChange: this.update('email'),
+                    className: 'auth-input' })
+                ),
+                _react2.default.createElement(
+                  'label',
+                  null,
+                  'Password',
+                  _react2.default.createElement('input', {
+                    type: 'password',
+                    placeholder: 'Password',
+                    onChange: this.update('password'),
+                    className: 'auth-input' })
+                )
+              ),
+              _react2.default.createElement(
+                _reactBootstrap.Modal.Footer,
+                null,
+                _react2.default.createElement(
+                  _reactBootstrap.Button,
+                  {
+                    type: 'submit',
+                    className: 'signup-submit' },
+                  'Sign Up'
+                )
               )
             )
           )
-        )
-      );
+        );
+      }
     }
   }]);
 
@@ -52490,21 +52518,18 @@ var TopNTrackIndex = function (_React$Component) {
   _createClass(TopNTrackIndex, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      this.props.fetchTopNTracks(20);
+      this.props.fetchTopNTracks(10);
     }
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      this.state.tracks = nextProps.tracks;
+      this.setState({ tracks: nextProps.tracks });
     }
   }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
 
-      if (!this.state.tracks) this.forceUpdate(function () {
-        return _this2.props.fetchTopNTracks(20);
-      });
       return _react2.default.createElement(
         'div',
         { className: 'homepage-sidebar' },
@@ -52544,9 +52569,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _reactRedux = __webpack_require__(20);
 
-var _top_N_track_index = __webpack_require__(308);
+var _top_n_track_index = __webpack_require__(308);
 
-var _top_N_track_index2 = _interopRequireDefault(_top_N_track_index);
+var _top_n_track_index2 = _interopRequireDefault(_top_n_track_index);
 
 var _track_actions = __webpack_require__(27);
 
@@ -52558,7 +52583,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var mapStateToProps = function mapStateToProps(_ref) {
   var tracks = _ref.tracks;
-
   return {
     tracks: _lodash2.default.values(tracks.tracks)
   };
@@ -52578,7 +52602,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-var TopNTrackIndexContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_top_N_track_index2.default);
+var TopNTrackIndexContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_top_n_track_index2.default);
 
 exports.default = TopNTrackIndexContainer;
 
@@ -52620,7 +52644,8 @@ var TrackDetail = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (TrackDetail.__proto__ || Object.getPrototypeOf(TrackDetail)).call(this, props));
 
     _this.state = {
-      pageId: _this.props.match.params.id
+      pageId: _this.props.match.params.id,
+      similarTracks: _this.props.similarTracks
     };
     _this.handleClick = _this.handleClick.bind(_this);
     return _this;
@@ -52635,16 +52660,18 @@ var TrackDetail = function (_React$Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      if (this.state.pageId === nextProps.match.params.id) return;
+      if (this.state.similarTracks.length > 0) return;
       this.props.fetchSimilarTracks(nextProps.profileTrack);
       this.setState({ pageId: nextProps.match.params.id });
-      this.props.showProfile(this.state.pageId);
+      this.setState({ similarTracks: nextProps.similarTracks });
     }
   }, {
     key: 'handleClick',
     value: function handleClick(event) {
       event.preventDefault();
       this.props.selectPlayPauseTrack(this.props.profileTrack);
+      this.props.showProfile(this.props.profileTrack.id);
+      this.setState({ pageId: this.props.profileTrack.id });
       this.props.fetchNextTrack(this.props.profileTrack);
     }
   }, {
@@ -52663,14 +52690,14 @@ var TrackDetail = function (_React$Component) {
 
       var similarTracks = void 0;
 
-      if (this.props.similarTracks) {
+      if (this.state.similarTracks) {
         similarTracks = _react2.default.createElement(
           'div',
           { className: 'similar-tracks-column' },
           _react2.default.createElement(
             'div',
             { className: 'similar-tracks-body' },
-            this.props.similarTracks.map(function (track) {
+            this.state.similarTracks.map(function (track) {
               return _react2.default.createElement(_similar_track_item2.default, {
                 track: track,
                 key: track.id,
@@ -53619,191 +53646,8 @@ var UserDetailContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchT
 exports.default = UserDetailContainer;
 
 /***/ }),
-/* 327 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(78);
-
-var _reactBootstrap = __webpack_require__(94);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var UserDropdown = function (_React$Component) {
-  _inherits(UserDropdown, _React$Component);
-
-  function UserDropdown(props) {
-    _classCallCheck(this, UserDropdown);
-
-    var _this = _possibleConstructorReturn(this, (UserDropdown.__proto__ || Object.getPrototypeOf(UserDropdown)).call(this, props));
-
-    _this.state = {
-      open: false
-    };
-    _this.handleLogout = _this.handleLogout.bind(_this);
-    _this.handleMyProfile = _this.handleMyProfile.bind(_this);
-    _this.displayForm = _this.displayForm.bind(_this);
-    _this.closeForm = _this.closeForm.bind(_this);
-    _this.openProfile = _this.openProfile.bind(_this);
-    return _this;
-  }
-
-  _createClass(UserDropdown, [{
-    key: 'handleLogout',
-    value: function handleLogout() {
-      var _this2 = this;
-
-      return function () {
-        return _this2.props.logout().then(_this2.setState({ open: false }));
-      };
-    }
-  }, {
-    key: 'handleMyProfile',
-    value: function handleMyProfile(event) {
-      event.preventDefault();
-      this.setState({ open: false });
-    }
-  }, {
-    key: 'openProfile',
-    value: function openProfile() {
-      // const newOpen = !this.state.open;
-      this.setState({ open: true });
-    }
-  }, {
-    key: 'closeForm',
-    value: function closeForm() {
-      var _this3 = this;
-
-      return function () {
-        return _this3.setState({ open: false });
-      };
-    }
-  }, {
-    key: 'displayForm',
-    value: function displayForm() {
-      if (!this.state.open) return _react2.default.createElement('div', { className: 'hidden' });
-      return _react2.default.createElement(
-        'div',
-        { className: 'dropdown-content' },
-        _react2.default.createElement(
-          _reactBootstrap.MenuItem,
-          null,
-          _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: '/myprofile' },
-            _react2.default.createElement(
-              'span',
-              {
-                onClick: this.closeForm(),
-                className: 'link' },
-              'My Profile'
-            )
-          )
-        ),
-        _react2.default.createElement(
-          _reactBootstrap.MenuItem,
-          null,
-          _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: '/homepage' },
-            _react2.default.createElement(
-              'span',
-              {
-                onClick: this.handleLogout(),
-                className: 'link' },
-              'Log Out'
-            )
-          )
-        )
-      );
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-
-      var img = _react2.default.createElement('img', {
-        src: 'https://s3-us-west-1.amazonaws.com/eden-audio/application_images/user_profile_icon.png',
-        className: 'user-profile-icon img-circle',
-        onClick: this.openProfile });
-      if (!this.props.currentUser) return _react2.default.createElement('div', null);
-      return _react2.default.createElement(
-        _reactBootstrap.DropdownButton,
-        {
-          title: img,
-          id: 'dropdown',
-          noCaret: true,
-          className: 'session-button dropdown-button' },
-        this.displayForm()
-      );
-    }
-  }]);
-
-  return UserDropdown;
-}(_react2.default.Component);
-
-;
-
-exports.default = UserDropdown;
-
-/***/ }),
-/* 328 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _reactRedux = __webpack_require__(20);
-
-var _session_actions = __webpack_require__(79);
-
-var _user_dropdown = __webpack_require__(327);
-
-var _user_dropdown2 = _interopRequireDefault(_user_dropdown);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var mapStateToProps = function mapStateToProps(_ref) {
-  var session = _ref.session;
-  return {
-    currentUser: session.currentUser
-  };
-};
-
-var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-  return {
-    logout: function logout() {
-      return dispatch((0, _session_actions.logout)());
-    }
-  };
-};
-
-var UserDropdownContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_user_dropdown2.default);
-
-exports.default = UserDropdownContainer;
-
-/***/ }),
+/* 327 */,
+/* 328 */,
 /* 329 */
 /***/ (function(module, exports, __webpack_require__) {
 
