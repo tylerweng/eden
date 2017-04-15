@@ -45,7 +45,7 @@ class LoginModal extends React.Component {
   demo(event) {
     event.preventDefault();
     const user = {
-      username: 'guest',
+      username: 'Guest',
       password: 'password'
     };
     this.props.processForm({ user })
@@ -116,7 +116,7 @@ class LoginModal extends React.Component {
                   onClick={this.demo}
                   type='button'
                   className='login-submit'>
-                  Demo
+                  Guest
                 </Button>
               </Modal.Footer>
             </form>

@@ -9,7 +9,7 @@
 User.destroy_all
 Track.destroy_all
 
-User.create(username: 'guest', password: 'password', email: 'user@gmail.com')
+User.create(username: 'Guest', password: 'password', email: 'Guest@gmail.com')
 User.create(username: 'Steve', password: 'password', email: 'Steve@gmail.com')
 User.create(username: 'Dylan', password: 'password', email: 'Dylan@gmail.com')
 User.create(username: 'Diane', password: 'password', email: 'Diane@gmail.com')
