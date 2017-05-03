@@ -38,7 +38,7 @@ architectural framework on the frontend. Please refer to the
 - Enhanced station discovery to better accommodate user likes and dislikes
 
 [eden]: http://eden.audio
-[homepage]: https://s3-us-west-1.amazonaws.com/eden-audio/application_images/Homepage.png
+[homepage]: https://s3-us-west-1.amazonaws.com/eden-audio/application_images/Homepage2.png
 [station]: https://s3-us-west-1.amazonaws.com/eden-audio/application_images/Station.png
 [my stations]: https://s3-us-west-1.amazonaws.com/eden-audio/application_images/MyStations.png
 [proposal]: https://github.com/tylerweng/eden/blob/master/docs/README.md
