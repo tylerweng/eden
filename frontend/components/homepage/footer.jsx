@@ -18,7 +18,13 @@ const Footer = () => (
     		</i>
       </a>
     </div>
-    <div className="footer-author">Tyler Weng</div>
+    <div className="footer-author">
+      <a
+        href="https://tylerweng.com"
+        className="footer-icon">
+        Tyler Weng
+      </a>
+    </div>
   </div>
 );
 
