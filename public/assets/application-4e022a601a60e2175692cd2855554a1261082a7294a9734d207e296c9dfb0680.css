@@ -40,19 +40,25 @@
 /* line 39, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
 .header-link:hover {
   color: white;
+  text-decoration: none;
 }
 
-/* line 43, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
+/* line 46, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
+a:-webkit-any-link {
+  text-decoration: none !important;
+}
+
+/* line 50, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
 .now-playing {
   margin-left: 40px;
 }
 
-/* line 47, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
+/* line 54, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
 .my-stations {
   margin-left: 40px;
 }
 
-/* line 51, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
+/* line 58, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
 .header-auth-buttons {
   position: relative;
   display: flex;
@@ -60,7 +66,7 @@
   align-items: center;
 }
 
-/* line 57, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
+/* line 64, /Users/tyler/Git/eden/app/assets/stylesheets/components/header/header.scss */
 .eden {
   margin-right: 20px;
 }
@@ -193,6 +199,12 @@
 /* line 113, /Users/tyler/Git/eden/app/assets/stylesheets/components/homepage/homepage.scss */
 .footer-icon {
   margin: 0 10px;
+}
+
+/* line 117, /Users/tyler/Git/eden/app/assets/stylesheets/components/homepage/homepage.scss */
+.footer-icon:hover {
+  color: white;
+  text-decoration: none;
 }
 /* line 1, /Users/tyler/Git/eden/app/assets/stylesheets/components/playbar/audio.scss */
 .body-audio {
@@ -495,6 +507,7 @@
 
 /* line 23, /Users/tyler/Git/eden/app/assets/stylesheets/components/track/track_profile.scss */
 .track-detail {
+  margin-right: 35px;
   align-items: center;
   display: flex;
   flex-direction: column;

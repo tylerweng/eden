@@ -41,11 +41,11 @@
   text-decoration: none;
 }
 
-.header-link:focus {
-  color: white;
-  text-decoration: none;
-}
 
+
+a:-webkit-any-link {
+  text-decoration: none !important;
+}
 
 .now-playing {
   margin-left: 40px;
